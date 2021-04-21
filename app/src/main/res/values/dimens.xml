@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="toolbar_height">48dp</dimen>
+
+    <!--region Text sizes-->
+    <dimen name="text_size_xs">10sp</dimen>
+    <dimen name="text_size_s">12sp</dimen>
+    <dimen name="text_size_m">16sp</dimen>
+    <dimen name="text_size_l">18sp</dimen>
+    <dimen name="text_size_xl">20sp</dimen>
+    <dimen name="text_size_xxl">22sp</dimen>
+    <dimen name="text_size_xxxl">24sp</dimen>
+    <!--endregion-->
+
+    <!--region Padding/Margin/Offset-->
+    <dimen name="offset_x">4dp</dimen>
+    <dimen name="offset_x2">8dp</dimen>
+    <dimen name="offset_x3">12dp</dimen>
+    <dimen name="offset_x4">16dp</dimen>
+    <dimen name="offset_x5">20dp</dimen>
+    <dimen name="offset_x6">24dp</dimen>
+    <dimen name="offset_x7">28dp</dimen>
+    <dimen name="offset_x8">32dp</dimen>
+    <dimen name="offset_x9">36dp</dimen>
+    <dimen name="offset_x10">40dp</dimen>
+    <dimen name="offset_x11">44dp</dimen>
+    <dimen name="offset_x12">48dp</dimen>
+    <dimen name="offset_x13">52dp</dimen>
+    <dimen name="offset_x14">56dp</dimen>
+    <dimen name="offset_x15">60dp</dimen>
+    <dimen name="offset_x16">64dp</dimen>
+    <dimen name="offset_x17">68dp</dimen>
+    <dimen name="offset_x18">72dp</dimen>
+    <dimen name="offset_x19">76dp</dimen>
+    <dimen name="offset_x20">80dp</dimen>
+    <dimen name="offset_x21">84dp</dimen>
+    <dimen name="offset_x22">88dp</dimen>
+    <dimen name="offset_x23">92dp</dimen>
+    <dimen name="offset_x24">96dp</dimen>
+    <dimen name="offset_x25">100dp</dimen>
+    <dimen name="offset_x26">104dp</dimen>
+    <dimen name="offset_x27">108dp</dimen>
+    <dimen name="offset_x28">112dp</dimen>
+    <dimen name="offset_x29">116dp</dimen>
+    <dimen name="offset_x30">120dp</dimen>
+    <dimen name="offset_x40">160dp</dimen>
+    <dimen name="offset_x55">220dp</dimen>
+    <!--endregion-->
+
+    <!-- Corner radius-->
+    <dimen name="corner_2">2dp</dimen>
+    <dimen name="corner_4">4dp</dimen>
+    <dimen name="corner_8">8dp</dimen>
+    <dimen name="corner_12">12dp</dimen>
+    <dimen name="corner_16">16dp</dimen>
+    <dimen name="corner_20">20dp</dimen>
+    <dimen name="corner_32">32dp</dimen>
+    <!--endregion-->
+
+    <!--region Elevation-->
+    <dimen name="elevation_1">1dp</dimen>
+    <dimen name="elevation_2">2dp</dimen>
+    <dimen name="elevation_4">4dp</dimen>
+    <dimen name="elevation_8">8dp</dimen>
+    <!--endregion-->
+
+    <!--region Icons-->
+    <dimen name="icon_size_s">16dp</dimen>
+    <dimen name="icon_size_m">20dp</dimen>
+    <!--endregion-->
+</resources>

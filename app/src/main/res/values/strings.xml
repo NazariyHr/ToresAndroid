@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Tores</string>
+
+    <string name="dashboard">Панель управления</string>
+    <string name="finances">Финансы</string>
+    <string name="authorization">Авторизация</string>
+    <string name="authorize">Авторизоваться</string>
+    <string name="register">Регистрация</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="password">Пароль</string>
+    <string name="login">Логин</string>
+    <string name="reset_password">Восстановление пароля</string>
+    <string name="email">Email</string>
+    <string name="reset">Восстановить</string>
+    <string name="registration">Регистрация</string>
+    <string name="balance">Баланс</string>
+    <string name="mine">Майнить</string>
+    <string name="buy_tokens">Купить токены</string>
+    <string name="sell_tokens">Продать токены</string>
+    <string name="send_tokens">Отправка токенов</string>
+    <string name="bonus_balance">Бонусный баланс</string>
+    <string name="current_rank_balance">Текущий ранговый баланс</string>
+    <string name="details">Детали</string>
+    <string name="detailed">Подробнее</string>
+    <string name="income_for_all_time">Полученный доход за все время</string>
+    <string name="income">Доход</string>
+    <string name="rewards_for_all_time">Вознаграждения за все время</string>
+    <string name="by_partners">Партнерские</string>
+    <string name="by_ranks">Ранговые бонусы</string>
+    <string name="five_last">5 последних</string>
+    <string name="accruals">Начисления</string>
+    <string name="registrations">Регистрации</string>
+    <string name="has_no_internet">Нет подключения к интернету</string>
+</resources>

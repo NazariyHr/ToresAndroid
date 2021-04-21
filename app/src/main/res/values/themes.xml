@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Tores.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+        <!-- Color for the app bar and other primary UI elements -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <!--  analogue colorPrimaryDark from AppCompat
+           A darker variant of the primary color, used for
+           the status bar (on Android 5.0+) and contextual app bars -->
+        <item name="colorPrimaryVariant">@color/dark_primary_color</item>
+        <!-- A color that passes accessibility guidelines for text/iconography
+             when drawn on top of the primary color. -->
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Analogue for colorAccent from AppCompat
+         A secondary color for controls like checkboxes and text fields,
+         that means this color applies to elements when they are in focus or active -->
+        <item name="colorSecondary">@color/secondary_color</item>
+        <!-- A tonal variation of the secondary color -->
+        <item name="colorSecondaryVariant">@color/secondary_variant_color</item>
+        <!-- A color that passes accessibility guidelines for text/iconography when
+             drawn on top of the secondary color. -->
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+        <!-- Activity background color -->
+        <item name="android:windowBackground">@color/surface</item>
+        <!-- Specifies a background drawable for the action bar -->
+        <item name="background">@color/surface</item>
+        <!-- Color of navigation bar (in bottom) -->
+        <item name="android:navigationBarColor">@color/transparent</item>
+        <!-- The color applied to framework control highlights (ex. ripples, list selectors) -->
+        <item name="colorControlHighlight">@color/selected</item>
+
+        <!-- The most prominent text color -->
+        <item name="android:textColor">@color/primary_text_color</item>
+
+        <!-- Secondary text color, for medium and small text views -->
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+
+        <!-- Default style for text views -->
+        <item name="android:textViewStyle">@style/Widget.Tores.TextView</item>
+
+        <!-- Default style for bottom navigation view -->
+        <item name="bottomNavigationStyle">@style/Widget.Tores.BottomNavigationView</item>
+    </style>
+
+    <!-- Theme for splash -->
+    <!--    <style name="Theme.Tores.Splash" parent="Theme.MaterialComponents.Light.NoActionBar">-->
+    <style name="Theme.Tores.Splash" parent="Theme.Tores.Base">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:textColor">@color/text_color</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>
