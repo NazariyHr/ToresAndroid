@@ -4,3 +4,4 @@
 /app/release/
 /.idea/vcs.xml
 /build/
+/.idea/gradle.xml
