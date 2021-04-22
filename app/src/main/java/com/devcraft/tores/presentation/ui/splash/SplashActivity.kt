@@ -27,8 +27,8 @@ class SplashActivity : AppCompatActivity() {
                         val i = Intent(this, MainActivity::class.java)
                         startActivity(i)
                     } else {
-                        val i = Intent(this, MainActivity::class.java)
-                        //val i = Intent(this, AuthActivity::class.java)
+                        //val i = Intent(this, MainActivity::class.java)
+                        val i = Intent(this, AuthActivity::class.java)
                         startActivity(i)
                     }
                     finish()

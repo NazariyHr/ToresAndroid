@@ -8,7 +8,7 @@ class LogInTokenMapper : BaseRepositoryMapper<LogInResponse, Token>() {
     override fun mapDtoToEntity(dto: LogInResponse): Token {
         return with(dto) {
             Token(
-                token = token
+                token = token.plainTextToken
             )
         }
     }

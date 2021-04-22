@@ -1,7 +1,8 @@
 package com.devcraft.tores.data.repositories.contract
 
-import com.devcraft.tores.data.repositories.contract.common_results.ResultStatus
-import com.devcraft.tores.data.repositories.contract.common_results.ResultWithStatus
+import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
+import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
+import com.devcraft.tores.entities.User
 
 interface UserRepository {
     suspend fun login(
@@ -10,5 +11,5 @@ interface UserRepository {
         token: String
     ): ResultStatus
 
-    //suspend fun getUser(): ResultWithStatus<Any>
+    suspend fun getUser(): ResultWithStatus<User>
 }

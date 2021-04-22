@@ -54,33 +54,35 @@ class LogInFragment : BaseFragment(R.layout.fragment_login) {
             val login = tietLogin.text.toString()
             val password = tietPassword.text.toString()
 
-            SafetyNet.getClient(requireActivity()).verifyWithRecaptcha(Constants.RECAPTCHA_SITE_KEY)
-                .addOnSuccessListener { response ->
-                    // Indicates communication with reCAPTCHA service was successful.
-                    val userResponseToken = response.tokenResult
-                    if (response.tokenResult?.isNotEmpty() == true) {
-                        // Validate the user response token using the
-                        // reCAPTCHA site verify API.
-                        vm.logIn(login, password, userResponseToken)
-                    } else {
-                        showToast("Error: recaptcha response token is null")
-                    }
-                }
-                .addOnFailureListener { e ->
-                    if (e is ApiException) {
-                        // An error occurred when communicating with the
-                        // reCAPTCHA service. Refer to the status code to
-                        // handle the error appropriately.
-                        Log.d(TAG, "Error: ${CommonStatusCodes.getStatusCodeString(e.statusCode)}")
-                        showToast("Error: ${CommonStatusCodes.getStatusCodeString(e.statusCode)}")
-                        openActivity(MainActivity::class.java, true)
-                    } else {
-                        // A different, unknown type of error occurred.
-                        Log.d(TAG, "Error: ${e.message}")
-                        showToast("Error: ${e.message}")
-                        openActivity(MainActivity::class.java, true)
-                    }
-                }
+            vm.logIn(login, password, "")
+
+//            SafetyNet.getClient(requireActivity()).verifyWithRecaptcha(Constants.RECAPTCHA_SITE_KEY)
+//                .addOnSuccessListener { response ->
+//                    // Indicates communication with reCAPTCHA service was successful.
+//                    val userResponseToken = response.tokenResult
+//                    if (response.tokenResult?.isNotEmpty() == true) {
+//                        // Validate the user response token using the
+//                        // reCAPTCHA site verify API.
+//                        vm.logIn(login, password, userResponseToken)
+//                    } else {
+//                        showToast("Error: recaptcha response token is null")
+//                    }
+//                }
+//                .addOnFailureListener { e ->
+//                    if (e is ApiException) {
+//                        // An error occurred when communicating with the
+//                        // reCAPTCHA service. Refer to the status code to
+//                        // handle the error appropriately.
+//                        Log.d(TAG, "Error: ${CommonStatusCodes.getStatusCodeString(e.statusCode)}")
+//                        showToast("Error: ${CommonStatusCodes.getStatusCodeString(e.statusCode)}")
+//                        openActivity(MainActivity::class.java, true)
+//                    } else {
+//                        // A different, unknown type of error occurred.
+//                        Log.d(TAG, "Error: ${e.message}")
+//                        showToast("Error: ${e.message}")
+//                        openActivity(MainActivity::class.java, true)
+//                    }
+//                }
         }
     }
 

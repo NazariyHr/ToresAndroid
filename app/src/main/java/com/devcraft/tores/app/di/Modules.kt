@@ -3,16 +3,22 @@ package com.devcraft.tores.app.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.devcraft.tores.data.repositories.contract.DashboardRepository
 import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.impl.net.ApiConstants
+import com.devcraft.tores.data.repositories.impl.net.impl.DashboardRepositoryNetImpl
 import com.devcraft.tores.data.repositories.impl.net.impl.UserRepositoryNetImpl
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetDashboardNetMapper
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserNetMapper
 import com.devcraft.tores.data.repositories.impl.net.mappers.LogInTokenMapper
-import com.devcraft.tores.data.repositories.impl.net.retrofit_apis.UserApi
+import com.devcraft.tores.data.repositories.impl.net.retrofitApis.DashBoardApi
+import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
 import com.devcraft.tores.data.repositories.impl.prefs.impl.TokenRepositoryPrefsImpl
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.ui.auth.AuthViewModel
 import com.devcraft.tores.presentation.ui.main.MainViewModel
+import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -27,6 +33,7 @@ val viewModelModule = module {
     viewModel { AuthViewModel(get(), get()) }
     viewModel { SplashViewModel(get()) }
     viewModel { MainViewModel(get()) }
+    viewModel { DashBoardViewModel(get(), get(), get()) }
 }
 
 val netModule = module {
@@ -68,7 +75,12 @@ val netApiModule = module {
         return retrofit.create(UserApi::class.java)
     }
 
+    fun provideDashBoardApi(retrofit: Retrofit): DashBoardApi {
+        return retrofit.create(DashBoardApi::class.java)
+    }
+
     single { provideUserApi(get()) }
+    single { provideDashBoardApi(get()) }
 }
 
 val repositoryModule = module {
@@ -79,17 +91,29 @@ val repositoryModule = module {
     fun provideUserRepository(
         userApi: UserApi,
         tokenRepository: TokenRepository,
-        logInTokenMapper: LogInTokenMapper
+        logInTokenMapper: LogInTokenMapper,
+        getUserNetMapper: GetUserNetMapper
     ): UserRepository {
         return UserRepositoryNetImpl(
             userApi,
             tokenRepository,
-            logInTokenMapper
+            logInTokenMapper,
+            getUserNetMapper
         )
     }
 
+    fun provideDashboardRepository(
+        dashBoardApi: DashBoardApi,
+        tokenRepository: TokenRepository,
+        getDashboardNetMapper: GetDashboardNetMapper
+
+    ): DashboardRepository {
+        return DashboardRepositoryNetImpl(dashBoardApi, tokenRepository, getDashboardNetMapper)
+    }
+
     single { provideTokenRepository(get(named("tokens"))) }
-    single { provideUserRepository(get(), get(), get()) }
+    single { provideUserRepository(get(), get(), get(), get()) }
+    single { provideDashboardRepository(get(), get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -97,7 +121,17 @@ val repositoryMappersModule = module {
         return LogInTokenMapper()
     }
 
+    fun provideGetUserNetMapper(): GetUserNetMapper {
+        return GetUserNetMapper()
+    }
+
+    fun provideGetDashboardNetMapper(): GetDashboardNetMapper{
+        return GetDashboardNetMapper()
+    }
+
     factory { provideLogInTokenMapper() }
+    factory { provideGetUserNetMapper() }
+    factory { provideGetDashboardNetMapper() }
 }
 
 val utilsModules = module {

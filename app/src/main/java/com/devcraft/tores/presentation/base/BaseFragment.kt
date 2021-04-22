@@ -26,6 +26,9 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
     open fun initObservers() {
         vm.connectivityLiveData.observe(viewLifecycleOwner, ::onNetworkConnectivityStatusChanged)
+        vm.onFailure.observe(viewLifecycleOwner, {
+            showToast(it.message.orEmpty())
+        })
     }
 
     /**

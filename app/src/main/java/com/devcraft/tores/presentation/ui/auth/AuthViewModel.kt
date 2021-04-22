@@ -2,7 +2,7 @@ package com.devcraft.tores.presentation.ui.auth
 
 import androidx.lifecycle.viewModelScope
 import com.devcraft.tores.data.repositories.contract.UserRepository
-import com.devcraft.tores.data.repositories.contract.common_results.ResultStatus
+import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.presentation.base.BaseViewModel
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.common.SingleLiveEvent
@@ -13,8 +13,6 @@ class AuthViewModel(
     private val userRepository: UserRepository,
     connectivityLiveData: ConnectivityInfoLiveData
 ) : BaseViewModel(connectivityLiveData) {
-
-    val someProcessAlive: SomeProcessAlive = SomeProcessAlive()
 
     val onLoginSuccess: SingleLiveEvent<String> = SingleLiveEvent()
     val onLoginFailure: SingleLiveEvent<Error> = SingleLiveEvent()

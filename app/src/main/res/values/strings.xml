@@ -31,4 +31,8 @@
     <string name="accruals">Начисления</string>
     <string name="registrations">Регистрации</string>
     <string name="has_no_internet">Нет подключения к интернету</string>
+
+    <string name="tores_amount">%1$.2f TORES</string>
+    <string name="plus_tores_amount">+%1$.2f TORES</string>
+    <string name="in_date_and_time">%1$s в %2$s</string>
 </resources>

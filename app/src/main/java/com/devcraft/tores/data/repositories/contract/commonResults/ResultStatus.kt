@@ -1,4 +1,4 @@
-package com.devcraft.tores.data.repositories.contract.common_results
+package com.devcraft.tores.data.repositories.contract.commonResults
 
 class ResultStatus(val status: StateList, val error: Error? = null) {
     enum class StateList {
