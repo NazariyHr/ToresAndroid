@@ -6,11 +6,16 @@ import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.toolbar.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity(R.layout.activity_main) {
 
     override val vm: MainViewModel by viewModel()
+
+    override fun setToolbarTitle(title: String) {
+        tvToolbarTitle.text = title
+    }
 
     override fun initViews() {
         openFragment(R.id.container, DashBoardFragment(), false)

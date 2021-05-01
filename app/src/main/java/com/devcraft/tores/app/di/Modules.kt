@@ -4,21 +4,31 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.devcraft.tores.data.repositories.contract.DashboardRepository
+import com.devcraft.tores.data.repositories.contract.FinancesRepository
 import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.impl.net.ApiConstants
-import com.devcraft.tores.data.repositories.impl.net.impl.DashboardRepositoryNetImpl
-import com.devcraft.tores.data.repositories.impl.net.impl.UserRepositoryNetImpl
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetDashboardNetMapper
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserNetMapper
+import com.devcraft.tores.data.repositories.impl.net.impl.DashboardRepositoryImpl
+import com.devcraft.tores.data.repositories.impl.net.impl.FinancesRepositoryImpl
+import com.devcraft.tores.data.repositories.impl.net.impl.UserRepositoryImpl
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetDashboardMapper
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetTopupsAndWithdrawalsMapper
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserMapper
 import com.devcraft.tores.data.repositories.impl.net.mappers.LogInTokenMapper
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.DashBoardApi
+import com.devcraft.tores.data.repositories.impl.net.retrofitApis.FinancesApi
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
 import com.devcraft.tores.data.repositories.impl.prefs.impl.TokenRepositoryPrefsImpl
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.ui.auth.AuthViewModel
 import com.devcraft.tores.presentation.ui.main.MainViewModel
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
+import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
+import com.devcraft.tores.presentation.ui.main.finances.bonusRewards.BonusRewardsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.mining.MiningViewModel
+import com.devcraft.tores.presentation.ui.main.finances.partnersRewards.PartnersRewardsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.TopupsAndWithdrawalsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -34,6 +44,12 @@ val viewModelModule = module {
     viewModel { SplashViewModel(get()) }
     viewModel { MainViewModel(get()) }
     viewModel { DashBoardViewModel(get(), get(), get()) }
+    viewModel { FinancesViewModel(get()) }
+    viewModel { TopupsAndWithdrawalsViewModel(get(), get()) }
+    viewModel { MiningViewModel(get()) }
+    viewModel { TransfersViewModel(get()) }
+    viewModel { PartnersRewardsViewModel(get()) }
+    viewModel { BonusRewardsViewModel(get()) }
 }
 
 val netModule = module {
@@ -79,8 +95,13 @@ val netApiModule = module {
         return retrofit.create(DashBoardApi::class.java)
     }
 
+    fun provideFinancesApi(retrofit: Retrofit): FinancesApi {
+        return retrofit.create(FinancesApi::class.java)
+    }
+
     single { provideUserApi(get()) }
     single { provideDashBoardApi(get()) }
+    single { provideFinancesApi(get()) }
 }
 
 val repositoryModule = module {
@@ -92,28 +113,37 @@ val repositoryModule = module {
         userApi: UserApi,
         tokenRepository: TokenRepository,
         logInTokenMapper: LogInTokenMapper,
-        getUserNetMapper: GetUserNetMapper
+        getUserMapper: GetUserMapper
     ): UserRepository {
-        return UserRepositoryNetImpl(
+        return UserRepositoryImpl(
             userApi,
             tokenRepository,
             logInTokenMapper,
-            getUserNetMapper
+            getUserMapper
         )
     }
 
     fun provideDashboardRepository(
         dashBoardApi: DashBoardApi,
         tokenRepository: TokenRepository,
-        getDashboardNetMapper: GetDashboardNetMapper
+        getDashboardMapper: GetDashboardMapper
 
     ): DashboardRepository {
-        return DashboardRepositoryNetImpl(dashBoardApi, tokenRepository, getDashboardNetMapper)
+        return DashboardRepositoryImpl(dashBoardApi, tokenRepository, getDashboardMapper)
+    }
+
+    fun provideFinancesRepository(
+        financesApi: FinancesApi,
+        tokenRepository: TokenRepository,
+        getTopupsAndWithdrawalsMapper: GetTopupsAndWithdrawalsMapper
+    ): FinancesRepository {
+        return FinancesRepositoryImpl(financesApi, tokenRepository, getTopupsAndWithdrawalsMapper)
     }
 
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get(), get()) }
+    single { provideFinancesRepository(get(), get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -121,17 +151,22 @@ val repositoryMappersModule = module {
         return LogInTokenMapper()
     }
 
-    fun provideGetUserNetMapper(): GetUserNetMapper {
-        return GetUserNetMapper()
+    fun provideGetUserNetMapper(): GetUserMapper {
+        return GetUserMapper()
     }
 
-    fun provideGetDashboardNetMapper(): GetDashboardNetMapper{
-        return GetDashboardNetMapper()
+    fun provideGetDashboardNetMapper(): GetDashboardMapper {
+        return GetDashboardMapper()
+    }
+
+    fun provideGetTopupsAndWithdrawalsMapper(): GetTopupsAndWithdrawalsMapper {
+        return GetTopupsAndWithdrawalsMapper()
     }
 
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
+    factory { provideGetTopupsAndWithdrawalsMapper() }
 }
 
 val utilsModules = module {

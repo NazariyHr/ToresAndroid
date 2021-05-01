@@ -7,6 +7,7 @@ import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_dashboard.*
+import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
@@ -19,6 +20,7 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
     lateinit var selectedDrawable: Drawable
 
     override fun initViews() {
+        setBaseActivityToolbarTitle(getString(R.string.dashboard))
         selectedDrawable = btnByPartners.background
         btnByPartners.setOnClickListener {
             btnByPartners.background = selectedDrawable
@@ -44,8 +46,22 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
         rvRegistrations.layoutManager = LinearLayoutManager(context)
     }
 
+    override fun initListeners() {
+        super.initListeners()
+        swipeRefresh.setOnRefreshListener {
+            vm.refreshData()
+        }
+    }
+
     override fun initObservers() {
         super.initObservers()
+
+        vm.someProcessAlive.observe(viewLifecycleOwner, {
+            if (swipeRefresh.isRefreshing && !it) {
+                swipeRefresh.isRefreshing = it
+            }
+            progress_overlay.setVisible(it)
+        })
 
         vm.userInfo.observe(viewLifecycleOwner, {
             cvBalance.setVisible()

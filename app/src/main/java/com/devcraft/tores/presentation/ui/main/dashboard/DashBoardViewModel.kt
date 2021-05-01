@@ -29,6 +29,11 @@ class DashBoardViewModel(
         loadLastProfitsAndRegisters()
     }
 
+    fun refreshData(){
+        loadUserInfo()
+        loadLastProfitsAndRegisters()
+    }
+
     private fun loadUserInfo() {
         launchProcess("loadUserInfo") {
             val result = userRepository.getUser()

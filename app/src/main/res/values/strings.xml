@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Tores</string>
 
-    <string name="dashboard">Панель управления</string>
     <string name="finances">Финансы</string>
+    <string name="dashboard">Панель управления</string>
+    <string name="mining">Майнинг</string>
     <string name="authorization">Авторизация</string>
     <string name="authorize">Авторизоваться</string>
     <string name="register">Регистрация</string>
@@ -33,6 +34,30 @@
     <string name="has_no_internet">Нет подключения к интернету</string>
 
     <string name="tores_amount">%1$.2f TORES</string>
-    <string name="plus_tores_amount">+%1$.2f TORES</string>
+    <string name="plus_tores_amount">+%1$s TORES</string>
     <string name="in_date_and_time">%1$s в %2$s</string>
+    <string name="shares">Доли</string>
+    <string name="more">Ещё</string>
+    <string name="topups_and_withdrawals">Покупка / Продажа токенов</string>
+    <string name="transfers">Переводы</string>
+    <string name="partner_rewards">Партнерские вознаграждения</string>
+    <string name="bonuse_rewards">Бонусные вознаграждения</string>
+    <string name="error_loading_data">Loading data error</string>
+    <string name="total_topups">Всего выведено</string>
+    <string name="sum">Сумма:</string>
+    <string name="buying">Покупка</string>
+    <string name="selling">Продажа</string>
+    <string name="payment_await">Ожидает оплаты</string>
+    <string name="cancelled_by_user">Отменена пользователем</string>
+    <string name="cancelled">Отменена</string>
+    <string name="paid">Оплачена</string>
+    <string name="cancelled_by_admin">Отменена администратором</string>
+    <string name="time_is_over">Время оплаты вышло</string>
+    <string name="time_h_m_s">%1$s:%2$s:%3$s</string>
+    <string name="waiting_tac">Waiting entering TAC</string>
+    <string name="cancelled_due_to_tac_attempts">Cancelled due to tac attempts</string>
+    <string name="awaiting">Исполняется</string>
+    <string name="sent_to_exchange">Отправлено на биржу</string>
+    <string name="performing">Исполняется</string>
+    <string name="awaiting_withdraw">Ожидает выплаты</string>
 </resources>

@@ -38,6 +38,14 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         //stub
     }
 
+    protected fun getBaseActivity(): BaseActivity? {
+        return if (activity is BaseActivity) activity as BaseActivity else null
+    }
+
+    protected fun setBaseActivityToolbarTitle(title: String) {
+        getBaseActivity()?.setToolbarTitle(title)
+    }
+
     fun showToast(txt: String, short: Boolean = true) {
         if (context != null) {
             Toast.makeText(context, txt, if (short) Toast.LENGTH_SHORT else Toast.LENGTH_LONG)

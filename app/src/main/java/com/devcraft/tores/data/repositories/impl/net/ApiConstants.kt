@@ -6,4 +6,6 @@ object ApiConstants {
     const val API_ENDPOINT_LOGIN = "api/auth/loginApp"
     const val API_ENDPOINT_USER = "api/auth/user"
     const val API_ENDPOINT_DASHBOARD = "api/dashboard"
+
+    const val API_ENDPOINT_TOPUPS_AND_WITHDRAWALS = "api/finance/topupsAndWithdrawals"
 }

@@ -3,7 +3,7 @@ package com.devcraft.tores.data.repositories.impl.net.dto
 import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
 import com.google.gson.annotations.SerializedName
 
-class GetDashboardNetResponse(
+class GetDashboardResponse(
     val data: Data
 ) : NetworkBaseResponse() {
     class Data(

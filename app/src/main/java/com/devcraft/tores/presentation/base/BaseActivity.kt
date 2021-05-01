@@ -28,6 +28,8 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         vm.connectivityLiveData.observe(this, ::onNetworkConnectivityStatusChanged)
     }
 
+    open fun setToolbarTitle(title: String) {}
+
     /**
      *  See [NetworkCapabilities.TRANSPORT_WIFI] and [NetworkCapabilities.TRANSPORT_CELLULAR].
      */

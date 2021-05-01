@@ -18,8 +18,12 @@ open class BaseNetRepository {
         if (response.body() != null) {
             response.body()?.let {
                 resultStatus = if (it.success) {
-                    resultData = mapper.mapDtoToEntity(it)
-                    ResultStatus.success()
+                    try {
+                        resultData = mapper.mapDtoToEntity(it)
+                        ResultStatus.success()
+                    } catch (e: Exception) {
+                        ResultStatus.failure(e)
+                    }
                 } else {
                     ResultStatus.failure(it.error.orEmpty())
                 }

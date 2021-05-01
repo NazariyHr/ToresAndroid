@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvItem"
+    style="@style/Widget.Tores.CardView">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="@dimen/offset_x4"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCreatedAt"
+                style="@style/Widget.Tores.TextView.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text_color"
+                tools:text="13.04.2021 18:46" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/ivTransactionType"
+                    android:layout_width="@dimen/icon_size_s"
+                    android:layout_height="@dimen/icon_size_s"
+                    android:layout_gravity="center_vertical"
+                    tools:src="@drawable/ic_withdrawal" />
+
+                <TextView
+                    android:id="@+id/tvTransactionType"
+                    style="@style/Widget.Tores.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_x"
+                    tools:text="@string/selling" />
+
+                <TextView
+                    android:id="@+id/tvToresAmount"
+                    style="@style/Widget.Tores.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_x"
+                    tools:text="10 TORES" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Widget.Tores.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sum" />
+
+                <ImageView
+                    android:id="@+id/ivCurrency"
+                    android:layout_width="@dimen/icon_size_s"
+                    android:layout_height="@dimen/icon_size_s"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/offset_x"
+                    tools:src="@drawable/ic_bitcoin" />
+
+                <TextView
+                    android:id="@+id/tvCurrencyAmount"
+                    style="@style/Widget.Tores.TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/offset_x"
+                    tools:text="0.00015774" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorOrange"
+                tools:text="Ожидает оплаты" />
+
+            <TextView
+                android:id="@+id/tvWainingTime"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorOrange"
+                android:visibility="gone"
+                tools:text="01:04:33"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="@dimen/icon_size_m"
+            android:layout_height="@dimen/icon_size_l"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/offset_x4"
+            android:src="@drawable/ic_double_arrow_right"
+            app:tint="@color/colorGrey" />
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

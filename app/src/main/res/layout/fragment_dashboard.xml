@@ -10,328 +10,336 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ScrollView
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
 
-                <!-- Balance -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvBalance"
-                    style="@style/Widget.Tores.CardView"
-                    android:visibility="gone"
-                    tools:visibility="gone">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/offset_x4"
-                        android:orientation="vertical">
+                    <!-- Balance -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvBalance"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="gone">
 
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/balance" />
-
-                        <TextView
-                            android:id="@+id/tvBalance"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            tools:text="0.00 TORES" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small"
-                            android:layout_marginTop="@dimen/offset_x2"
-                            android:gravity="start"
-                            android:text="@string/mine"
-                            android:textAllCaps="false"
-                            app:icon="@drawable/for_btn_ic_arrow_right" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/send_tokens"
-                            app:icon="@drawable/for_btn_ic_transfer" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/buy_tokens"
-                            android:textColor="@color/colorGreen"
-                            app:icon="@drawable/for_btn_ic_coins"
-                            app:iconTint="@color/colorGreen"
-                            app:strokeColor="@color/colorGreen" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/sell_tokens"
-                            android:textColor="@color/colorRed"
-                            app:icon="@drawable/for_btn_ic_arrow_down"
-                            app:iconTint="@color/colorRed"
-                            app:strokeColor="@color/colorRed" />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Bonus balance -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvBonusBalance"
-                    style="@style/Widget.Tores.CardView"
-                    android:visibility="gone"
-                    tools:visibility="gone">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/offset_x4"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/bonus_balance" />
-
-                        <TextView
-                            android:id="@+id/tvBonusBalance"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            tools:text="0.00 TORES" />
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/offset_x"
-                            android:text="@string/current_rank_balance"
-                            android:textColor="#C0C6CD" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/details"
-                            app:icon="@drawable/for_btn_ic_long_arrow_right" />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Income -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvIncome"
-                    style="@style/Widget.Tores.CardView"
-                    android:visibility="gone"
-                    tools:visibility="gone">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/offset_x4"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/income" />
-
-                        <TextView
-                            android:id="@+id/tvIncome"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            tools:text="0.00 TORES" />
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginVertical="@dimen/offset_x"
-                            android:text="@string/income_for_all_time"
-                            android:textColor="#C0C6CD" />
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/detailed"
-                            app:icon="@drawable/for_btn_ic_long_arrow_right" />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Rewards  -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvRewards"
-                    style="@style/Widget.Tores.CardView"
-                    android:visibility="gone"
-                    tools:visibility="gone">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/offset_x4"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/rewards_for_all_time" />
-
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
 
-                            <View
-                                android:layout_width="match_parent"
-                                android:layout_height="36dp"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/switch_btn_background" />
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/balance" />
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/tvBalance"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small"
+                                android:layout_marginTop="@dimen/offset_x2"
+                                android:gravity="start"
+                                android:text="@string/mine"
+                                android:textAllCaps="false"
+                                app:icon="@drawable/for_btn_ic_arrow_right" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/send_tokens"
+                                app:icon="@drawable/for_btn_ic_transfer" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/buy_tokens"
+                                android:textColor="@color/colorGreen"
+                                app:icon="@drawable/for_btn_ic_coins"
+                                app:iconTint="@color/colorGreen"
+                                app:strokeColor="@color/colorGreen" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/sell_tokens"
+                                android:textColor="@color/colorRed"
+                                app:icon="@drawable/for_btn_ic_arrow_down"
+                                app:iconTint="@color/colorRed"
+                                app:strokeColor="@color/colorRed" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Bonus balance -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvBonusBalance"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/bonus_balance" />
+
+                            <TextView
+                                android:id="@+id/tvBonusBalance"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:text="@string/current_rank_balance"
+                                android:textColor="#C0C6CD" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/details"
+                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Income -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvIncome"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/income" />
+
+                            <TextView
+                                android:id="@+id/tvIncome"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:text="@string/income_for_all_time"
+                                android:textColor="#C0C6CD" />
+
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/detailed"
+                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Rewards  -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvRewards"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/rewards_for_all_time" />
+
+                            <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/btnByPartners"
-                                    style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                                    android:layout_width="0dp"
-                                    android:layout_height="50dp"
-                                    android:layout_weight="1"
-                                    android:backgroundTint="@color/white"
-                                    android:gravity="center"
-                                    android:text="@string/by_partners"
-                                    android:textSize="@dimen/text_size_xs"
-                                    app:strokeColor="#c5c5c5"
-                                    app:strokeWidth="1dp" />
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="36dp"
+                                    android:layout_centerInParent="true"
+                                    android:background="@drawable/switch_btn_background" />
 
-                                <com.google.android.material.button.MaterialButton
-                                    android:id="@+id/btnByRanks"
-                                    style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                                    android:layout_width="0dp"
-                                    android:layout_height="50dp"
-                                    android:layout_weight="1"
-                                    android:background="@color/transparent"
-                                    android:backgroundTint="@color/white"
-                                    android:gravity="center"
-                                    android:text="@string/by_ranks"
-                                    android:textColor="@color/white"
-                                    android:textSize="@dimen/text_size_xs"
-                                    app:strokeColor="#c5c5c5"
-                                    app:strokeWidth="1dp" />
-                            </LinearLayout>
-                        </RelativeLayout>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
 
-                        <TextView
-                            android:id="@+id/tvRewardsPartners"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            tools:text="0.00 TORES" />
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnByPartners"
+                                        style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:backgroundTint="@color/white"
+                                        android:gravity="center"
+                                        android:text="@string/by_partners"
+                                        android:textSize="@dimen/text_size_xs"
+                                        app:strokeColor="#c5c5c5"
+                                        app:strokeWidth="1dp" />
 
-                        <TextView
-                            android:id="@+id/tvRewardsRanks"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            android:visibility="gone"
-                            tools:text="0.00 TORES"
-                            tools:visibility="visible" />
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnByRanks"
+                                        style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                        android:layout_width="0dp"
+                                        android:layout_height="50dp"
+                                        android:layout_weight="1"
+                                        android:background="@color/transparent"
+                                        android:backgroundTint="@color/white"
+                                        android:gravity="center"
+                                        android:text="@string/by_ranks"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/text_size_xs"
+                                        app:strokeColor="#c5c5c5"
+                                        app:strokeWidth="1dp" />
+                                </LinearLayout>
+                            </RelativeLayout>
 
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.Tores.Button.Wide.Small.Bordered"
-                            android:text="@string/detailed"
-                            app:icon="@drawable/for_btn_ic_long_arrow_right" />
+                            <TextView
+                                android:id="@+id/tvRewardsPartners"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
 
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:id="@+id/tvRewardsRanks"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                android:visibility="gone"
+                                tools:text="0.00 TORES"
+                                tools:visibility="visible" />
 
-                <!-- Five last transactions -->
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cvFiveLastTransactions"
-                    style="@style/Widget.Tores.CardView"
-                    android:visibility="gone"
-                    tools:visibility="visible">
+                            <com.google.android.material.button.MaterialButton
+                                style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                                android:text="@string/detailed"
+                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:layout_margin="@dimen/offset_x4"
-                        android:orientation="vertical">
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
+                    <!-- Five last transactions -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvFiveLastTransactions"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
 
                         <LinearLayout
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
 
-                            <ImageView
-                                android:layout_width="12dp"
-                                android:layout_height="12dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginEnd="@dimen/offset_x2"
-                                android:src="@drawable/ic_doubled_arrow_up"
-                                app:tint="#C0C6CD" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="12dp"
+                                    android:layout_height="12dp"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginEnd="@dimen/offset_x2"
+                                    android:src="@drawable/ic_doubled_arrow_up"
+                                    app:tint="#C0C6CD" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/offset_x"
+                                    android:text="@string/five_last" />
+                            </LinearLayout>
 
                             <TextView
                                 style="@style/Widget.Tores.TextView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="@dimen/offset_x"
-                                android:text="@string/five_last" />
+                                android:text="@string/accruals"
+                                android:textColor="#C0C6CD" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvProfits"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x4"
+                                android:layout_marginBottom="@dimen/offset_x"
+                                android:text="@string/registrations"
+                                android:textColor="#C0C6CD" />
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvRegistrations"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
                         </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="@dimen/offset_x"
-                            android:text="@string/accruals"
-                            android:textColor="#C0C6CD" />
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvProfits"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x4"
-                            android:layout_marginBottom="@dimen/offset_x"
-                            android:text="@string/registrations"
-                            android:textColor="#C0C6CD" />
-
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvRegistrations"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-        </ScrollView>
     </LinearLayout>
 
     <include layout="@layout/include_progressbar_overlay" />

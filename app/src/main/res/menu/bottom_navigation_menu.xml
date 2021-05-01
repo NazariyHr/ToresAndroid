@@ -2,12 +2,25 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/dashboard"
-        android:enabled="true"
         android:icon="@drawable/ic_dashboard"
         android:title="@string/dashboard" />
+
     <item
         android:id="@+id/finances"
-        android:enabled="true"
         android:icon="@drawable/ic_finances"
         android:title="@string/finances" />
+    <item
+        android:id="@+id/mining"
+        android:icon="@drawable/ic_mining"
+        android:title="@string/mining" />
+
+    <item
+        android:id="@+id/shares"
+        android:icon="@drawable/ic_shares"
+        android:title="@string/shares" />
+
+    <item
+        android:id="@+id/more"
+        android:icon="@drawable/ic_more"
+        android:title="@string/more" />
 </menu>

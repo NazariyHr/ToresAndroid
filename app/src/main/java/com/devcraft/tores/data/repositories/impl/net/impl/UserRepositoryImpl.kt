@@ -4,11 +4,11 @@ import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
-import com.devcraft.tores.data.repositories.impl.net.dto.GetUserNetResponse
+import com.devcraft.tores.data.repositories.impl.net.dto.GetUserResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.LogInRequest
 import com.devcraft.tores.data.repositories.impl.net.dto.LogInResponse
 import com.devcraft.tores.data.repositories.impl.net.impl.base.BaseNetRepository
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserNetMapper
+import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserMapper
 import com.devcraft.tores.data.repositories.impl.net.mappers.LogInTokenMapper
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
 import com.devcraft.tores.entities.User
@@ -19,11 +19,11 @@ import retrofit2.Response
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class UserRepositoryNetImpl(
+class UserRepositoryImpl(
     private val userApi: UserApi,
     private val tokenRepository: TokenRepository,
     private val logInTokenMapper: LogInTokenMapper,
-    private val getUserNetMapper: GetUserNetMapper,
+    private val getUserMapper: GetUserMapper,
 ) : BaseNetRepository(), UserRepository {
 
     override suspend fun login(
@@ -82,12 +82,12 @@ class UserRepositoryNetImpl(
     override suspend fun getUser(): ResultWithStatus<User> {
         return suspendCoroutine { continuation ->
             userApi.getUser(tokenRepository.getToken().bearerToken)
-                .enqueue(object : Callback<GetUserNetResponse> {
+                .enqueue(object : Callback<GetUserResponse> {
                     override fun onResponse(
-                        call: Call<GetUserNetResponse>,
-                        response: Response<GetUserNetResponse>
+                        call: Call<GetUserResponse>,
+                        response: Response<GetUserResponse>
                     ) {
-                        val result = parseResult(response, getUserNetMapper)
+                        val result = parseResult(response, getUserMapper)
                         if (result.data == null) {
                             continuation.resume(
                                 ResultWithStatus(
@@ -100,7 +100,7 @@ class UserRepositoryNetImpl(
                         }
                     }
 
-                    override fun onFailure(call: Call<GetUserNetResponse>, t: Throwable) {
+                    override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
                         continuation.resume(ResultWithStatus(null, ResultStatus.failure(t)))
                     }
                 })

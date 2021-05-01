@@ -7,6 +7,14 @@
         <item name="android:textColor">@color/text_color</item>
     </style>
 
+    <style name="Widget.Tores.TextView.Small" parent="Widget.Tores.TextView">
+        <item name="android:textSize">@dimen/text_size_s</item>
+    </style>
+
+    <style name="Widget.Tores.TextView.Large" parent="Widget.Tores.TextView">
+        <item name="android:textSize">@dimen/text_size_xl</item>
+    </style>
+
     <style name="Widget.Tores.TextView.Title.Bold" parent="Widget.Tores.TextView">
         <item name="android:textSize">@dimen/text_size_xl</item>
         <item name="android:textStyle">bold</item>
@@ -17,6 +25,11 @@
         <item name="android:textColor">@color/colorBlue</item>
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
+    </style>
+
+    <style name="Widget.Tores.TextView.Error" parent="Widget.Tores.TextView">
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:textColor">@color/colorRedLither</item>
     </style>
 
     <!-- Buttons -->
@@ -115,10 +128,17 @@
     <style name="Widget.Tores.CardView" parent="Widget.MaterialComponents.CardView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="cardCornerRadius">@dimen/corner_4</item>
+        <item name="cardElevation">@dimen/elevation_4</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
+
+    <style name="Widget.Tores.CardView.Large" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="cardCornerRadius">@dimen/corner_8</item>
         <item name="cardElevation">@dimen/elevation_8</item>
         <item name="cardUseCompatPadding">true</item>
-
     </style>
     <!--endregion -->
 

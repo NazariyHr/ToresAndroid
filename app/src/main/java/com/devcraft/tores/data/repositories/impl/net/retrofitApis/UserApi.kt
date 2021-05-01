@@ -1,7 +1,7 @@
 package com.devcraft.tores.data.repositories.impl.net.retrofitApis
 
 import com.devcraft.tores.data.repositories.impl.net.ApiConstants
-import com.devcraft.tores.data.repositories.impl.net.dto.GetUserNetResponse
+import com.devcraft.tores.data.repositories.impl.net.dto.GetUserResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.LogInRequest
 import com.devcraft.tores.data.repositories.impl.net.dto.LogInResponse
 import retrofit2.Call
@@ -18,5 +18,5 @@ interface UserApi {
     @Headers(
         "Content-Type: application/json"
     )
-    fun getUser(@Header("Authorization") token: String): Call<GetUserNetResponse>
+    fun getUser(@Header("Authorization") token: String): Call<GetUserResponse>
 }
