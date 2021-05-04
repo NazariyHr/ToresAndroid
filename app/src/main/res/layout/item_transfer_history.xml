@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvItem"
+    style="@style/Widget.Tores.CardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/offset_x4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCreatedAt"
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text_color"
+            tools:text="26.04.2021 11:53" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivTransactionType"
+                android:layout_width="@dimen/icon_size_s"
+                android:layout_height="@dimen/icon_size_s"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_arrow_left_filled_green" />
+
+            <TextView
+                android:id="@+id/tvTransactionType"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="Изъятие" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvToresAmount"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10.10 TORES" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_dots" />
+
+            <TextView
+                android:id="@+id/tvLogin"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="test12345" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorOrange"
+            tools:text="@string/paid" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEnterTheCode"
+            style="@style/Widget.Tores.Button.Outlined"
+            android:layout_marginTop="@dimen/offset_x"
+            android:text="@string/enter_the_code"
+            android:textColor="@color/colorOrange"
+            android:visibility="gone"
+            app:strokeColor="@color/colorOrange"
+            tools:visibility="visible" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

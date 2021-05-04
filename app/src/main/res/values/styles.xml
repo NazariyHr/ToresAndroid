@@ -80,6 +80,17 @@
         <item name="strokeWidth">2dp</item>
     </style>
 
+    <style name="Widget.Tores.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Widget.Tores.Button.Outlined.Cancel" parent="Widget.Tores.Button.Outlined">
+        <item name="android:text">@string/cancel</item>
+        <item name="android:textColor">@color/colorRedLither</item>
+        <item name="strokeColor">@color/colorRedLither</item>
+    </style>
+
     <!-- Text Inputs -->
     <style name="Widget.Tores.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/white</item>

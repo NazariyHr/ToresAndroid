@@ -11,10 +11,7 @@ import com.devcraft.tores.data.repositories.impl.net.ApiConstants
 import com.devcraft.tores.data.repositories.impl.net.impl.DashboardRepositoryImpl
 import com.devcraft.tores.data.repositories.impl.net.impl.FinancesRepositoryImpl
 import com.devcraft.tores.data.repositories.impl.net.impl.UserRepositoryImpl
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetDashboardMapper
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetTopupsAndWithdrawalsMapper
-import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserMapper
-import com.devcraft.tores.data.repositories.impl.net.mappers.LogInTokenMapper
+import com.devcraft.tores.data.repositories.impl.net.mappers.*
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.DashBoardApi
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.FinancesApi
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
@@ -24,9 +21,9 @@ import com.devcraft.tores.presentation.ui.auth.AuthViewModel
 import com.devcraft.tores.presentation.ui.main.MainViewModel
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
 import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
-import com.devcraft.tores.presentation.ui.main.finances.bonusRewards.BonusRewardsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.mining.MiningViewModel
-import com.devcraft.tores.presentation.ui.main.finances.partnersRewards.PartnersRewardsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.partnersProfits.PartnersProfitsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.TopupsAndWithdrawalsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
@@ -46,10 +43,10 @@ val viewModelModule = module {
     viewModel { DashBoardViewModel(get(), get(), get()) }
     viewModel { FinancesViewModel(get()) }
     viewModel { TopupsAndWithdrawalsViewModel(get(), get()) }
-    viewModel { MiningViewModel(get()) }
-    viewModel { TransfersViewModel(get()) }
-    viewModel { PartnersRewardsViewModel(get()) }
-    viewModel { BonusRewardsViewModel(get()) }
+    viewModel { MiningViewModel(get(), get()) }
+    viewModel { TransfersViewModel(get(), get()) }
+    viewModel { PartnersProfitsViewModel(get(), get()) }
+    viewModel { RankProfitsViewModel(get(), get()) }
 }
 
 val netModule = module {
@@ -135,15 +132,27 @@ val repositoryModule = module {
     fun provideFinancesRepository(
         financesApi: FinancesApi,
         tokenRepository: TokenRepository,
-        getTopupsAndWithdrawalsMapper: GetTopupsAndWithdrawalsMapper
+        getTopupsAndWithdrawalsMapper: GetTopupsAndWithdrawalsMapper,
+        getMiningHistoryMapper: GetMiningHistoryMapper,
+        getTransfersHistoryMapper: GetTransfersHistoryMapper,
+        getReferralProfitsHistoryMapper: GetReferralProfitsHistoryMapper,
+        getFinanceAllInfoToRankProfitsHistoryMapper: GetFinanceAllInfoToRankProfitsHistoryMapper
     ): FinancesRepository {
-        return FinancesRepositoryImpl(financesApi, tokenRepository, getTopupsAndWithdrawalsMapper)
+        return FinancesRepositoryImpl(
+            financesApi,
+            tokenRepository,
+            getTopupsAndWithdrawalsMapper,
+            getMiningHistoryMapper,
+            getTransfersHistoryMapper,
+            getReferralProfitsHistoryMapper,
+            getFinanceAllInfoToRankProfitsHistoryMapper
+        )
     }
 
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get(), get()) }
-    single { provideFinancesRepository(get(), get(), get()) }
+    single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -163,10 +172,30 @@ val repositoryMappersModule = module {
         return GetTopupsAndWithdrawalsMapper()
     }
 
+    fun provideGetMiningHistoryMapper(): GetMiningHistoryMapper {
+        return GetMiningHistoryMapper()
+    }
+
+    fun provideGetTransfersHistoryMapper(): GetTransfersHistoryMapper {
+        return GetTransfersHistoryMapper()
+    }
+
+    fun provideGetReferralProfitsHistoryMapper(): GetReferralProfitsHistoryMapper {
+        return GetReferralProfitsHistoryMapper()
+    }
+
+    fun provideGetFinanceAllInfoToRankProfitsHistoryMapper(): GetFinanceAllInfoToRankProfitsHistoryMapper {
+        return GetFinanceAllInfoToRankProfitsHistoryMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
     factory { provideGetTopupsAndWithdrawalsMapper() }
+    factory { provideGetMiningHistoryMapper() }
+    factory { provideGetTransfersHistoryMapper() }
+    factory { provideGetReferralProfitsHistoryMapper() }
+    factory { provideGetFinanceAllInfoToRankProfitsHistoryMapper() }
 }
 
 val utilsModules = module {

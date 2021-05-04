@@ -10,7 +10,8 @@ enum class Currency {
     LITECOIN,
     ETHEREUM,
     TRON,
-    TETHER;
+    TETHER,
+    NOT_SPECIFIED;
 
     companion object {
         fun parseCurrency(currencyString: String): Currency {
@@ -20,6 +21,7 @@ enum class Currency {
                 "ETH" -> ETHEREUM
                 "TRX" -> TRON
                 "usdt" -> TETHER
+                "-" -> NOT_SPECIFIED
                 else -> throw Exception("Error parsing currency, passed currency: $currencyString")
             }
         }
@@ -32,6 +34,7 @@ enum class Currency {
             ETHEREUM -> ContextCompat.getDrawable(context, R.drawable.ic_ethereum)
             TRON -> ContextCompat.getDrawable(context, R.drawable.ic_tron)
             TETHER -> ContextCompat.getDrawable(context, R.drawable.ic_tether)
+            NOT_SPECIFIED -> null
         }
     }
 }

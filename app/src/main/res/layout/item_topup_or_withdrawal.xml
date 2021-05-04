@@ -34,7 +34,7 @@
                     android:layout_width="@dimen/icon_size_s"
                     android:layout_height="@dimen/icon_size_s"
                     android:layout_gravity="center_vertical"
-                    tools:src="@drawable/ic_withdrawal" />
+                    tools:src="@drawable/ic_arrow_down_red_filled" />
 
                 <TextView
                     android:id="@+id/tvTransactionType"

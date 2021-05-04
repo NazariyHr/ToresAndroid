@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import com.devcraft.tores.data.repositories.contract.FinancesRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.entities.TopupsAndWithdrawalsData
-import com.devcraft.tores.entities.User
 import com.devcraft.tores.presentation.base.BaseViewModel
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.common.SingleLiveEvent

@@ -10,6 +10,7 @@
     <string name="forgot_password">Забыли пароль?</string>
     <string name="password">Пароль</string>
     <string name="login">Логин</string>
+    <string name="login_dots">Логин: </string>
     <string name="reset_password">Восстановление пароля</string>
     <string name="email">Email</string>
     <string name="reset">Восстановить</string>
@@ -34,6 +35,8 @@
     <string name="has_no_internet">Нет подключения к интернету</string>
 
     <string name="tores_amount">%1$.2f TORES</string>
+    <string name="tores_amount_str">%1$s TORES</string>
+    <string name="line">LINE %1$s</string>
     <string name="plus_tores_amount">+%1$s TORES</string>
     <string name="in_date_and_time">%1$s в %2$s</string>
     <string name="shares">Доли</string>
@@ -60,4 +63,38 @@
     <string name="sent_to_exchange">Отправлено на биржу</string>
     <string name="performing">Исполняется</string>
     <string name="awaiting_withdraw">Ожидает выплаты</string>
+    <string name="transaction_type_deposit_profit">Доход</string>
+    <string name="transaction_type_open_deposit">Отправление</string>
+    <string name="transaction_type_reinvest">Реинвест</string>
+    <string name="transaction_to_main_balance">(Основной баланс)</string>
+    <string name="transaction_to_rank_balance">(Ранговый баланс)</string>
+    <string name="transaction_type_withdraw_from_deposit">Изъятие</string>
+    <string name="funds_will_be_received_in">Средства поступят через:</string>
+    <string name="cancel">Отменить</string>
+    <string name="total_in_mining">Всего в майнинге</string>
+    <string name="transaction_type_send_to_user">Отправка участнику</string>
+    <string name="transaction_type_received_from_user">Получено от участника</string>
+    <string name="transaction_type_sent_to_exchange">Отправлено на биржу</string>
+    <string name="enter_the_code">Ввести код</string>
+    <string name="partner_sum_dots">Сумма партнера:</string>
+    <string name="performed">Выполнена</string>
+    <string name="received_dots">Получено:</string>
+    <string name="total_profit">Суммарный доход</string>
+    <string name="ranks_client">Клиент</string>
+    <string name="ranks_agent">Агент</string>
+    <string name="ranks_manager">Менеджер</string>
+    <string name="ranks_vip_manager">VIP Менеджер</string>
+    <string name="ranks_director">Директор</string>
+    <string name="ranks_director_1_star">Директор 1 звезда</string>
+    <string name="ranks_director_2_stars">Директор 2 звезды</string>
+    <string name="ranks_director_3_stars">Директор 3 звезды</string>
+    <string name="ranks_director_4_stars">Директор 4 звезды</string>
+    <string name="ranks_director_5_stars">Директор 5 звезд</string>
+    <string name="ranks_director_6_stars">Директор 6 звезд</string>
+    <string name="ranks_director_7_stars">Директор 7 звезд</string>
+    <string name="ranks_director_8_stars">Директор 8 звезд</string>
+    <string name="ranks_director_9_stars">Директор 9 звезд</string>
+    <string name="ranks_president">Президент</string>
+    <string name="reward">Награда</string>
+    <string name="for_rank">За ранг</string>
 </resources>

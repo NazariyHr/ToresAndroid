@@ -55,13 +55,15 @@ enum class TransactionStatus {
         }
     }
 
-    fun getStatusText(context: Context): String {
+    fun getStatusText(context: Context, performedArePaid: Boolean = false): String {
         return when (this) {
             CREATED -> context.getString(R.string.payment_await)
             CANCELLED_BY_USER -> context.getString(R.string.cancelled_by_user)
             CANCELLED_BY_ADMINISTRATOR -> context.getString(R.string.cancelled_by_admin)
             CANCELLED -> context.getString(R.string.cancelled)
-            PERFORMED,
+            PERFORMED -> if (performedArePaid) context.getString(R.string.paid) else context.getString(
+                R.string.performed
+            )
             PAID -> context.getString(R.string.paid)
             WAITING_TAC -> context.getString(R.string.waiting_tac)
             WRONG_TAC -> context.getString(R.string.cancelled_due_to_tac_attempts)

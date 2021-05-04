@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvItem"
+    style="@style/Widget.Tores.CardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/offset_x4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCreatedAt"
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text_color"
+            tools:text="02.05.2021 15:46" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/login_dots" />
+
+            <TextView
+                android:id="@+id/tvLogin"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="test12345" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvLevel"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGreen"
+            tools:text="LINE 1" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/partner_sum_dots" />
+
+            <TextView
+                android:id="@+id/tvPartnerProfits"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="40 TORES" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/received_dots" />
+
+            <TextView
+                android:id="@+id/tvReceived"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="40 TORES" />
+
+            <TextView
+                android:id="@+id/tvReceivedInPercent"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="(10%)" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performed"
+            android:textColor="@color/colorGreen" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

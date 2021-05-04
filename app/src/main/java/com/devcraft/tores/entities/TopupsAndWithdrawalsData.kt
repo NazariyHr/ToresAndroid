@@ -18,18 +18,18 @@ class TopupsAndWithdrawalsData(
         val wallet: String,
         val remaining: Long
     ) {
-        companion object {
-            fun parseType(typeString: String): Type {
-                return when (typeString) {
-                    "Topup" -> Type.TOPUP
-                    "Withdrawal" -> Type.WITHDRAWAL
-                    else -> throw Exception("Error parsing type, passed type: $typeString")
+        enum class Type {
+            TOPUP, WITHDRAWAL;
+
+            companion object {
+                fun parse(typeString: String): Type {
+                    return when (typeString) {
+                        "Topup" -> TOPUP
+                        "Withdrawal" -> WITHDRAWAL
+                        else -> throw Exception("Error parsing type, passed type: $typeString")
+                    }
                 }
             }
-        }
-
-        enum class Type {
-            TOPUP, WITHDRAWAL
         }
     }
 }

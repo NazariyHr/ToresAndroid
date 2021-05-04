@@ -6,5 +6,4 @@ import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 class MainViewModel(
     connectivityLiveData: ConnectivityInfoLiveData
 ) : BaseViewModel(connectivityLiveData) {
-
 }

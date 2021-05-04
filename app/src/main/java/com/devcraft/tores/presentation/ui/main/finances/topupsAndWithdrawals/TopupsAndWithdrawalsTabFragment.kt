@@ -3,17 +3,17 @@ package com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
+import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
-import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.fragment_tab_topups_and_withdrawals.*
-import kotlinx.android.synthetic.main.fragment_tab_topups_and_withdrawals.swipeRefresh
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
 class TopupsAndWithdrawalsTabFragment : BaseFragment(R.layout.fragment_tab_topups_and_withdrawals) {
 
     override val vm: TopupsAndWithdrawalsViewModel by sharedViewModel()
+    private val vmFinances: FinancesViewModel by sharedViewModel()
 
     private val adapter: TopupsAndWithdrawalsAdapter = TopupsAndWithdrawalsAdapter()
 
@@ -59,6 +59,12 @@ class TopupsAndWithdrawalsTabFragment : BaseFragment(R.layout.fragment_tab_topup
             cvTotalTopups.setGone()
 
             showToast(it.message.orEmpty())
+        })
+
+        vmFinances.needRefreshTopupsAndWithdrawals.observe(viewLifecycleOwner, {
+            if (it) {
+                vm.refreshData()
+            }
         })
     }
 }

@@ -3,9 +3,9 @@ package com.devcraft.tores.presentation.ui.main.finances
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
-import com.devcraft.tores.presentation.ui.main.finances.bonusRewards.BonusRewardsTabFragment
+import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsTabFragment
 import com.devcraft.tores.presentation.ui.main.finances.mining.MiningsTabFragment
-import com.devcraft.tores.presentation.ui.main.finances.partnersRewards.PartnersRewardsTabFragment
+import com.devcraft.tores.presentation.ui.main.finances.partnersProfits.PartnersProfitsTabFragment
 import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.TopupsAndWithdrawalsTabFragment
 import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersTabFragment
 import kotlinx.android.synthetic.main.fragment_finances.*
@@ -53,10 +53,10 @@ class FinancesFragment : BaseFragment(R.layout.fragment_finances), TabTitlesAdap
     }
 
     private fun showPartnersRewardsTab() {
-        openFragment(R.id.containerFinancesTabs, PartnersRewardsTabFragment(), false)
+        openFragment(R.id.containerFinancesTabs, PartnersProfitsTabFragment(), false)
     }
 
     private fun showBonusRewardsTab() {
-        openFragment(R.id.containerFinancesTabs, BonusRewardsTabFragment(), false)
+        openFragment(R.id.containerFinancesTabs, RankProfitsTabFragment(), false)
     }
 }

@@ -14,7 +14,7 @@ class GetTopupsAndWithdrawalsMapper :
                 TopupsAndWithdrawalsData.Transaction(
                     t.id,
                     t.createdAt,
-                    TopupsAndWithdrawalsData.Transaction.parseType(t.type),
+                    TopupsAndWithdrawalsData.Transaction.Type.parse(t.type),
                     Currency.parseCurrency(t.currency),
                     t.amountInCurrency.toBigDecimal(),
                     t.amount,

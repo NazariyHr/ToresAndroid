@@ -51,7 +51,7 @@ open class BaseNetRepository {
         }
     }
 
-    fun <TypeOfDto : NetworkBaseResponse> parseEmptyStatusResponse(response: Response<TypeOfDto>): ResultStatus {
+    fun <TypeOfDto : NetworkBaseResponse> parseStatus(response: Response<TypeOfDto>): ResultStatus {
         if (response.body() != null) {
             response.body()!!.let {
                 return if (it.success) {

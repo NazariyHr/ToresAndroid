@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvItem"
+    style="@style/Widget.Tores.CardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/offset_x4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvCreatedAt"
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text_color"
+            tools:text="02.05.2021 15:46" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reward" />
+
+            <TextView
+                android:id="@+id/tvProfitAmount"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="40 TORES" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/for_rank" />
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_s"
+                android:layout_height="@dimen/icon_size_s"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/offset_x"
+                android:src="@drawable/ic_rank" />
+
+            <TextView
+                android:id="@+id/tvRank"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/offset_x"
+                tools:text="Менеджер" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/performed"
+            android:textColor="@color/colorGreen" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

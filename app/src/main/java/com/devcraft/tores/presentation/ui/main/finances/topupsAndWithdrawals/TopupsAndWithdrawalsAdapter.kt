@@ -48,7 +48,10 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
                 showTransactionType(item)
                 tvToresAmount.text =
                     String.format(resources.getString(R.string.tores_amount), item.amount)
-                ivCurrency.setImageDrawable(item.currency.getCurrencyDrawable(context))
+                item.currency.getCurrencyDrawable(context).let {
+                    ivCurrency.setImageDrawable(it)
+                    ivCurrency.setVisible(it != null)
+                }
                 tvCurrencyAmount.text = item.amountInCurrency.toString()
                 showStatus(item)
 
@@ -65,7 +68,7 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
                         ivTransactionType.setImageDrawable(
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_topup
+                                R.drawable.ic_arrow_up_filled_green
                             )
                         )
                         tvTransactionType.text = resources.getString(R.string.buying)
@@ -74,7 +77,7 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
                         ivTransactionType.setImageDrawable(
                             ContextCompat.getDrawable(
                                 context,
-                                R.drawable.ic_withdrawal
+                                R.drawable.ic_arrow_down_red_filled
                             )
                         )
                         tvTransactionType.text = resources.getString(R.string.selling)
@@ -99,7 +102,7 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
                     tvWainingTime.setGone()
                 }
                 tvStatus.setTextColor(item.transactionStatus.getStatusColor(context))
-                tvStatus.text = item.transactionStatus.getStatusText(context)
+                tvStatus.text = item.transactionStatus.getStatusText(context, true)
             }
         }
     }
