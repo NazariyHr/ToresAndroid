@@ -24,6 +24,8 @@ class MiningsTabFragment : BaseFragment(R.layout.fragment_tab_minings),
 
         rvMiningHistory.adapter = adapter
         rvMiningHistory.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
     }
 
     override fun initListeners() {

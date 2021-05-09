@@ -20,7 +20,12 @@ class GetTopupsAndWithdrawalsMapper :
                     t.amount,
                     TransactionStatus.parseStatus(t.status),
                     t.wallet,
-                    t.remaining
+                    t.qr,
+                    t.remaining,
+                    t.confirmationsTotal,
+                    t.confirmationsNeeded,
+                    t.userId,
+                    t.payeerSign
                 )
             }
             return TopupsAndWithdrawalsData(

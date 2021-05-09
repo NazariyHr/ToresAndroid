@@ -2,6 +2,7 @@ package com.devcraft.tores.data.repositories.impl.net.mappers
 
 import com.devcraft.tores.data.repositories.impl.BaseRepositoryMapper
 import com.devcraft.tores.data.repositories.impl.net.dto.GetUserResponse
+import com.devcraft.tores.entities.PaymentConfirmationWay
 import com.devcraft.tores.entities.User
 
 class GetUserMapper : BaseRepositoryMapper<GetUserResponse, User>() {
@@ -12,7 +13,8 @@ class GetUserMapper : BaseRepositoryMapper<GetUserResponse, User>() {
                 rankBalance = data.me.rankBalance,
                 totalProfit = data.me.totalProfit,
                 partnerProfit = data.me.partnerProfit,
-                rankProfit = data.me.rankProfit
+                rankProfit = data.me.rankProfit,
+                paymentConfirmationWay = PaymentConfirmationWay.parse(data.me.paymentConfirmationWay)
             )
         }
     }

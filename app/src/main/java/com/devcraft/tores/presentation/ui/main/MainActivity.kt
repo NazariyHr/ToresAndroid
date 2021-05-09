@@ -4,6 +4,7 @@ import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseActivity
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
+import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -15,6 +16,22 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
 
     override fun setToolbarTitle(title: String) {
         tvToolbarTitle.text = title
+    }
+
+    override fun hideMainTopBar() {
+        toolbar.setGone()
+    }
+
+    override fun showMainTopBar() {
+        toolbar.setVisible()
+    }
+
+    override fun hideBottomBar() {
+        bottom_navigation.setGone()
+    }
+
+    override fun showBottomBar() {
+        bottom_navigation.setVisible()
     }
 
     override fun initViews() {

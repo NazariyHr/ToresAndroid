@@ -24,7 +24,7 @@ class DashBoardViewModel(
     val profitsAndRegisters: MutableLiveData<ProfitsAndRegisters> = MutableLiveData()
     val onGetProfitsAndRegistersFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
+    fun loadData(){
         loadUserInfo()
         loadLastProfitsAndRegisters()
     }

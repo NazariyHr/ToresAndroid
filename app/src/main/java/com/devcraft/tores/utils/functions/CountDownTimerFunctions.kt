@@ -6,9 +6,10 @@ fun initCountdownTimerWithWithTimeFormattingTick(
     remainingTimeMillis: Long,
     interval: Long,
     onTick: (String) -> Unit,
-    onFinish: () -> Unit
+    onFinish: () -> Unit,
+    onTimerInitted: ((CountDownTimer) -> Unit)? = null
 ) {
-    object : CountDownTimer(remainingTimeMillis, interval) {
+    val timer = object : CountDownTimer(remainingTimeMillis, interval) {
         override fun onTick(millisUntilFinished: Long) {
             val seconds = millisUntilFinished / 1000
             val secondsInMinute = 60
@@ -58,5 +59,7 @@ fun initCountdownTimerWithWithTimeFormattingTick(
         override fun onFinish() {
             onFinish.invoke()
         }
-    }.start()
+    }
+    onTimerInitted?.invoke(timer)
+    timer.start()
 }

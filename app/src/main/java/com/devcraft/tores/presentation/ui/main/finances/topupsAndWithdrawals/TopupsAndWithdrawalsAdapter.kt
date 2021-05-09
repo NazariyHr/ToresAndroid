@@ -1,12 +1,14 @@
 package com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals
 
 import android.annotation.SuppressLint
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.entities.TopupsAndWithdrawalsData
 import com.devcraft.tores.entities.TransactionStatus
 import com.devcraft.tores.utils.extensions.setGone
@@ -22,8 +24,14 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
         set(value) {
             field.clear()
             field.addAll(value)
+            timersForItems.forEach {
+                it.value.cancel()
+            }
+            timersForItems.clear()
             notifyDataSetChanged()
         }
+
+    var timersForItems = mutableMapOf<TopupsAndWithdrawalsData.Transaction, CountDownTimer>()
 
     var callback: Callback? = null
 
@@ -37,9 +45,19 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
         holder.bind(items[position])
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: MutableList<Any>) {
+        if (payloads.isEmpty()) {
+            super.onBindViewHolder(holder, position, payloads)
+        } else {
+            holder.bindTime(payloads.first() as String)
+        }
+    }
+
     override fun getItemCount(): Int = items.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+
+        private var timer: CountDownTimer? = null
 
         @SuppressLint("SetTextI18n")
         fun bind(item: TopupsAndWithdrawalsData.Transaction) {
@@ -59,6 +77,10 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
                     callback?.onTransactionClicked(item)
                 }
             }
+        }
+
+        fun bindTime(formattedTime: String) {
+            itemView.tvWaitingTime.text = formattedTime
         }
 
         private fun showTransactionType(item: TopupsAndWithdrawalsData.Transaction) {
@@ -89,22 +111,32 @@ class TopupsAndWithdrawalsAdapter : RecyclerView.Adapter<TopupsAndWithdrawalsAda
         private fun showStatus(item: TopupsAndWithdrawalsData.Transaction) {
             itemView.run {
                 if (item.transactionStatus == TransactionStatus.CREATED && item.remaining > 0) {
-                    tvWainingTime.setVisible()
-                    tvWainingTime.text = ""
-                    initCountdownTimerWithWithTimeFormattingTick(
-                        item.remaining * 1000, 1000, { formattedTime ->
-                            tvWainingTime.text = formattedTime
-                        }, {
-                            tvWainingTime.text = context.getString(R.string.time_is_over)
-                        }
-                    )
+                    tvWaitingTime.setVisible()
+                    tvWaitingTime.text = ""
+                    startTimerForItem(item)
                 } else {
-                    tvWainingTime.setGone()
+                    tvWaitingTime.setGone()
                 }
                 tvStatus.setTextColor(item.transactionStatus.getStatusColor(context))
                 tvStatus.text = item.transactionStatus.getStatusText(context, true)
             }
         }
+    }
+
+    fun startTimerForItem(item: TopupsAndWithdrawalsData.Transaction) {
+        timersForItems[item]?.cancel()
+        initCountdownTimerWithWithTimeFormattingTick(
+            item.remaining * 1000, 1000, { formattedTime ->
+                notifyItemChanged(items.indexOf(item), formattedTime)
+            }, {
+                notifyItemChanged(
+                    items.indexOf(item),
+                    App.instance.getString(R.string.time_is_over)
+                )
+            }, { timer ->
+                timersForItems[item] = timer
+            }
+        )
     }
 
     interface Callback {

@@ -19,15 +19,7 @@ class MiningViewModel(
     val onCancelWithdrawSuccess: SingleLiveEvent<String> = SingleLiveEvent()
     val onCancelWithdrawFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
-        loadData()
-    }
-
-    fun refreshData() {
-        loadData()
-    }
-
-    private fun loadData() {
+    fun loadData() {
         launchProcess("loadData") {
             val result = financesRepository.getMiningHistory()
             when (result.status.status) {
@@ -39,6 +31,10 @@ class MiningViewModel(
                 }
             }
         }
+    }
+
+    fun refreshData() {
+        loadData()
     }
 
     fun cancelWithdraw(transactionId: Long) {

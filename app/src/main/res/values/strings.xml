@@ -97,4 +97,27 @@
     <string name="ranks_president">Президент</string>
     <string name="reward">Награда</string>
     <string name="for_rank">За ранг</string>
+    <string name="topup">Пополнение</string>
+    <string name="topup_subtitle">Не отправляйте средства с бирж, обменных площадок или других проектов. При возникновении неполадок средства возвращаются исключительно на тот же кошелек откуда были отправлены.</string>
+    <string name="topup_details_id">ID:</string>
+    <string name="topup_details_date_and_time">Дата / Время:</string>
+    <string name="topup_details_wallet">Кошелек:</string>
+    <string name="topup_details_payment_sum">Сумма к оплате \n(с учетом комиссии ПС):</string>
+    <string name="withdrawal_details_payment_sum">Сумма к получению \n(с учетом комиссии ПС):</string>
+    <string name="modal_topups_status">Статус:</string>
+    <string name="topup_details_sum_in_tores">Сумма в TORES:</string>
+    <string name="modal_topups_confirmations">Подтверждений в сети:</string>
+    <string name="modal_topups_time_for_pay">Время для исполнения заявки:</string>
+    <string name="go_to_pay">Перейти к оплате</string>
+    <string name="modal_topups_cancel">Отменить заявку</string>
+    <string name="qr">qr</string>
+    <string name="withdrawal">Продажа</string>
+    <string name="password_send_on_email">На вашу почту отправлен одноразовый пароль.</string>
+    <string name="enter_password_from_email">Введите его чтобы продолжить продажу токенов.</string>
+    <string name="enter_pay_password">Введите Ваш платежный пароль</string>
+    <string name="accept">Принять</string>
+    <string name="sending_to_exchange">Перевод на биржу</string>
+    <string name="transfer_transfer_info">Внимание! Зачисление перевода производится в течение нескольких минут в автоматическом режиме.</string>
+    <string name="enter_code_from_email_for_transaction">Введите код, отправленный Вам на почту чтобы продолжить перевод токенов.</string>
+    <string name="sending_to_user">Перевод</string>
 </resources>

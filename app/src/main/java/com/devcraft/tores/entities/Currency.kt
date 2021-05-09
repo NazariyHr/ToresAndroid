@@ -11,6 +11,8 @@ enum class Currency {
     ETHEREUM,
     TRON,
     TETHER,
+    PAYEER,
+    PERFECTMONEY,
     NOT_SPECIFIED;
 
     companion object {
@@ -21,6 +23,8 @@ enum class Currency {
                 "ETH" -> ETHEREUM
                 "TRX" -> TRON
                 "usdt" -> TETHER
+                "Payeer" -> PAYEER
+                "Perfectmoney" -> PERFECTMONEY
                 "-" -> NOT_SPECIFIED
                 else -> throw Exception("Error parsing currency, passed currency: $currencyString")
             }
@@ -34,6 +38,8 @@ enum class Currency {
             ETHEREUM -> ContextCompat.getDrawable(context, R.drawable.ic_ethereum)
             TRON -> ContextCompat.getDrawable(context, R.drawable.ic_tron)
             TETHER -> ContextCompat.getDrawable(context, R.drawable.ic_tether)
+            PERFECTMONEY -> ContextCompat.getDrawable(context, R.drawable.ic_perfect_money)
+            PAYEER -> ContextCompat.getDrawable(context, R.drawable.ic_payeer)
             NOT_SPECIFIED -> null
         }
     }

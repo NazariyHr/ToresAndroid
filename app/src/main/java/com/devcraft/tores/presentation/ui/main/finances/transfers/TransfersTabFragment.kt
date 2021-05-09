@@ -5,6 +5,8 @@ import com.devcraft.tores.R
 import com.devcraft.tores.entities.TransfersHistoryData
 import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
+import com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails.TransferDetailsFragment
+import com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails.TransferDetailsViewModel
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_tab_transfers.*
@@ -16,6 +18,7 @@ class TransfersTabFragment : BaseFragment(R.layout.fragment_tab_transfers),
 
     override val vm: TransfersViewModel by sharedViewModel()
     private val vmFinances: FinancesViewModel by sharedViewModel()
+    private val vmTransferDetails: TransferDetailsViewModel by sharedViewModel()
 
 
     private val adapter: TransfersHistoryAdapter = TransfersHistoryAdapter()
@@ -25,6 +28,8 @@ class TransfersTabFragment : BaseFragment(R.layout.fragment_tab_transfers),
 
         rvTransfersHistory.adapter = adapter
         rvTransfersHistory.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
     }
 
     override fun initListeners() {
@@ -60,9 +65,16 @@ class TransfersTabFragment : BaseFragment(R.layout.fragment_tab_transfers),
 
             showToast(it.message.orEmpty())
         })
+
+        vmFinances.needRefreshTransfers.observe(viewLifecycleOwner, {
+            if (it) {
+                vm.refreshData()
+            }
+        })
     }
 
     override fun onEnterTheCodeClicked(transaction: TransfersHistoryData.Transaction) {
-        showToast("В разработке")
+        vmTransferDetails.selectedTransfer.postValue(transaction)
+        openFragment(R.id.container, TransferDetailsFragment())
     }
 }

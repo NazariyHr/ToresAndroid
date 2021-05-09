@@ -25,6 +25,16 @@ class TabTitlesAdapter : RecyclerView.Adapter<TabTitlesAdapter.ViewHolder>() {
             value?.onTabClicked(selectedItem)
         }
 
+    fun setSelectedTab(newSelectedTab: TabList){
+        val oldSelectedIndex = items.indexOf(selectedItem)
+        val newSelectedIndex = items.indexOf(newSelectedTab)
+        selectedItem = newSelectedTab
+        notifyItemChanged(oldSelectedIndex)
+        notifyItemChanged(newSelectedIndex)
+        callback?.onTabClicked(newSelectedTab)
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_tab_title, parent, false)

@@ -5,5 +5,6 @@ data class User(
     val rankBalance: Double,
     val totalProfit: Double,
     val partnerProfit: Double,
-    val rankProfit: Double
+    val rankProfit: Double,
+    val paymentConfirmationWay: PaymentConfirmationWay
 )

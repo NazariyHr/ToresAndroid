@@ -16,15 +16,7 @@ class TopupsAndWithdrawalsViewModel(
     val data: MutableLiveData<TopupsAndWithdrawalsData> = MutableLiveData()
     val onGetDataFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
-        loadData()
-    }
-
-    fun refreshData(){
-        loadData()
-    }
-
-    private fun loadData() {
+    fun loadData() {
         launchProcess("loadData") {
             val result = financesRepository.getTopupsAndWithdrawalsData()
             when (result.status.status) {
@@ -36,5 +28,9 @@ class TopupsAndWithdrawalsViewModel(
                 }
             }
         }
+    }
+
+    fun refreshData(){
+        loadData()
     }
 }

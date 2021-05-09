@@ -16,7 +16,12 @@ class TopupsAndWithdrawalsData(
         val amount: Double,
         val transactionStatus: TransactionStatus,
         val wallet: String,
-        val remaining: Long
+        val qr: String?,
+        val remaining: Long,
+        val confirmationsTotal: Int,
+        val confirmationsNeeded: Int,
+        val userId: Long?,
+        val payeerSign: String?
     ) {
         enum class Type {
             TOPUP, WITHDRAWAL;

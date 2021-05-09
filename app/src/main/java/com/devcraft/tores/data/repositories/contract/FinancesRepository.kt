@@ -16,4 +16,8 @@ interface FinancesRepository {
     suspend fun getReferralProfitsHistory(): ResultWithStatus<ReferralProfitsHistoryData>
 
     suspend fun getRankProfitsHistory(): ResultWithStatus<RankProfitsHistoryData>
+
+    suspend fun cancelTopup(transactionId: Long): ResultStatus
+
+    suspend fun submitTac(transactionId: Long, type: String, tac: String): ResultStatus
 }

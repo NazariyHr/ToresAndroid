@@ -47,4 +47,21 @@ interface FinancesApi {
     )
     fun getReferralProfitsHistory(@Header("Authorization") token: String): Call<GetReferralProfitsHistoryResponse>
 
+    @POST(ApiConstants.API_ENDPOINT_CANCEL_TOPUP)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun cancelTopup(
+        @Header("Authorization") token: String,
+        @Body request: CancelTopupRequest
+    ): Call<NetworkBaseResponse>
+
+    @POST(ApiConstants.API_ENDPOINT_SUBMIT_TAC)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun submitTac(
+        @Header("Authorization") token: String,
+        @Body request: SubmitTacRequest
+    ): Call<NetworkBaseResponse>
 }

@@ -166,4 +166,56 @@ class FinancesRepositoryImpl(
                 })
         }
     }
+
+    override suspend fun cancelTopup(transactionId: Long): ResultStatus {
+        return suspendCoroutine { continuation ->
+            financesApi
+                .cancelTopup(
+                    tokenRepository.getToken().bearerToken,
+                    CancelTopupRequest(transactionId)
+                )
+                .enqueue(object : Callback<NetworkBaseResponse> {
+                    override fun onResponse(
+                        call: Call<NetworkBaseResponse>,
+                        response: Response<NetworkBaseResponse>
+                    ) {
+                        val result = parseStatus(response)
+                        continuation.resume(result)
+                    }
+
+                    override fun onFailure(
+                        call: Call<NetworkBaseResponse>,
+                        t: Throwable
+                    ) {
+                        continuation.resume(ResultStatus.failure(t))
+                    }
+                })
+        }
+    }
+
+    override suspend fun submitTac(transactionId: Long, type: String, tac: String): ResultStatus {
+        return suspendCoroutine { continuation ->
+            financesApi
+                .submitTac(
+                    tokenRepository.getToken().bearerToken,
+                    SubmitTacRequest(transactionId, type, tac)
+                )
+                .enqueue(object : Callback<NetworkBaseResponse> {
+                    override fun onResponse(
+                        call: Call<NetworkBaseResponse>,
+                        response: Response<NetworkBaseResponse>
+                    ) {
+                        val result = parseStatus(response)
+                        continuation.resume(result)
+                    }
+
+                    override fun onFailure(
+                        call: Call<NetworkBaseResponse>,
+                        t: Throwable
+                    ) {
+                        continuation.resume(ResultStatus.failure(t))
+                    }
+                })
+        }
+    }
 }

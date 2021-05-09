@@ -13,4 +13,6 @@ object ApiConstants {
     const val API_ENDPOINT_CANCEL_WITHDRAW_FROM_DEPOSIT = "api/finance/cancelWithdrawFromDeposit"
     const val API_ENDPOINT_TRANSFERS_HISTORY = "api/finance/transfersHistory"
     const val API_ENDPOINT_REFERRAL_PROFITS_HISTORY = "api/finance/referralProfitsHistory"
+    const val API_ENDPOINT_CANCEL_TOPUP = "api/finance/cancelTopUp"
+    const val API_ENDPOINT_SUBMIT_TAC = "api/finance/submitTAC"
 }

@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:id="@+id/llContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/offset_x2"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/offset_x2"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvTransactionTitle"
+                            style="@style/Widget.Tores.TextView.Large"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="@string/topup" />
+
+                        <TextView
+                            android:id="@+id/tvTitleTransactionId"
+                            style="@style/Widget.Tores.TextView.Large"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/offset_x2"
+                            tools:text="2687963" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvTopupSubtitle"
+                        style="@style/Widget.Tores.TextView.Small"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:layout_marginTop="@dimen/offset_x"
+                        android:gravity="center_horizontal"
+                        android:text="@string/topup_subtitle" />
+
+                    <ImageView
+                        android:id="@+id/ivQr"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/offset_x2"
+                        android:contentDescription="@string/qr"
+                        android:src="@drawable/qr_example" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvTransactionData"
+                        style="@style/Widget.Tores.CardView"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:layout_marginVertical="@dimen/offset_x2">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x2"
+                            android:orientation="vertical">
+
+                            <!-- ID -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/topup_details_id"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvId"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    tools:text="2687963" />
+
+                            </LinearLayout>
+
+                            <!-- Дата / Время -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/topup_details_date_and_time"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvDateAndTime"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    tools:text="13.04.2021 18:18" />
+
+                            </LinearLayout>
+
+                            <!-- Кошелек -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/topup_details_wallet"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvWallet"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    tools:text="TJB7JVLz6hWHjGZaTkf3Y4SocnfXppx7ee" />
+
+                            </LinearLayout>
+
+                            <!-- Сумма к оплате (с учетом комиссии ПС) -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvPaymentSumTitle"
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textColor="@color/colorGreyDark"
+                                    tools:text="@string/topup_details_payment_sum" />
+
+                                <ImageView
+                                    android:id="@+id/ivCurrency"
+                                    android:layout_width="@dimen/icon_size_s"
+                                    android:layout_height="@dimen/icon_size_s"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    android:layout_marginBottom="@dimen/offset_x"
+                                    tools:ignore="ContentDescription"
+                                    tools:src="@drawable/ic_tron" />
+
+                                <TextView
+                                    android:id="@+id/tvPaymentSum"
+                                    style="@style/Widget.Tores.TextView.Bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    tools:text="71.91" />
+
+                            </LinearLayout>
+
+                            <!-- Сумма в TORES -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/topup_details_sum_in_tores"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvSumInTores"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    tools:text="10 TORES" />
+
+                            </LinearLayout>
+
+                            <!-- Подтверждений в сети -->
+                            <LinearLayout
+                                android:id="@+id/llConfirmations"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/modal_topups_confirmations"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvConfirmations"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    android:text="20 / 100" />
+
+                            </LinearLayout>
+
+                            <!-- Статус -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:background="@drawable/bg_bottom_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/modal_topups_status"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvStatus"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    tools:text="Отменена пользователем" />
+
+                            </LinearLayout>
+
+                            <!-- Время для исполнения заявки -->
+                            <LinearLayout
+                                android:id="@+id/llTimeLeft"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginVertical="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/modal_topups_time_for_pay"
+                                    android:textColor="@color/colorGreyDark" />
+
+                                <TextView
+                                    android:id="@+id/tvWaitingTime"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    android:background="@drawable/bg_bottom_line"
+                                    android:backgroundTint="@color/black"
+                                    tools:text="01:04:33" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoToPay"
+                        style="@style/Widget.Tores.Button.Wide.Small"
+                        android:layout_marginHorizontal="@dimen/offset_x8"
+                        android:layout_marginTop="@dimen/offset_x"
+                        android:text="@string/go_to_pay"
+                        android:textAllCaps="false" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnCancel"
+                        style="@style/Widget.Tores.Button.Wide.Small.Bordered"
+                        android:layout_marginHorizontal="@dimen/offset_x8"
+                        android:layout_marginTop="@dimen/offset_x"
+                        android:gravity="center"
+                        android:text="@string/modal_topups_cancel"
+                        android:textColor="@color/dark_primary_color"
+                        app:strokeColor="@color/dark_primary_color" />
+
+                    <LinearLayout
+                        android:id="@+id/llEnterTac"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/offset_x4"
+                        android:layout_marginTop="@dimen/offset_x2"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/llPasswordFromEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/password_send_on_email" />
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/enter_password_from_email" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvPp"
+                            style="@style/Widget.Tores.TextView.Bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/enter_pay_password"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+
+                        <!-- Пароль -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilPassword"
+                            style="@style/Widget.Tores.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x2">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tietPassword"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/password" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAcceptTac"
+                            style="@style/Widget.Tores.Button.Wide.Small"
+                            android:layout_marginTop="@dimen/offset_x2"
+                            android:text="@string/accept"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

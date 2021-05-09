@@ -30,6 +30,14 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
 
     open fun setToolbarTitle(title: String) {}
 
+    open fun hideBottomBar() {}
+
+    open fun showBottomBar() {}
+
+    open fun hideMainTopBar() {}
+
+    open fun showMainTopBar() {}
+
     /**
      *  See [NetworkCapabilities.TRANSPORT_WIFI] and [NetworkCapabilities.TRANSPORT_CELLULAR].
      */

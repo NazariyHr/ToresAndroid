@@ -16,15 +16,7 @@ class TransfersViewModel(
     val data: MutableLiveData<TransfersHistoryData> = MutableLiveData()
     val onGetDataFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
-        loadData()
-    }
-
-    fun refreshData() {
-        loadData()
-    }
-
-    private fun loadData() {
+    fun loadData() {
         launchProcess("loadData") {
             val result = financesRepository.getTransfersHistory()
             when (result.status.status) {
@@ -36,5 +28,9 @@ class TransfersViewModel(
                 }
             }
         }
+    }
+
+    fun refreshData() {
+        loadData()
     }
 }

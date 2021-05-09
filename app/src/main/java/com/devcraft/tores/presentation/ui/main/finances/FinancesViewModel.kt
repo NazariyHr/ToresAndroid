@@ -8,4 +8,5 @@ class FinancesViewModel(
     connectivityLiveData: ConnectivityInfoLiveData
 ) : BaseViewModel(connectivityLiveData) {
     val needRefreshTopupsAndWithdrawals: SingleLiveEvent<Boolean> = SingleLiveEvent()
+    val needRefreshTransfers: SingleLiveEvent<Boolean> = SingleLiveEvent()
 }

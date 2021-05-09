@@ -22,6 +22,8 @@ class PartnersProfitsTabFragment : BaseFragment(R.layout.fragment_tab_partners_r
 
         rvReferralProfitHistory.adapter = adapter
         rvReferralProfitHistory.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
     }
 
     override fun initListeners() {

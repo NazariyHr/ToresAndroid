@@ -16,15 +16,7 @@ class PartnersProfitsViewModel(
     val data: MutableLiveData<ReferralProfitsHistoryData> = MutableLiveData()
     val onGetDataFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
-        loadData()
-    }
-
-    fun refreshData() {
-        loadData()
-    }
-
-    private fun loadData() {
+    fun loadData() {
         launchProcess("loadData") {
             val result = financesRepository.getReferralProfitsHistory()
             when (result.status.status) {
@@ -36,5 +28,9 @@ class PartnersProfitsViewModel(
                 }
             }
         }
+    }
+
+    fun refreshData() {
+        loadData()
     }
 }

@@ -21,9 +21,14 @@ class GetTopupsAndWithdrawalsResponse(
             val currency: String,
             val status: String,
             val wallet: String,
+            val qr: String?,
             val remaining: Long,
             val type: String,
-            @SerializedName("created_at") val createdAt: String
+            @SerializedName("created_at") val createdAt: String,
+            val confirmationsTotal: Int,
+            val confirmationsNeeded: Int,
+            @SerializedName("user_id") val userId: Long?,
+            val payeerSign: String?
         )
     }
 }

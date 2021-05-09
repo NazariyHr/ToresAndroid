@@ -16,15 +16,7 @@ class RankProfitsViewModel(
     val data: MutableLiveData<RankProfitsHistoryData> = MutableLiveData()
     val onGetDataFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    init {
-        loadData()
-    }
-
-    fun refreshData() {
-        loadData()
-    }
-
-    private fun loadData() {
+    fun loadData() {
         launchProcess("loadData") {
             val result = financesRepository.getRankProfitsHistory()
             when (result.status.status) {
@@ -36,5 +28,9 @@ class RankProfitsViewModel(
                 }
             }
         }
+    }
+
+    fun refreshData() {
+        loadData()
     }
 }

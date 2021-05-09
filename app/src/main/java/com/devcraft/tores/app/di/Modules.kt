@@ -25,7 +25,9 @@ import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsV
 import com.devcraft.tores.presentation.ui.main.finances.mining.MiningViewModel
 import com.devcraft.tores.presentation.ui.main.finances.partnersProfits.PartnersProfitsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.TopupsAndWithdrawalsViewModel
+import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.transactionDetails.TransactionDetailsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersViewModel
+import com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails.TransferDetailsViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -47,6 +49,8 @@ val viewModelModule = module {
     viewModel { TransfersViewModel(get(), get()) }
     viewModel { PartnersProfitsViewModel(get(), get()) }
     viewModel { RankProfitsViewModel(get(), get()) }
+    viewModel { TransactionDetailsViewModel(get(), get(), get()) }
+    viewModel { TransferDetailsViewModel(get(), get(), get()) }
 }
 
 val netModule = module {

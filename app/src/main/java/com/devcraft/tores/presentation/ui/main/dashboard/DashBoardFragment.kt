@@ -44,6 +44,8 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
         rvRegistrations.adapter = registersAdapter
         rvRegistrations.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
     }
 
     override fun initListeners() {

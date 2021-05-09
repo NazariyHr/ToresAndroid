@@ -21,6 +21,8 @@ class RankProfitsTabFragment : BaseFragment(R.layout.fragment_tab_rank_profits) 
 
         rvRankProfitHistory.adapter = adapter
         rvRankProfitHistory.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
     }
 
     override fun initListeners() {
