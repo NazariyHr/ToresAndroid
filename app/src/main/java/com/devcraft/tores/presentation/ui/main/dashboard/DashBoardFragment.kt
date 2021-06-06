@@ -13,11 +13,11 @@ import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
-    override val vm: DashBoardViewModel by sharedViewModel()
+    override val vm: DashBoardViewModel by viewModel()
 
     private val profitsAdapter: ProfitsAdapter = ProfitsAdapter()
     private val registersAdapter: RegistersAdapter = RegistersAdapter()

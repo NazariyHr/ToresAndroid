@@ -12,11 +12,12 @@ import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_tab_transfers.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TransfersTabFragment : BaseFragment(R.layout.fragment_tab_transfers),
     TransfersHistoryAdapter.Callback {
 
-    override val vm: TransfersViewModel by sharedViewModel()
+    override val vm: TransfersViewModel by viewModel()
     private val vmFinances: FinancesViewModel by sharedViewModel()
     private val vmTransferDetails: TransferDetailsViewModel by sharedViewModel()
 

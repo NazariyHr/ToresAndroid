@@ -9,11 +9,11 @@ import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_tab_rank_profits.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RankProfitsTabFragment : BaseFragment(R.layout.fragment_tab_rank_profits) {
 
-    override val vm: RankProfitsViewModel by sharedViewModel()
+    override val vm: RankProfitsViewModel by viewModel()
 
     private val adapter: RankProfitsHistoryAdapter = RankProfitsHistoryAdapter()
 

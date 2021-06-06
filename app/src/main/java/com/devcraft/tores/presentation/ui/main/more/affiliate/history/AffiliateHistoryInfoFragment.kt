@@ -1,4 +1,4 @@
-package com.devcraft.tores.presentation.ui.main.affiliate.history
+package com.devcraft.tores.presentation.ui.main.more.affiliate.history
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
@@ -7,12 +7,12 @@ import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_affiliate_history.*
-import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AffiliateHistoryInfoFragment : BaseFragment(R.layout.fragment_affiliate_history),
     SelectedTreeUsersHistoryAdapter.Callback,
     LineUsersAdapter.Callback {
-    override val vm: AffiliateHistoryViewModel by sharedViewModel()
+    override val vm: AffiliateHistoryViewModel by viewModel()
 
     private val adapterSelectedUsersHistory = SelectedTreeUsersHistoryAdapter()
     private val adapterUsersLine = LineUsersAdapter()

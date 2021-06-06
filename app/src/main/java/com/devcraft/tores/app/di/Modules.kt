@@ -12,8 +12,8 @@ import com.devcraft.tores.data.repositories.impl.prefs.impl.TokenRepositoryPrefs
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.ui.auth.AuthViewModel
 import com.devcraft.tores.presentation.ui.main.MainViewModel
-import com.devcraft.tores.presentation.ui.main.affiliate.AffiliateViewModel
-import com.devcraft.tores.presentation.ui.main.affiliate.history.AffiliateHistoryViewModel
+import com.devcraft.tores.presentation.ui.main.more.affiliate.AffiliateViewModel
+import com.devcraft.tores.presentation.ui.main.more.affiliate.history.AffiliateHistoryViewModel
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
 import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
 import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsViewModel

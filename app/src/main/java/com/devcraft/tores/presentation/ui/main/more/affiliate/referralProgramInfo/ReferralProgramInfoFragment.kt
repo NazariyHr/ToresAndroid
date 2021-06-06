@@ -1,8 +1,8 @@
-package com.devcraft.tores.presentation.ui.main.affiliate.referralProgramInfo
+package com.devcraft.tores.presentation.ui.main.more.affiliate.referralProgramInfo
 
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseDialogFragment
-import com.devcraft.tores.presentation.ui.main.affiliate.AffiliateViewModel
+import com.devcraft.tores.presentation.ui.main.more.affiliate.AffiliateViewModel
 import com.devcraft.tores.utils.MetricsUtils
 import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import kotlinx.android.synthetic.main.dialog_affiliate_referral_program_info.*

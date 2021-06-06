@@ -13,12 +13,13 @@ import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_tab_topups_and_withdrawals.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class TopupsAndWithdrawalsTabFragment : BaseFragment(R.layout.fragment_tab_topups_and_withdrawals),
     TopupsAndWithdrawalsAdapter.Callback {
 
-    override val vm: TopupsAndWithdrawalsViewModel by sharedViewModel()
+    override val vm: TopupsAndWithdrawalsViewModel by viewModel()
     private val vmFinances: FinancesViewModel by sharedViewModel()
     private val vmTransactionDetails: TransactionDetailsViewModel by sharedViewModel()
 

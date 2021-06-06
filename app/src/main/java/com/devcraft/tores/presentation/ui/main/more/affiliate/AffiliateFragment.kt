@@ -1,13 +1,12 @@
-package com.devcraft.tores.presentation.ui.main.affiliate
+package com.devcraft.tores.presentation.ui.main.more.affiliate
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
-import com.devcraft.tores.presentation.ui.main.affiliate.history.AffiliateHistoryInfoFragment
-import com.devcraft.tores.presentation.ui.main.affiliate.referralProgramInfo.ReferralProgramInfoFragment
-import com.devcraft.tores.utils.extensions.combineWith
+import com.devcraft.tores.presentation.ui.main.more.affiliate.history.AffiliateHistoryInfoFragment
+import com.devcraft.tores.presentation.ui.main.more.affiliate.referralProgramInfo.ReferralProgramInfoFragment
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import com.devcraft.tores.utils.extensions.setVisible

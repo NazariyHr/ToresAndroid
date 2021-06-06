@@ -10,11 +10,12 @@ import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_tab_minings.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MiningsTabFragment : BaseFragment(R.layout.fragment_tab_minings),
     MiningHistoryAdapter.Callback {
 
-    override val vm: MiningViewModel by sharedViewModel()
+    override val vm: MiningViewModel by viewModel()
     private val vmFinances: FinancesViewModel by sharedViewModel()
 
     private val adapter: MiningHistoryAdapter = MiningHistoryAdapter()

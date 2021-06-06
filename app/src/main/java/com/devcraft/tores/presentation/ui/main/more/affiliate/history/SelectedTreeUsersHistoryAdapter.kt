@@ -1,4 +1,4 @@
-package com.devcraft.tores.presentation.ui.main.affiliate.history
+package com.devcraft.tores.presentation.ui.main.more.affiliate.history
 
 import android.annotation.SuppressLint
 import android.graphics.Color

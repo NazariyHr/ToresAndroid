@@ -1,4 +1,4 @@
-package com.devcraft.tores.presentation.ui.main.affiliate.history
+package com.devcraft.tores.presentation.ui.main.more.affiliate.history
 
 import androidx.lifecycle.MutableLiveData
 import com.devcraft.tores.data.repositories.contract.AffiliateRepository
