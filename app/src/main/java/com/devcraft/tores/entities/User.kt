@@ -6,5 +6,6 @@ data class User(
     val totalProfit: Double,
     val partnerProfit: Double,
     val rankProfit: Double,
-    val paymentConfirmationWay: PaymentConfirmationWay
+    val paymentConfirmationWay: PaymentConfirmationWay,
+    val rankLevel: RankLevel
 )

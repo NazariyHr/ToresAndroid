@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,11 +15,13 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/offset_x2"
             android:layout_marginVertical="@dimen/offset_x2"
-            android:orientation="horizontal" />
+            android:orientation="horizontal"
+            tools:itemCount="1"
+            tools:listitem="@layout/item_tab_title" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vpTabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </FrameLayout>

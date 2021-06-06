@@ -20,18 +20,13 @@ class TabTitlesAdapter : RecyclerView.Adapter<TabTitlesAdapter.ViewHolder>() {
     private var selectedItem: TabList = TabList.TOPUPS_AND_WITHDRAWAL
 
     var callback: Callback? = null
-        set(value) {
-            field = value
-            value?.onTabClicked(selectedItem)
-        }
 
-    fun setSelectedTab(newSelectedTab: TabList){
+    fun setSelectedTab(newSelectedTab: TabList) {
         val oldSelectedIndex = items.indexOf(selectedItem)
         val newSelectedIndex = items.indexOf(newSelectedTab)
         selectedItem = newSelectedTab
         notifyItemChanged(oldSelectedIndex)
         notifyItemChanged(newSelectedIndex)
-        callback?.onTabClicked(newSelectedTab)
     }
 
 

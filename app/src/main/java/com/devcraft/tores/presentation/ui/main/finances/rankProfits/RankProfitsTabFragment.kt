@@ -2,6 +2,7 @@ package com.devcraft.tores.presentation.ui.main.finances.rankProfits
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
+import com.devcraft.tores.entities.Rank
 import com.devcraft.tores.entities.RankProfitsHistoryData
 import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.utils.extensions.setGone
@@ -69,25 +70,25 @@ class RankProfitsTabFragment : BaseFragment(R.layout.fragment_tab_rank_profits) 
                 RankProfitsHistoryData.RankProfit(
                     1,
                     "26.04.2021 12:00",
-                    RankProfitsHistoryData.RankProfit.Rank.CLIENT,
+                    Rank.CLIENT,
                     1.0
                 ),
                 RankProfitsHistoryData.RankProfit(
                     2,
                     "26.04.2021 12:00",
-                    RankProfitsHistoryData.RankProfit.Rank.AGENT,
+                    Rank.AGENT,
                     10.0
                 ),
                 RankProfitsHistoryData.RankProfit(
                     3,
                     "26.04.2021 12:00",
-                    RankProfitsHistoryData.RankProfit.Rank.MANAGER,
+                    Rank.MANAGER,
                     20.0
                 ),
                 RankProfitsHistoryData.RankProfit(
                     4,
                     "26.04.2021 12:00",
-                    RankProfitsHistoryData.RankProfit.Rank.VIP_MANAGER,
+                    Rank.VIP_MANAGER,
                     50.0
                 )
             )

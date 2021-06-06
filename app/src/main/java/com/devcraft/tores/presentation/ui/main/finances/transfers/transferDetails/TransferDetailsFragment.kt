@@ -18,6 +18,16 @@ class TransferDetailsFragment : BaseFragment(R.layout.fragment_transfer_details)
     override val vm: TransferDetailsViewModel by sharedViewModel()
     private val vmFinances: FinancesViewModel by sharedViewModel()
 
+    override fun initViews() {
+        super.initViews()
+        showBaseActivityBackButton()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideBaseActivityBackButton()
+    }
+
     override fun initListeners() {
         super.initListeners()
 

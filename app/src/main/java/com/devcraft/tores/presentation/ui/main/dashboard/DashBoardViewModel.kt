@@ -1,7 +1,6 @@
 package com.devcraft.tores.presentation.ui.main.dashboard
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.devcraft.tores.data.repositories.contract.DashboardRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
@@ -10,7 +9,6 @@ import com.devcraft.tores.entities.User
 import com.devcraft.tores.presentation.base.BaseViewModel
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.common.SingleLiveEvent
-import kotlinx.coroutines.launch
 
 class DashBoardViewModel(
     connectivityLiveData: ConnectivityInfoLiveData,
@@ -24,39 +22,45 @@ class DashBoardViewModel(
     val profitsAndRegisters: MutableLiveData<ProfitsAndRegisters> = MutableLiveData()
     val onGetProfitsAndRegistersFailure: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    fun loadData(){
+    fun loadData() {
         loadUserInfo()
         loadLastProfitsAndRegisters()
     }
 
-    fun refreshData(){
+    fun refreshData() {
         loadUserInfo()
         loadLastProfitsAndRegisters()
     }
 
     private fun loadUserInfo() {
-        launchProcess("loadUserInfo") {
+        val processName = "loadUserInfo"
+        launchProcess(processName) {
             val result = userRepository.getUser()
             when (result.status.status) {
                 ResultStatus.StateList.SUCCESS -> {
                     userInfo.postValue(result.data)
+                    removeFailedProcess(processName)
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onGetUserFailure.postValue(result.status.error)
+                    addFailedProcess(processName)
                 }
             }
         }
     }
 
     private fun loadLastProfitsAndRegisters() {
-        launchProcess("loadLastProfitsAndRegisters") {
+        val processName = "loadLastProfitsAndRegisters"
+        launchProcess(processName) {
             val result = dashboardRepository.getDashboardInfo()
             when (result.status.status) {
                 ResultStatus.StateList.SUCCESS -> {
                     profitsAndRegisters.postValue(result.data)
+                    removeFailedProcess(processName)
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onGetProfitsAndRegistersFailure.postValue(result.status.error)
+                    addFailedProcess(processName)
                 }
             }
         }

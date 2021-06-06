@@ -26,6 +26,17 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
                     <!-- Balance -->
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cvBalance"
@@ -92,7 +103,7 @@
                         android:id="@+id/cvBonusBalance"
                         style="@style/Widget.Tores.CardView.Large"
                         android:visibility="gone"
-                        tools:visibility="gone">
+                        tools:visibility="visible">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -125,6 +136,7 @@
                                 android:textColor="#C0C6CD" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBonusBalanceDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/details"
                                 app:icon="@drawable/for_btn_ic_long_arrow_right" />
@@ -137,7 +149,7 @@
                         android:id="@+id/cvIncome"
                         style="@style/Widget.Tores.CardView.Large"
                         android:visibility="gone"
-                        tools:visibility="gone">
+                        tools:visibility="visible">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -170,6 +182,7 @@
                                 android:textColor="#C0C6CD" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnIncomeForAllTimeDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/detailed"
                                 app:icon="@drawable/for_btn_ic_long_arrow_right" />
@@ -182,7 +195,7 @@
                         android:id="@+id/cvRewards"
                         style="@style/Widget.Tores.CardView.Large"
                         android:visibility="gone"
-                        tools:visibility="gone">
+                        tools:visibility="visible">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -262,6 +275,7 @@
                                 tools:visibility="visible" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnRewardsDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/detailed"
                                 app:icon="@drawable/for_btn_ic_long_arrow_right" />
@@ -316,7 +330,9 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvProfits"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/item_profit" />
 
                             <TextView
                                 style="@style/Widget.Tores.TextView"
@@ -331,7 +347,9 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvRegistrations"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" />
+                                android:layout_height="wrap_content"
+                                tools:itemCount="1"
+                                tools:listitem="@layout/item_registered" />
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>

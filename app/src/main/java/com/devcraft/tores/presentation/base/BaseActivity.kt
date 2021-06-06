@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
@@ -24,19 +25,29 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
 
     open fun initListeners() {}
 
+    @CallSuper
     open fun initObservers() {
         vm.connectivityLiveData.observe(this, ::onNetworkConnectivityStatusChanged)
     }
 
     open fun setToolbarTitle(title: String) {}
 
-    open fun hideBottomBar() {}
+    open fun showBackButton() {}
+
+    open fun hideBackButton() {}
 
     open fun showBottomBar() {}
 
-    open fun hideMainTopBar() {}
+    open fun hideBottomBar() {}
 
     open fun showMainTopBar() {}
+
+    open fun hideMainTopBar() {}
+
+    //return true if handled
+    open fun handleOpenFragment(container: Int, fragment: Fragment, addToBackStack: Boolean = true): Boolean {
+        return false
+    }
 
     /**
      *  See [NetworkCapabilities.TRANSPORT_WIFI] and [NetworkCapabilities.TRANSPORT_CELLULAR].

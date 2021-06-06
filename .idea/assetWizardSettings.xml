@@ -322,8 +322,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_payeer" />
-                            <entry key="sourceFile" value="$PROJECT_DIR$/../../../Матеріали по проектах/Tores/payeer.svg" />
+                            <entry key="outputName" value="ic_arrow_right_thin" />
+                            <entry key="sourceFile" value="$PROJECT_DIR$/../../../Матеріали по проектах/Tores/arrow right.svg" />
                           </map>
                         </option>
                       </PersistentState>

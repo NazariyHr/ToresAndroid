@@ -40,7 +40,7 @@ class RankProfitsHistoryAdapter :
                 tvCreatedAt.text = item.createdAt
                 tvProfitAmount.text =
                     String.format(resources.getString(R.string.tores_amount), item.amount)
-                tvRank.text = item.rank.getStatusText(context)
+                tvRank.text = item.rank.getRankText(context)
             }
         }
     }

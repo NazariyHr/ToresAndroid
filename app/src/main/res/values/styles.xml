@@ -15,6 +15,10 @@
         <item name="android:textSize">@dimen/text_size_s</item>
     </style>
 
+    <style name="Widget.Tores.TextView.Small.Bold" parent="Widget.Tores.TextView.Small">
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="Widget.Tores.TextView.Large" parent="Widget.Tores.TextView">
         <item name="android:textSize">@dimen/text_size_xl</item>
     </style>

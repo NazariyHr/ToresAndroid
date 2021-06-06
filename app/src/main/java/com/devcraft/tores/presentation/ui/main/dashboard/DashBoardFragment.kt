@@ -1,10 +1,15 @@
 package com.devcraft.tores.presentation.ui.main.dashboard
 
 import android.graphics.drawable.Drawable
+import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
+import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
+import com.devcraft.tores.presentation.ui.main.finances.TabList
 import com.devcraft.tores.utils.extensions.setGone
+import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.fragment_dashboard.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
@@ -21,7 +26,24 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
 
     override fun initViews() {
         setBaseActivityToolbarTitle(getString(R.string.dashboard))
+        hideBaseActivityBackButton()
+
         selectedDrawable = btnByPartners.background
+
+        rvProfits.adapter = profitsAdapter
+        rvProfits.layoutManager = LinearLayoutManager(context)
+
+        rvRegistrations.adapter = registersAdapter
+        rvRegistrations.layoutManager = LinearLayoutManager(context)
+
+        vm.loadData()
+    }
+
+    override fun initListeners() {
+        super.initListeners()
+        swipeRefresh.setOnRefreshListener {
+            vm.refreshData()
+        }
         btnByPartners.setOnClickListener {
             btnByPartners.background = selectedDrawable
             btnByPartners.setTextColor(requireContext().resources.getColor(R.color.black))
@@ -38,20 +60,20 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
             tvRewardsRanks.setVisible()
             tvRewardsPartners.setGone()
         }
-
-        rvProfits.adapter = profitsAdapter
-        rvProfits.layoutManager = LinearLayoutManager(context)
-
-        rvRegistrations.adapter = registersAdapter
-        rvRegistrations.layoutManager = LinearLayoutManager(context)
-
-        vm.loadData()
-    }
-
-    override fun initListeners() {
-        super.initListeners()
-        swipeRefresh.setOnRefreshListener {
-            vm.refreshData()
+        btnBonusBalanceDetails.setSafeOnClickListener {
+            openFragment(R.id.container, FinancesFragment())
+        }
+        btnIncomeForAllTimeDetails.setSafeOnClickListener {
+            openFragment(R.id.container, FinancesFragment())
+        }
+        btnRewardsDetails.setSafeOnClickListener {
+            val args = Bundle()
+            if (tvRewardsPartners.visibility == View.VISIBLE) {
+                args.putString(FinancesFragment.ARG_OPEN_FRAGMENT, TabList.PARTNERS.name)
+            } else {
+                args.putString(FinancesFragment.ARG_OPEN_FRAGMENT, TabList.BONUSES.name)
+            }
+            openFragment(R.id.container, FinancesFragment().apply { arguments = args })
         }
     }
 
@@ -63,6 +85,9 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
                 swipeRefresh.isRefreshing = it
             }
             progress_overlay.setVisible(it)
+        })
+        vm.allProcessesAreFailed.observe(viewLifecycleOwner, {
+            tvLoadingDataError.setVisible(it)
         })
 
         vm.userInfo.observe(viewLifecycleOwner, {

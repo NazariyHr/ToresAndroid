@@ -62,7 +62,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvTotalTopups"
-                        android:layout_marginVertical="@dimen/offset_x" />
+                        android:layout_marginVertical="@dimen/offset_x"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_topup_or_withdrawal" />
 
                     <TextView
                         android:id="@+id/tvLoadingDataError"

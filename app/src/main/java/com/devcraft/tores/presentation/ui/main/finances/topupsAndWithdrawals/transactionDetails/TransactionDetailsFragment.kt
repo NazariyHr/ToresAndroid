@@ -28,6 +28,16 @@ class TransactionDetailsFragment : BaseFragment(R.layout.fragment_transaction_de
 
     private var timer: CountDownTimer? = null
 
+    override fun initViews() {
+        super.initViews()
+        showBaseActivityBackButton()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        hideBaseActivityBackButton()
+    }
+
     override fun initListeners() {
         super.initListeners()
 

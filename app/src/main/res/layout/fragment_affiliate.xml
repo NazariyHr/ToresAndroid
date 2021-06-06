@@ -1,0 +1,523 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                android:overScrollMode="never">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <!-- Your sponsor -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvYourSponsor"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_sponsor" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:text="@string/your_sponsor" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvSponsorLogin"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                tools:text="admin" />
+
+                            <TextView
+                                android:id="@+id/tvSponsorEmail"
+                                style="@style/Widget.Tores.TextView.Link"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                tools:text="admin@toresbissnes.com" />
+
+                            <TextView
+                                android:id="@+id/tvSponsorPhone"
+                                style="@style/Widget.Tores.TextView.Link"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                tools:text="+79211111111" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Partners -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvPartnersTotal"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_user" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:text="@string/partners_amount" />
+
+                            </LinearLayout>
+
+                            <!-- Partners total -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/partners_total_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvPartnersTotalAmount"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textStyle="bold"
+                                    tools:text="1" />
+
+                            </LinearLayout>
+
+                            <!-- Partners active -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/amount_active_partners_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvPartnersActiveAmount"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textColor="@color/colorGreen"
+                                    android:textStyle="bold"
+                                    tools:text="1" />
+
+                            </LinearLayout>
+
+                            <!-- Partners not active -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:text="@string/amount_not_active_partners_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvPartnersNotActiveAmount"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textColor="@color/secondary_text_color"
+                                    android:textStyle="bold"
+                                    tools:text="0" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Tores turnover -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvToresTurnover"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <!-- Send to mining -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_send_to_mining" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:text="@string/send_to_mining_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvSendToMining"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textStyle="bold"
+                                    tools:text="1" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Small"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_tors_turnover"
+                                android:textColor="@color/secondary_text_color" />
+
+                            <!-- Link clicks -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x3"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_link" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:text="@string/link_clicks_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvLinkClicks"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textStyle="bold"
+                                    tools:text="1" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Small"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/link_clicks_for_all_time"
+                                android:textColor="@color/secondary_text_color" />
+
+                            <!-- Total Tores sum -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x3"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_pie_chart" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:text="@string/on_sum_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvTotalToresSum"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x"
+                                    android:textStyle="bold"
+                                    tools:text="100 TORES" />
+
+                            </LinearLayout>
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Small"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_tores_turnover"
+                                android:textColor="@color/secondary_text_color" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Rank info -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvRankInfo"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:id="@+id/flRankInfoHeader"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <!-- Current rank -->
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/offset_x"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            style="@style/Widget.Tores.TextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:text="@string/current_rank_dots" />
+
+                                        <ImageView
+                                            android:id="@+id/ivCurrentRank"
+                                            android:layout_width="@dimen/icon_size_m"
+                                            android:layout_height="@dimen/icon_size_m"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="@dimen/offset_x"
+                                            tools:src="@drawable/ic_rank_vip_manager" />
+
+                                        <TextView
+                                            android:id="@+id/tvCurrentRank"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="@dimen/offset_x"
+                                            tools:text="@string/ranks_vip_manager" />
+
+                                    </LinearLayout>
+
+                                    <!-- Current level -->
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/offset_x"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            style="@style/Widget.Tores.TextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:text="@string/current_level_dots" />
+
+                                        <TextView
+                                            android:id="@+id/tvCurrentLevel"
+                                            style="@style/Widget.Tores.TextView"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="@dimen/offset_x"
+                                            android:textStyle="bold"
+                                            tools:text="0/6" />
+
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <FrameLayout
+                                    android:id="@+id/flRankInfo"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical|right"
+                                    android:padding="@dimen/offset_x3">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/icon_size_m"
+                                        android:layout_height="@dimen/icon_size_m"
+                                        android:src="@drawable/ic_info"
+                                        tools:ignore="ContentDescription" />
+                                </FrameLayout>
+
+                            </FrameLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Total -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvTotalProfit"
+                        style="@style/Widget.Tores.CardView"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/total_profit" />
+
+                            <TextView
+                                android:id="@+id/tvTotalProfit"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/profit_24_hours" />
+
+                            <TextView
+                                android:id="@+id/tvProfit24Hours"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:textStyle="bold"
+                                tools:text="0.00 TORES" />
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnGoToTree"
+                        style="@style/Widget.Tores.Button.Wide.Small"
+                        android:layout_margin="@dimen/offset_x2"
+                        android:text="@string/watch_profit_from_tree"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

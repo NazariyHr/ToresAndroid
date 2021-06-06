@@ -2,6 +2,7 @@ package com.devcraft.tores.data.repositories.impl.net.mappers
 
 import com.devcraft.tores.data.repositories.impl.BaseRepositoryMapper
 import com.devcraft.tores.data.repositories.impl.net.dto.GetFinanceAllInfoResponse
+import com.devcraft.tores.entities.Rank
 import com.devcraft.tores.entities.RankProfitsHistoryData
 
 class GetFinanceAllInfoToRankProfitsHistoryMapper :
@@ -12,7 +13,7 @@ class GetFinanceAllInfoToRankProfitsHistoryMapper :
                 RankProfitsHistoryData.RankProfit(
                     p.id,
                     p.createdAt,
-                    RankProfitsHistoryData.RankProfit.Rank.parseStatus(p.rank),
+                    Rank.parseRank(p.rank),
                     p.amount
                 )
             }

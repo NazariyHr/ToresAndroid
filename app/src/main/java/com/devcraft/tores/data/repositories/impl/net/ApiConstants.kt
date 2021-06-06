@@ -15,4 +15,8 @@ object ApiConstants {
     const val API_ENDPOINT_REFERRAL_PROFITS_HISTORY = "api/finance/referralProfitsHistory"
     const val API_ENDPOINT_CANCEL_TOPUP = "api/finance/cancelTopUp"
     const val API_ENDPOINT_SUBMIT_TAC = "api/finance/submitTAC"
+    const val API_ENDPOINT_GET_AFFILIATE = "api/affiliate"
+    const val API_ENDPOINT_GET_RANK_INFO = "api/ranks"
+    const val API_ENDPOINT_GET_AFFILIATE_TREE_FIRST_LINE = "api/affiliate/getTree"
+    const val API_ENDPOINT_GET_AFFILIATE_TREE_SPECIFIC_LINE = "api/affiliate/getUserTree/{userId}/{line}"
 }

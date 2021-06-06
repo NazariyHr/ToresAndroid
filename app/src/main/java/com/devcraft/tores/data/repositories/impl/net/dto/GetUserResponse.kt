@@ -23,7 +23,7 @@ class GetUserResponse(
             val rankProfit: Double,
             val totalProfit: Double,
             val invitedBy: String,
-            val level: Boolean,
+            val level: Level,
             @SerializedName("ref_code") val refCode: String,
             val currentRank: String,
             val nextRank: String,
@@ -32,6 +32,11 @@ class GetUserResponse(
             val ip: String,
             val shouldVote: Boolean,
             val voteResults: MutableList<Int>
-        )
+        ) {
+            class Level(
+                val level: Int,
+                val gotAt: String
+            )
+        }
     }
 }

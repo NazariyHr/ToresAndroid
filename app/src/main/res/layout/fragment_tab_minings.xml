@@ -65,6 +65,8 @@
                         android:layout_marginVertical="@dimen/offset_x"
                         android:fillViewport="true"
                         android:visibility="gone"
+                        tools:itemCount="2"
+                        tools:listitem="@layout/item_mining_history"
                         tools:visibility="visible" />
 
                     <TextView

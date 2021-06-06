@@ -3,22 +3,17 @@ package com.devcraft.tores.app.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.devcraft.tores.data.repositories.contract.DashboardRepository
-import com.devcraft.tores.data.repositories.contract.FinancesRepository
-import com.devcraft.tores.data.repositories.contract.TokenRepository
-import com.devcraft.tores.data.repositories.contract.UserRepository
+import com.devcraft.tores.data.repositories.contract.*
 import com.devcraft.tores.data.repositories.impl.net.ApiConstants
-import com.devcraft.tores.data.repositories.impl.net.impl.DashboardRepositoryImpl
-import com.devcraft.tores.data.repositories.impl.net.impl.FinancesRepositoryImpl
-import com.devcraft.tores.data.repositories.impl.net.impl.UserRepositoryImpl
+import com.devcraft.tores.data.repositories.impl.net.impl.*
 import com.devcraft.tores.data.repositories.impl.net.mappers.*
-import com.devcraft.tores.data.repositories.impl.net.retrofitApis.DashBoardApi
-import com.devcraft.tores.data.repositories.impl.net.retrofitApis.FinancesApi
-import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
+import com.devcraft.tores.data.repositories.impl.net.retrofitApis.*
 import com.devcraft.tores.data.repositories.impl.prefs.impl.TokenRepositoryPrefsImpl
 import com.devcraft.tores.presentation.common.ConnectivityInfoLiveData
 import com.devcraft.tores.presentation.ui.auth.AuthViewModel
 import com.devcraft.tores.presentation.ui.main.MainViewModel
+import com.devcraft.tores.presentation.ui.main.affiliate.AffiliateViewModel
+import com.devcraft.tores.presentation.ui.main.affiliate.history.AffiliateHistoryViewModel
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
 import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
 import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsViewModel
@@ -51,6 +46,8 @@ val viewModelModule = module {
     viewModel { RankProfitsViewModel(get(), get()) }
     viewModel { TransactionDetailsViewModel(get(), get(), get()) }
     viewModel { TransferDetailsViewModel(get(), get(), get()) }
+    viewModel { AffiliateViewModel(get(), get(), get()) }
+    viewModel { AffiliateHistoryViewModel(get(), get()) }
 }
 
 val netModule = module {
@@ -100,9 +97,19 @@ val netApiModule = module {
         return retrofit.create(FinancesApi::class.java)
     }
 
+    fun provideAffiliateApi(retrofit: Retrofit): AffiliateApi {
+        return retrofit.create(AffiliateApi::class.java)
+    }
+
+    fun provideRanksApi(retrofit: Retrofit): RanksApi {
+        return retrofit.create(RanksApi::class.java)
+    }
+
     single { provideUserApi(get()) }
     single { provideDashBoardApi(get()) }
     single { provideFinancesApi(get()) }
+    single { provideAffiliateApi(get()) }
+    single { provideRanksApi(get()) }
 }
 
 val repositoryModule = module {
@@ -153,10 +160,38 @@ val repositoryModule = module {
         )
     }
 
+    fun provideAffiliateRepository(
+        affiliateApi: AffiliateApi,
+        tokenRepository: TokenRepository,
+        getAffiliateMapper: GetAffiliateMapper,
+        getAffiliateTreeFirstLineMapper: GetAffiliateTreeFirstLineMapper,
+        getAffiliateTreeSpecificLineMapper: GetAffiliateTreeSpecificLineMapper
+
+    ): AffiliateRepository {
+        return AffiliateRepositoryImpl(
+            affiliateApi,
+            tokenRepository,
+            getAffiliateMapper,
+            getAffiliateTreeFirstLineMapper,
+            getAffiliateTreeSpecificLineMapper
+        )
+    }
+
+    fun provideRankRepository(
+        ranksApi: RanksApi,
+        tokenRepository: TokenRepository,
+        getRankInfoMapper: GetRankInfoMapper
+
+    ): RankRepository {
+        return RankRepositoryImpl(ranksApi, tokenRepository, getRankInfoMapper)
+    }
+
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get(), get()) }
     single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
+    single { provideAffiliateRepository(get(), get(), get(), get(), get()) }
+    single { provideRankRepository(get(), get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -192,6 +227,22 @@ val repositoryMappersModule = module {
         return GetFinanceAllInfoToRankProfitsHistoryMapper()
     }
 
+    fun provideGetAffiliateMapper(): GetAffiliateMapper {
+        return GetAffiliateMapper()
+    }
+
+    fun provideGetRankInfoMapper(): GetRankInfoMapper {
+        return GetRankInfoMapper()
+    }
+
+    fun provideGetAffiliateTreeFirstLineMapper(): GetAffiliateTreeFirstLineMapper {
+        return GetAffiliateTreeFirstLineMapper()
+    }
+
+    fun provideGetAffiliateTreeSpecificLineMapper(): GetAffiliateTreeSpecificLineMapper {
+        return GetAffiliateTreeSpecificLineMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
@@ -200,6 +251,10 @@ val repositoryMappersModule = module {
     factory { provideGetTransfersHistoryMapper() }
     factory { provideGetReferralProfitsHistoryMapper() }
     factory { provideGetFinanceAllInfoToRankProfitsHistoryMapper() }
+    factory { provideGetAffiliateMapper() }
+    factory { provideGetRankInfoMapper() }
+    factory { provideGetAffiliateTreeFirstLineMapper() }
+    factory { provideGetAffiliateTreeSpecificLineMapper() }
 }
 
 val utilsModules = module {

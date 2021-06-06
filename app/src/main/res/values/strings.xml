@@ -36,6 +36,7 @@
 
     <string name="tores_amount">%1$.2f TORES</string>
     <string name="tores_amount_str">%1$s TORES</string>
+    <string name="tores_amount_int">%1$d TORES</string>
     <string name="line">LINE %1$s</string>
     <string name="plus_tores_amount">+%1$s TORES</string>
     <string name="in_date_and_time">%1$s в %2$s</string>
@@ -80,6 +81,7 @@
     <string name="performed">Выполнена</string>
     <string name="received_dots">Получено:</string>
     <string name="total_profit">Суммарный доход</string>
+    <string name="ranks_member">Участник</string>
     <string name="ranks_client">Клиент</string>
     <string name="ranks_agent">Агент</string>
     <string name="ranks_manager">Менеджер</string>
@@ -120,4 +122,40 @@
     <string name="transfer_transfer_info">Внимание! Зачисление перевода производится в течение нескольких минут в автоматическом режиме.</string>
     <string name="enter_code_from_email_for_transaction">Введите код, отправленный Вам на почту чтобы продолжить перевод токенов.</string>
     <string name="sending_to_user">Перевод</string>
+    <string name="partner_program">Партнёрская программа</string>
+    <string name="partners">Партнёры</string>
+    <string name="ranks">Ранги</string>
+    <string name="contacts">Контакты</string>
+    <string name="common_info">Общая информация</string>
+    <string name="history">История</string>
+    <string name="your_sponsor">Ваш спонсор</string>
+    <string name="partners_total_dots">Всего партнеров:</string>
+    <string name="partners_amount">Количество партнёров</string>
+    <string name="amount_active_partners_dots">Активных:</string>
+    <string name="amount_not_active_partners_dots">Не активных:</string>
+    <string name="send_to_mining_dots">Направлено на майнинг:</string>
+    <string name="total_tors_turnover">Общий оборот TORES вашей структуры.</string>
+    <string name="link_clicks_dots">Переходов по ссылке:</string>
+    <string name="link_clicks_for_all_time">Переходов по вашей реф.ссылке за все время</string>
+    <string name="on_sum_dots">На сумму:</string>
+    <string name="total_tores_turnover">Общий оборот TORES в вашей структуре.</string>
+    <string name="current_rank_dots">Текущий ранг:</string>
+    <string name="current_level_dots">Текущий уровень:</string>
+    <string name="referral_program_info"><b>Реферальная программа:</b>\n
+1. Чтобы получать доход с дохода вашей первой линии, необходимо иметь на майнинге минимум 250 монет.\n\n
+2. Чтобы получать доход с дохода второй линии, необходимо 5 партнеров в первой линии с депозитом минимум 250 TORES у каждого.\n\n
+3. Чтобы получать доход с дохода со всех уровней, необходимо 20 партнеров во второй линии с депозитом минимум 250 TORES у каждого.\n\n
+        <b>Процент дохода от майнинга нижестоящих партнеров по уровням:</b>\n
+1 Level - 15%\n
+2 Level - 10%\n
+3 Level - 5%\n
+4 Level - 3%\n
+5 Level - 2%\n
+6 Level - 1%</string>
+    <string name="profit_24_hours">Суммарный доход за 24 часа</string>
+    <string name="affiliate_percent_dots">Процент дохода:</string>
+    <string name="profit_from_user_dots">Доход от участника:</string>
+    <string name="watch_profit_from_tree">Посмотреть доход от участников</string>
+    <string name="watch_profit_from_tree_title">Доход от участников</string>
+    <string name="affiliate_users_no_found">Участников не найдено</string>
 </resources>
