@@ -23,6 +23,9 @@ import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.Top
 import com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.transactionDetails.TransactionDetailsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersViewModel
 import com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails.TransferDetailsViewModel
+import com.devcraft.tores.presentation.ui.main.profile.ProfileViewModel
+import com.devcraft.tores.presentation.ui.main.profile.changePassword.ChangePasswordViewModel
+import com.devcraft.tores.presentation.ui.main.profile.financePassword.FinancePasswordViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -35,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val viewModelModule = module {
     viewModel { AuthViewModel(get(), get()) }
-    viewModel { SplashViewModel(get()) }
+    viewModel { SplashViewModel(get(), get()) }
     viewModel { MainViewModel(get()) }
     viewModel { DashBoardViewModel(get(), get(), get()) }
     viewModel { FinancesViewModel(get()) }
@@ -48,6 +51,9 @@ val viewModelModule = module {
     viewModel { TransferDetailsViewModel(get(), get(), get()) }
     viewModel { AffiliateViewModel(get(), get(), get()) }
     viewModel { AffiliateHistoryViewModel(get(), get()) }
+    viewModel { ProfileViewModel(get(), get(), get()) }
+    viewModel { ChangePasswordViewModel(get(), get()) }
+    viewModel { FinancePasswordViewModel(get(), get()) }
 }
 
 val netModule = module {
@@ -121,13 +127,15 @@ val repositoryModule = module {
         userApi: UserApi,
         tokenRepository: TokenRepository,
         logInTokenMapper: LogInTokenMapper,
-        getUserMapper: GetUserMapper
+        getUserMapper: GetUserMapper,
+        changePasswordResponseMapper: ChangePasswordResponseMapper
     ): UserRepository {
         return UserRepositoryImpl(
             userApi,
             tokenRepository,
             logInTokenMapper,
-            getUserMapper
+            getUserMapper,
+            changePasswordResponseMapper
         )
     }
 
@@ -187,7 +195,7 @@ val repositoryModule = module {
     }
 
     single { provideTokenRepository(get(named("tokens"))) }
-    single { provideUserRepository(get(), get(), get(), get()) }
+    single { provideUserRepository(get(), get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get(), get()) }
     single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
     single { provideAffiliateRepository(get(), get(), get(), get(), get()) }
@@ -243,6 +251,10 @@ val repositoryMappersModule = module {
         return GetAffiliateTreeSpecificLineMapper()
     }
 
+    fun provideChangePasswordResponseMapper(): ChangePasswordResponseMapper {
+        return ChangePasswordResponseMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
@@ -255,6 +267,7 @@ val repositoryMappersModule = module {
     factory { provideGetRankInfoMapper() }
     factory { provideGetAffiliateTreeFirstLineMapper() }
     factory { provideGetAffiliateTreeSpecificLineMapper() }
+    factory { provideChangePasswordResponseMapper() }
 }
 
 val utilsModules = module {

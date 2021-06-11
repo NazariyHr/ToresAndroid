@@ -4,10 +4,10 @@ import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
-import com.devcraft.tores.data.repositories.impl.net.dto.GetUserResponse
-import com.devcraft.tores.data.repositories.impl.net.dto.LogInRequest
-import com.devcraft.tores.data.repositories.impl.net.dto.LogInResponse
+import com.devcraft.tores.data.repositories.impl.net.dto.*
+import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
 import com.devcraft.tores.data.repositories.impl.net.impl.base.BaseNetRepository
+import com.devcraft.tores.data.repositories.impl.net.mappers.ChangePasswordResponseMapper
 import com.devcraft.tores.data.repositories.impl.net.mappers.GetUserMapper
 import com.devcraft.tores.data.repositories.impl.net.mappers.LogInTokenMapper
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.UserApi
@@ -24,6 +24,7 @@ class UserRepositoryImpl(
     private val tokenRepository: TokenRepository,
     private val logInTokenMapper: LogInTokenMapper,
     private val getUserMapper: GetUserMapper,
+    private val changePasswordResponseMapper: ChangePasswordResponseMapper
 ) : BaseNetRepository(), UserRepository {
 
     override suspend fun login(
@@ -102,6 +103,75 @@ class UserRepositoryImpl(
 
                     override fun onFailure(call: Call<GetUserResponse>, t: Throwable) {
                         continuation.resume(ResultWithStatus(null, ResultStatus.failure(t)))
+                    }
+                })
+        }
+    }
+
+    override suspend fun changePassword(
+        oldPass: String,
+        newPass: String,
+        newPassConfirm: String
+    ): ResultWithStatus<String> {
+        return suspendCoroutine { continuation ->
+            userApi.changePassword(
+                tokenRepository.getToken().bearerToken,
+                ChangePasswordRequest(oldPass, newPass, newPassConfirm)
+            )
+                .enqueue(object : Callback<ChangePasswordResponse> {
+                    override fun onResponse(
+                        call: Call<ChangePasswordResponse>,
+                        response: Response<ChangePasswordResponse>
+                    ) {
+                        val result = parseResult(response, changePasswordResponseMapper)
+                        continuation.resume(result)
+                    }
+
+                    override fun onFailure(call: Call<ChangePasswordResponse>, t: Throwable) {
+                        continuation.resume(ResultWithStatus(null, ResultStatus.failure(t)))
+                    }
+                })
+        }
+    }
+
+    override suspend fun setFinancePassword(pass: String, passConfirm: String): ResultStatus {
+        return suspendCoroutine { continuation ->
+            userApi.setFinancePassword(
+                tokenRepository.getToken().bearerToken,
+                SetFinancePasswordRequest(pass, passConfirm)
+            )
+                .enqueue(object : Callback<NetworkBaseResponse> {
+                    override fun onResponse(
+                        call: Call<NetworkBaseResponse>,
+                        response: Response<NetworkBaseResponse>
+                    ) {
+                        val result = parseStatus(response)
+                        continuation.resume(result)
+                    }
+
+                    override fun onFailure(call: Call<NetworkBaseResponse>, t: Throwable) {
+                        continuation.resume(ResultStatus.failure(t))
+                    }
+                })
+        }
+    }
+
+    override suspend fun removeFinancePassword(): ResultStatus {
+        return suspendCoroutine { continuation ->
+            userApi.removeFinancePassword(
+                tokenRepository.getToken().bearerToken
+            )
+                .enqueue(object : Callback<NetworkBaseResponse> {
+                    override fun onResponse(
+                        call: Call<NetworkBaseResponse>,
+                        response: Response<NetworkBaseResponse>
+                    ) {
+                        val result = parseStatus(response)
+                        continuation.resume(result)
+                    }
+
+                    override fun onFailure(call: Call<NetworkBaseResponse>, t: Throwable) {
+                        continuation.resume(ResultStatus.failure(t))
                     }
                 })
         }

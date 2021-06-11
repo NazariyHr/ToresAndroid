@@ -4,6 +4,7 @@ import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
 import com.devcraft.tores.data.repositories.impl.BaseRepositoryMapper
 import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
+import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Response
 
@@ -39,13 +40,22 @@ open class BaseNetRepository {
         response: Response<TypeOfDto>
     ): ResultStatus {
         return if (response.errorBody() != null) {
-            val jObjError = JSONObject(response.errorBody()!!.string())
-            val error = jObjError.getString("error")
-            if (!error.isNullOrEmpty()) {
-                ResultStatus.failure(error)
-            } else {
-                ResultStatus.failure("Request error, response code: ${response.code()}")
+            try {
+                val jObjError = JSONObject(response.errorBody()!!.string())
+                val error = jObjError.getString("error")
+                if (!error.isNullOrEmpty()) {
+                    ResultStatus.failure(error)
+                } else {
+                    ResultStatus.failure("Request error, response code: ${response.code()}")
+                }
+            } catch (e: Exception) {
+                if (response.code() == 403) {
+                    ResultStatus.failure("Request error, Forbidden")
+                } else {
+                    ResultStatus.failure("Request error, response code: ${response.code()}")
+                }
             }
+
         } else {
             ResultStatus.failure("Request error, response code: ${response.code()}")
         }

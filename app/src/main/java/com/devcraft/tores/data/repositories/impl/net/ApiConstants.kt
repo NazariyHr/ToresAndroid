@@ -19,4 +19,7 @@ object ApiConstants {
     const val API_ENDPOINT_GET_RANK_INFO = "api/ranks"
     const val API_ENDPOINT_GET_AFFILIATE_TREE_FIRST_LINE = "api/affiliate/getTree"
     const val API_ENDPOINT_GET_AFFILIATE_TREE_SPECIFIC_LINE = "api/affiliate/getUserTree/{userId}/{line}"
+    const val API_ENDPOINT_CHANGE_PASSWORD = "api/settings/change/password"
+    const val API_ENDPOINT_SET_FINANCE_PASSWORD = "api/settings/change/pp"
+    const val API_ENDPOINT_REMOVE_FINANCE_PASSWORD = "api/settings/reset/pp"
 }

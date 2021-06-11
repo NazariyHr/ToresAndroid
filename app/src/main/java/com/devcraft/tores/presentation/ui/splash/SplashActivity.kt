@@ -2,25 +2,23 @@ package com.devcraft.tores.presentation.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import com.devcraft.tores.BuildConfig
 import com.devcraft.tores.R
+import com.devcraft.tores.presentation.base.BaseActivity
 import com.devcraft.tores.presentation.ui.auth.AuthActivity
 import com.devcraft.tores.presentation.ui.main.MainActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity(R.layout.activity_splash) {
 
-    private val vm: SplashViewModel by viewModel()
+    override val vm: SplashViewModel by viewModel()
 
     @SuppressLint("SetTextI18n")
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+    override fun initViews() {
+        super.initViews()
 
         tvVersion.text = "version ${BuildConfig.VERSION_NAME}"
 
@@ -33,7 +31,6 @@ class SplashActivity : AppCompatActivity() {
                         val i = Intent(this, MainActivity::class.java)
                         startActivity(i)
                     } else {
-                        //val i = Intent(this, MainActivity::class.java)
                         val i = Intent(this, AuthActivity::class.java)
                         startActivity(i)
                     }

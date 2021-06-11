@@ -110,4 +110,8 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
             fragment.javaClass.name
         )
     }
+
+    fun onBackPressed() {
+        requireActivity().onBackPressed()
+    }
 }

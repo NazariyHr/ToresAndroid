@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/offset_x2">
+
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <!-- Main info (login, rank, email) -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvMainInfo"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/tvLogin"
+                                style="@style/Widget.Tores.TextView.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                tools:text="fake login" />
+
+                            <ImageView
+                                android:layout_width="140dp"
+                                android:layout_height="140dp"
+                                android:layout_gravity="center_horizontal"
+                                android:src="@drawable/ic_user_group" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:id="@+id/ivRankBadge"
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    tools:src="@drawable/ic_rank_vip_manager" />
+
+                                <TextView
+                                    android:id="@+id/tvRankTitle"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/ranks_vip_manager" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llNextRank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/next_rank_dots" />
+
+                                <ImageView
+                                    android:id="@+id/ivNextRankBadge"
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    tools:src="@drawable/ic_rank_director" />
+
+                                <TextView
+                                    android:id="@+id/tvNextRankTitle"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/ranks_director" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                tools:text="testmail@gmail.com" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x4"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/registered_at_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvRegisteredAt"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="12.04.2021 11:18" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/last_entrance_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvLastEntrance"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="2.04.2021 11:18" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/ip_dots" />
+
+                                <TextView
+                                    android:id="@+id/tvIp"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="210.23.88.100" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- referral link and register date -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvReferralInfo"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/referral_link" />
+
+                            <LinearLayout
+                                android:id="@+id/llReferralLink"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x2"
+                                android:background="@drawable/bg_round_line"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvReferralLink"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
+                                    android:layout_marginStart="@dimen/offset_x2"
+                                    android:layout_weight="1"
+                                    tools:text="app.toresbusiness.com/r?r=jjpFoGP" />
+
+                                <FrameLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content">
+
+                                    <ImageView
+                                        android:layout_width="@dimen/icon_size_m"
+                                        android:layout_height="@dimen/icon_size_m"
+                                        android:layout_margin="@dimen/offset_x2"
+                                        android:src="@drawable/ic_copy" />
+
+                                </FrameLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Finance password -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvFinancePassword"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/offset_x4">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:text="@string/finance_password" />
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView.Small"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/offset_x"
+                                    android:layout_marginEnd="@dimen/offset_x10"
+                                    android:text="@string/finance_password_description_short" />
+
+                                <TextView
+                                    android:id="@+id/tvFinancePasswordIsSet"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="@dimen/offset_x"
+                                    android:text="@string/password_set"
+                                    android:textColor="@color/colorGreen"
+                                    android:visibility="gone"
+                                    tools:visibility="visible" />
+
+                                <TextView
+                                    android:id="@+id/tvFinancePasswordIsNotSet"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:layout_marginTop="@dimen/offset_x"
+                                    android:text="@string/password_is_not_set"
+                                    android:textColor="@color/text_color"
+                                    android:visibility="gone"
+                                    tools:visibility="visible" />
+                            </LinearLayout>
+
+                            <ImageView
+                                android:layout_width="@dimen/icon_size_m"
+                                android:layout_height="@dimen/icon_size_l"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginEnd="@dimen/offset_x4"
+                                android:src="@drawable/ic_double_arrow_right"
+                                app:tint="@color/colorGrey" />
+
+                        </FrameLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Change password button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnChangePassword"
+                        style="@style/Widget.Tores.Button.Outlined.Wide"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:text="@string/change_login_password"
+                        android:textAllCaps="false"
+                        android:textColor="@color/primary_color"
+                        android:visibility="gone"
+                        app:strokeColor="@color/primary_color"
+                        tools:visibility="visible" />
+
+                    <!-- Logout password -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnLogOut"
+                        style="@style/Widget.Tores.Button.Outlined.Wide"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:text="@string/logout"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_color"
+                        app:strokeColor="@color/text_color" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

@@ -26,7 +26,7 @@ class GetUserResponse(
             val level: Level,
             @SerializedName("ref_code") val refCode: String,
             val currentRank: String,
-            val nextRank: String,
+            val nextRank: String?,
             @SerializedName("registered_at") val registeredAt: String,
             @SerializedName("last_entrance") val lastEntrance: String,
             val ip: String,

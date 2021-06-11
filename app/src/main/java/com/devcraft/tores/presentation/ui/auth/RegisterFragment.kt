@@ -20,7 +20,7 @@ class RegisterFragment : BaseFragment(R.layout.fragment_register) {
         }
 
         btnDoRegister.setSafeOnClickListener {
-            showToast("В разработке")
+            showToast(getString(R.string.in_development))
         }
     }
 

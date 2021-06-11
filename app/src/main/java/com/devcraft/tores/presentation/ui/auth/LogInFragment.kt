@@ -45,7 +45,7 @@ class LogInFragment : BaseFragment(R.layout.fragment_login) {
                 mapOf(
                     tietLogin to tilLogin,
                     tietPassword to tilPassword
-                ), "Заполните поле"
+                ), getString(R.string.fill_the_field)
             )
             if (allDataIsNotEntered) {
                 return@setSafeOnClickListener
@@ -92,8 +92,10 @@ class LogInFragment : BaseFragment(R.layout.fragment_login) {
             progress_overlay.setVisible(it)
         })
         vm.onLoginSuccess.observe(viewLifecycleOwner, {
-            showToast(it)
-            openActivity(MainActivity::class.java, true)
+            if (it) {
+                showToast(getString(R.string.successfully_authorized))
+                openActivity(MainActivity::class.java, true)
+            }
         })
         vm.onLoginFailure.observe(viewLifecycleOwner, {
             showToast(it.message.orEmpty())

@@ -7,7 +7,9 @@ import com.devcraft.tores.presentation.base.BaseActivity
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
 import com.devcraft.tores.presentation.ui.main.more.MoreFragment
+import com.devcraft.tores.presentation.ui.main.profile.ProfileFragment
 import com.devcraft.tores.utils.extensions.setGone
+import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import com.devcraft.tores.utils.extensions.setVisible
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -69,6 +71,15 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
     override fun initListeners() {
         flBack.setOnClickListener {
             onBackPressed()
+        }
+        flProfile.setSafeOnClickListener {
+            var profileAlreadyOpened = false
+            supportFragmentManager.fragments.forEach {
+                if (it is ProfileFragment) profileAlreadyOpened = true
+            }
+            if (!profileAlreadyOpened) {
+                openFragment(R.id.container, ProfileFragment())
+            }
         }
         bottom_navigation.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {

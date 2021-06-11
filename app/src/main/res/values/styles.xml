@@ -99,6 +99,11 @@
         <item name="strokeColor">@color/colorRedLither</item>
     </style>
 
+    <style name="Widget.Tores.Button.Outlined.Wide" parent="Widget.Tores.Button.Outlined">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
     <!-- Text Inputs -->
     <style name="Widget.Tores.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundColor">@color/white</item>

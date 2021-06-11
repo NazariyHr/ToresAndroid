@@ -12,4 +12,14 @@ interface UserRepository {
     ): ResultStatus
 
     suspend fun getUser(): ResultWithStatus<User>
+
+    suspend fun changePassword(
+        oldPass: String,
+        newPass: String,
+        newPassConfirm: String
+    ): ResultWithStatus<String>
+
+    suspend fun setFinancePassword(pass: String, passConfirm: String): ResultStatus
+
+    suspend fun removeFinancePassword(): ResultStatus
 }
