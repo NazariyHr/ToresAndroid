@@ -187,4 +187,30 @@
     <string name="remove_finance_password">Отключить пароль</string>
     <string name="set_finance_password">Задать финансовый пароль</string>
     <string name="password_confirm">Повторите пароль</string>
+    <string name="daily_income">Ежедневный доход с майнинга</string>
+    <string name="add_in_mining">Добавить в майнинг</string>
+    <string name="withdraw_from_mining">Изъять из майнинга</string>
+    <string name="mining_history">История майнинга</string>
+    <string name="available_balance_for_mining">Доступный баланс для майнинга</string>
+    <string name="add_in_mining_description">Добавляя дополнительные токены тор в майнинг - общий баланс токенов в майнинге плюсуется и через сутки начинает приносить доход в 1% от имеющейся суммы.
+    \n\nВсю информацию о поступающем доходе вы можете найти в разделе финансы.
+    \n\nМинимальная возможная сумма отправления 40 TORES.</string>
+    <string name="tores">TORES</string>
+    <string name="add">Добавить</string>
+    <string name="tores_in_day_after_add">TORES в сутки</string>
+    <string name="tores_in_year_after_add">TORES в год</string>
+    <string name="balance_title_with_tores">%1$s (%2$s TORES)</string>
+    <string name="main_balance">Основной баланс</string>
+    <string name="rank_balance">Ранговый баланс</string>
+    <string name="amount_tores_in_mining">Количество токенов в майнинге</string>
+    <string name="sum_to_withdraw">Сумма изъятия</string>
+    <string name="amount_after_withdraw">После изъятия в майнинге останется</string>
+    <string name="mining_profit_after_withdraw">Доход с майнинга после изъятия</string>
+    <string name="withdraw">Изъять</string>
+    <string name="withdrawal_from_mining">Изъятие из майнинга</string>
+    <string name="adding_in_mining">Добавление в майнинг</string>
+    <string name="daily_income_info_popup">Средства отправленные в майнинг будут приносить Вам постоянный доход 1% в сутки.</string>
+    <string name="total_in_mining_info_popup">Добавляя дополнительные токены тор в майнинг - общий баланс токенов в майнинге плюсуется и через сутки начинает приносить доход в 1% от имеющейся суммы.</string>
+    <string name="successfully_added_to_mining">Торы успешно добавлены в майнинг</string>
+    <string name="successfully_withdraw_from_mining">Заявка на иъятие с майнинга успешно создана.</string>
 </resources>

@@ -3,14 +3,34 @@ package com.devcraft.tores.presentation.base
 import android.content.Intent
 import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
+import android.view.Window
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.devcraft.tores.R
+
 
 abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
 
     protected abstract val vm: BaseViewModel
+
+    private var keyboardListenersAttached = false
+    private var rootLayout: ViewGroup? = null
+
+    private val keyboardLayoutListener = OnGlobalLayoutListener {
+        val heightDiff = rootLayout!!.rootView.height - rootLayout!!.height
+        val contentViewTop = window.findViewById<View>(Window.ID_ANDROID_CONTENT).height
+        if (heightDiff <= contentViewTop) {
+            onHideKeyboard()
+        } else {
+            onShowKeyboard()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +39,13 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         initViews()
         initListeners()
         initObservers()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (keyboardListenersAttached) {
+            rootLayout!!.viewTreeObserver.removeGlobalOnLayoutListener(keyboardLayoutListener)
+        }
     }
 
     open fun initViews() {}
@@ -44,8 +71,31 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
 
     open fun hideMainTopBar() {}
 
+    protected open fun onShowKeyboard() {}
+
+    protected open fun onHideKeyboard() {}
+
+    fun attachKeyboardListener() {
+        if (keyboardListenersAttached) {
+            return
+        }
+        rootLayout = findViewById<View>(R.id.rootActivityLayout) as ViewGroup
+        rootLayout!!.viewTreeObserver.addOnGlobalLayoutListener(keyboardLayoutListener)
+        keyboardListenersAttached = true
+    }
+
+    fun detachKeyboardListener(){
+        if (keyboardListenersAttached) {
+            rootLayout!!.viewTreeObserver.removeGlobalOnLayoutListener(keyboardLayoutListener)
+        }
+    }
+
     //return true if handled
-    open fun handleOpenFragment(container: Int, fragment: Fragment, addToBackStack: Boolean = true): Boolean {
+    open fun handleOpenFragment(
+        container: Int,
+        fragment: Fragment,
+        addToBackStack: Boolean = true
+    ): Boolean {
         return false
     }
 

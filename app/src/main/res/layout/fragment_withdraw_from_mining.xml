@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <!-- Withdraw from mining -->
+                    <LinearLayout
+                        android:id="@+id/llWithdrawFromMining"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/offset_x4"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <TextView
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x2"
+                            android:text="@string/amount_tores_in_mining" />
+
+                        <TextView
+                            android:id="@+id/tvAmountToresInMining"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x"
+                            android:textStyle="bold"
+                            tools:text="0.00 TORES" />
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x3">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/tilToresToWithdraw"
+                                style="@style/Widget.Tores.TextInputLayout.OutlinedBox"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/tietToresToWithdraw"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:hint="@string/sum_to_withdraw"
+                                    android:inputType="numberDecimal" />
+
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <FrameLayout
+                                android:id="@+id/flToresToWithdrawMax"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end|center_vertical"
+                                android:layout_marginTop="2dp"
+                                android:paddingHorizontal="@dimen/offset_x3"
+                                android:paddingVertical="@dimen/offset_x2">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:text="max"
+                                    android:textAllCaps="true"
+                                    android:textColor="@color/colorBlue"
+                                    tools:ignore="HardcodedText" />
+                            </FrameLayout>
+                        </FrameLayout>
+
+                        <TextView
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x3"
+                            android:text="@string/amount_after_withdraw" />
+
+                        <TextView
+                            android:id="@+id/tvToresAfterWithdraw"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x"
+                            android:textColor="@color/colorRedLither"
+                            tools:text="0.00 TORES" />
+
+                        <LinearLayout
+                            android:id="@+id/llToresIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            tools:visibility="visible">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Bold"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginTop="@dimen/offset_x3"
+                                android:text="@string/mining_profit_after_withdraw" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x2"
+                                android:orientation="horizontal">
+
+                                <!-- Tores in day after withdraw -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/Widget.Tores.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/tores_in_day_after_add" />
+
+                                    <TextView
+                                        android:id="@+id/tvToresInDayAfterWithdraw"
+                                        style="@style/Widget.Tores.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/offset_x"
+                                        android:textColor="@color/dark_primary_color"
+                                        tools:text="0.00 TORES" />
+                                </LinearLayout>
+
+                                <!-- Tores in year after withdraw -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        style="@style/Widget.Tores.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/tores_in_year_after_add" />
+
+                                    <TextView
+                                        android:id="@+id/tvToresInYearAfterWithdraw"
+                                        style="@style/Widget.Tores.TextView"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/offset_x"
+                                        android:textColor="@color/primary_color"
+                                        tools:text="0.00 TORES" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnWithdrawFromMining"
+                            style="@style/Widget.Tores.Button.Wide.Small"
+                            android:layout_marginTop="@dimen/offset_x3"
+                            android:text="@string/withdraw"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

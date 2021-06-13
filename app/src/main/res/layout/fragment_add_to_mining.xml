@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/nsv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <!-- Add to mining -->
+                    <LinearLayout
+                        android:id="@+id/llAddToMining"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/offset_x4"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <TextView
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x2"
+                            android:text="@string/available_balance_for_mining" />
+
+                        <TextView
+                            android:id="@+id/tvAvailableBalanceForMining"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x"
+                            android:textStyle="bold"
+                            tools:text="0.00 TORES" />
+
+                        <TextView
+                            style="@style/Widget.Tores.TextView.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x2"
+                            android:text="@string/add_in_mining_description" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilBalance"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x4"
+                            app:boxBackgroundColor="@color/white">
+
+                            <AutoCompleteTextView
+                                android:id="@+id/actvBalance"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="none" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/tilToresToAdd"
+                            style="@style/Widget.Tores.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/tietToresToAdd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/tores"
+                                android:inputType="numberDecimal" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llToresIn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x2"
+                            android:orientation="horizontal"
+                            android:visibility="gone"
+                            tools:visibility="visible">
+
+                            <!-- Tores in day -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tores_in_day_after_add" />
+
+                                <TextView
+                                    android:id="@+id/tvToresInDayAfterAdd"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/offset_x"
+                                    tools:text="0.00 TORES" />
+                            </LinearLayout>
+
+                            <!-- Tores in year -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tores_in_year_after_add" />
+
+                                <TextView
+                                    android:id="@+id/tvToresInYearAfterAdd"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/offset_x"
+                                    tools:text="0.00 TORES" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAddToMining"
+                            style="@style/Widget.Tores.Button.Wide.Small"
+                            android:layout_marginTop="@dimen/offset_x3"
+                            android:text="@string/add"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

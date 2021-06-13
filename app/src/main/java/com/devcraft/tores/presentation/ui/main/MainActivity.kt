@@ -6,6 +6,7 @@ import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseActivity
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
+import com.devcraft.tores.presentation.ui.main.mining.MiningFragment
 import com.devcraft.tores.presentation.ui.main.more.MoreFragment
 import com.devcraft.tores.presentation.ui.main.profile.ProfileFragment
 import com.devcraft.tores.utils.extensions.setGone
@@ -53,6 +54,14 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         openFragment(R.id.container, DashBoardFragment(), false)
     }
 
+    override fun onShowKeyboard() {
+        hideBottomBar()
+    }
+
+    override fun onHideKeyboard() {
+        showBottomBar()
+    }
+
     override fun handleOpenFragment(
         container: Int,
         fragment: Fragment,
@@ -92,6 +101,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 R.id.finances -> {
                     if (!item.isChecked) {
                         openFragment(R.id.container, FinancesFragment())
+                    }
+                    true
+                }
+                R.id.mining -> {
+                    if (!item.isChecked) {
+                        openFragment(R.id.container, MiningFragment())
                     }
                     true
                 }

@@ -72,18 +72,21 @@
                                 android:gravity="start"
                                 android:text="@string/mine"
                                 android:textAllCaps="false"
-                                app:icon="@drawable/for_btn_ic_arrow_right" />
+                                app:icon="@drawable/ic_arrow_right"
+                                app:iconSize="@dimen/icon_size_s"/>
 
                             <com.google.android.material.button.MaterialButton
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/send_tokens"
-                                app:icon="@drawable/for_btn_ic_transfer" />
+                                app:icon="@drawable/ic_transfer"
+                                app:iconSize="@dimen/icon_size_s"/>
 
                             <com.google.android.material.button.MaterialButton
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/buy_tokens"
                                 android:textColor="@color/colorGreen"
-                                app:icon="@drawable/for_btn_ic_coins"
+                                app:icon="@drawable/ic_coins"
+                                app:iconSize="@dimen/icon_size_s"
                                 app:iconTint="@color/colorGreen"
                                 app:strokeColor="@color/colorGreen" />
 
@@ -91,7 +94,8 @@
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/sell_tokens"
                                 android:textColor="@color/colorRed"
-                                app:icon="@drawable/for_btn_ic_arrow_down"
+                                app:icon="@drawable/ic_arrow_down"
+                                app:iconSize="@dimen/icon_size_s"
                                 app:iconTint="@color/colorRed"
                                 app:strokeColor="@color/colorRed" />
 
@@ -139,7 +143,8 @@
                                 android:id="@+id/btnBonusBalanceDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/details"
-                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
+                                app:icon="@drawable/ic_long_arrow_right"
+                                app:iconSize="@dimen/icon_size_s" />
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -185,7 +190,8 @@
                                 android:id="@+id/btnIncomeForAllTimeDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/detailed"
-                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
+                                app:icon="@drawable/ic_long_arrow_right"
+                                app:iconSize="@dimen/icon_size_s" />
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>
@@ -278,7 +284,8 @@
                                 android:id="@+id/btnRewardsDetails"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/detailed"
-                                app:icon="@drawable/for_btn_ic_long_arrow_right" />
+                                app:icon="@drawable/ic_long_arrow_right"
+                                app:iconSize="@dimen/icon_size_s" />
 
                         </LinearLayout>
                     </com.google.android.material.card.MaterialCardView>

@@ -1,9 +1,11 @@
 package com.devcraft.tores.presentation.base
 
+import android.app.Activity
 import android.content.Intent
 import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.fragment.app.DialogFragment
@@ -60,6 +62,14 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         getBaseActivity()?.hideBackButton()
     }
 
+    protected fun attachKeyboardListener(){
+        getBaseActivity()?.attachKeyboardListener()
+    }
+
+    protected fun detachKeyboardListener(){
+        getBaseActivity()?.detachKeyboardListener()
+    }
+
     fun showToast(txt: String, short: Boolean = true) {
         if (context != null) {
             Toast.makeText(context, txt, if (short) Toast.LENGTH_SHORT else Toast.LENGTH_LONG)
@@ -113,5 +123,17 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
     fun onBackPressed() {
         requireActivity().onBackPressed()
+    }
+
+    fun hideKeyboard() {
+        val imm =
+            requireActivity().getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = requireActivity().currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

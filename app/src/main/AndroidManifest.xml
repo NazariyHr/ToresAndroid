@@ -22,8 +22,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.ui.auth.AuthActivity" />
-        <activity android:name=".presentation.ui.main.MainActivity" />
+        <activity
+            android:name=".presentation.ui.auth.AuthActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".presentation.ui.main.MainActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
 
     </application>
 
