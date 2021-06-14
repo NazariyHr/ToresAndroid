@@ -233,7 +233,7 @@ class FinancesRepositoryImpl(
         return enqueueCallOnlyStatusSuspended(
             financesApi.topup(
                 tokenRepository.getToken().bearerToken,
-                TopupRequest(amount, currency.name.toLowerCase(Locale.US))
+                TopupRequest(amount, currency.getShortTitle())
             )
         )
     }
@@ -246,7 +246,7 @@ class FinancesRepositoryImpl(
         return enqueueCallOnlyStatusSuspended(
             financesApi.withdraw(
                 tokenRepository.getToken().bearerToken,
-                WithdrawRequest(amount, currency.name.toLowerCase(Locale.US), wallet)
+                WithdrawRequest(amount, currency.getShortTitle(), wallet)
             )
         )
     }

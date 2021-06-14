@@ -39,6 +39,7 @@ class WithdrawToresFragment : BaseFragment(R.layout.fragment_withdraw_tores) {
         super.onDetach()
         hideKeyboard()
         detachKeyboardListener()
+        getBaseActivity()?.showBottomBar()
     }
 
     @SuppressLint("SetTextI18n")

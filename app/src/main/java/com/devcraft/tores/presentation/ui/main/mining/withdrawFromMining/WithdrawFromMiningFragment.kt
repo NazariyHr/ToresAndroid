@@ -32,6 +32,7 @@ class WithdrawFromMiningFragment : BaseFragment(R.layout.fragment_withdraw_from_
         super.onDetach()
         hideKeyboard()
         detachKeyboardListener()
+        getBaseActivity()?.showBottomBar()
     }
 
     @SuppressLint("SetTextI18n")

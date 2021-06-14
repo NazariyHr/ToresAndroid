@@ -38,6 +38,7 @@ class TransferToFragment : BaseFragment(R.layout.fragment_transfer_to) {
         super.onDetach()
         hideKeyboard()
         detachKeyboardListener()
+        getBaseActivity()?.showBottomBar()
     }
 
     @SuppressLint("SetTextI18n")

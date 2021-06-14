@@ -34,6 +34,7 @@ class AddToMiningFragment : BaseFragment(R.layout.fragment_add_to_mining) {
         super.onDetach()
         hideKeyboard()
         detachKeyboardListener()
+        getBaseActivity()?.showBottomBar()
     }
 
     override fun initListeners() {

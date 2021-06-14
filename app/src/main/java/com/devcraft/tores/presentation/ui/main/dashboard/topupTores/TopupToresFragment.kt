@@ -38,6 +38,7 @@ class TopupToresFragment : BaseFragment(R.layout.fragment_topup_tores) {
         super.onDetach()
         hideKeyboard()
         detachKeyboardListener()
+        getBaseActivity()?.showBottomBar()
     }
 
     override fun initListeners() {
