@@ -72,6 +72,11 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
             val item: MenuItem = bottom_navigation.menu.findItem(R.id.finances)
             item.isChecked = true
             true
+        } else if (fragment is MiningFragment) {
+            openFragment(container, fragment, addToBackStack)
+            val item: MenuItem = bottom_navigation.menu.findItem(R.id.mining)
+            item.isChecked = true
+            true
         } else {
             super.handleOpenFragment(container, fragment, addToBackStack)
         }

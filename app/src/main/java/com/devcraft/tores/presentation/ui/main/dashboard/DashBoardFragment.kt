@@ -6,8 +6,12 @@ import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
+import com.devcraft.tores.presentation.ui.main.dashboard.topupTores.TopupToresFragment
+import com.devcraft.tores.presentation.ui.main.dashboard.transferTo.TransferToFragment
+import com.devcraft.tores.presentation.ui.main.dashboard.withdrawTores.WithdrawToresFragment
 import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
 import com.devcraft.tores.presentation.ui.main.finances.TabList
+import com.devcraft.tores.presentation.ui.main.mining.MiningFragment
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import com.devcraft.tores.utils.extensions.setVisible
@@ -44,6 +48,24 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
         swipeRefresh.setOnRefreshListener {
             vm.refreshData()
         }
+        btnMine.setSafeOnClickListener {
+            openFragment(R.id.container, MiningFragment())
+        }
+        btnTransferTores.setSafeOnClickListener {
+            openFragment(R.id.container, TransferToFragment())
+        }
+        btnBuyTores.setSafeOnClickListener {
+            openFragment(R.id.container, TopupToresFragment())
+        }
+        btnSellTores.setSafeOnClickListener {
+            openFragment(R.id.container, WithdrawToresFragment())
+        }
+        btnBonusBalanceDetails.setSafeOnClickListener {
+            openFragment(R.id.container, FinancesFragment())
+        }
+        btnIncomeForAllTimeDetails.setSafeOnClickListener {
+            openFragment(R.id.container, FinancesFragment())
+        }
         btnByPartners.setOnClickListener {
             btnByPartners.background = selectedDrawable
             btnByPartners.setTextColor(requireContext().resources.getColor(R.color.black))
@@ -59,12 +81,6 @@ class DashBoardFragment : BaseFragment(R.layout.fragment_dashboard) {
             btnByPartners.setTextColor(requireContext().resources.getColor(R.color.white))
             tvRewardsRanks.setVisible()
             tvRewardsPartners.setGone()
-        }
-        btnBonusBalanceDetails.setSafeOnClickListener {
-            openFragment(R.id.container, FinancesFragment())
-        }
-        btnIncomeForAllTimeDetails.setSafeOnClickListener {
-            openFragment(R.id.container, FinancesFragment())
         }
         btnRewardsDetails.setSafeOnClickListener {
             val args = Bundle()

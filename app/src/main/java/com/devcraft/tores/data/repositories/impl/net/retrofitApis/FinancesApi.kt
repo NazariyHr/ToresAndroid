@@ -64,4 +64,48 @@ interface FinancesApi {
         @Header("Authorization") token: String,
         @Body request: SubmitTacRequest
     ): Call<NetworkBaseResponse>
+
+    @GET(ApiConstants.API_ENDPOINT_GET_CURRENCY_RATES)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun getCurrencyRates(
+        @Header("Authorization") token: String
+    ): Call<GetCurrencyRatesResponse>
+
+    @POST(ApiConstants.API_ENDPOINT_TOPUP)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun topup(
+        @Header("Authorization") token: String,
+        @Body request: TopupRequest
+    ): Call<NetworkBaseResponse>
+
+    @POST(ApiConstants.API_ENDPOINT_WITHDRAW)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun withdraw(
+        @Header("Authorization") token: String,
+        @Body request: WithdrawRequest
+    ): Call<NetworkBaseResponse>
+
+    @POST(ApiConstants.API_ENDPOINT_TRANSFER_TO_USER)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun transferToUser(
+        @Header("Authorization") token: String,
+        @Body request: TransferToUserRequest
+    ): Call<NetworkBaseResponse>
+
+    @POST(ApiConstants.API_ENDPOINT_TRANSFER_TO_EXCHANGE)
+    @Headers(
+        "Content-Type: application/json"
+    )
+    fun transferToExchange(
+        @Header("Authorization") token: String,
+        @Body request: TransferToExchangeRequest
+    ): Call<NetworkBaseResponse>
 }

@@ -67,6 +67,7 @@
                                 tools:text="0.00 TORES" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnMine"
                                 style="@style/Widget.Tores.Button.Wide.Small"
                                 android:layout_marginTop="@dimen/offset_x2"
                                 android:gravity="start"
@@ -76,12 +77,14 @@
                                 app:iconSize="@dimen/icon_size_s"/>
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnTransferTores"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/send_tokens"
                                 app:icon="@drawable/ic_transfer"
                                 app:iconSize="@dimen/icon_size_s"/>
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnBuyTores"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/buy_tokens"
                                 android:textColor="@color/colorGreen"
@@ -91,6 +94,7 @@
                                 app:strokeColor="@color/colorGreen" />
 
                             <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSellTores"
                                 style="@style/Widget.Tores.Button.Wide.Small.Bordered"
                                 android:text="@string/sell_tokens"
                                 android:textColor="@color/colorRed"

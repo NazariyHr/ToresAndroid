@@ -10,9 +10,11 @@ import com.devcraft.tores.data.repositories.impl.net.impl.base.BaseNetRepository
 import com.devcraft.tores.data.repositories.impl.net.mappers.*
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.FinancesApi
 import com.devcraft.tores.entities.*
+import com.devcraft.tores.entities.Currency
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -23,7 +25,8 @@ class FinancesRepositoryImpl(
     private val getMiningHistoryMapper: GetMiningHistoryMapper,
     private val getTransfersHistoryMapper: GetTransfersHistoryMapper,
     private val getReferralProfitsHistoryMapper: GetReferralProfitsHistoryMapper,
-    private val getFinanceAllInfoToRankProfitsHistoryMapper: GetFinanceAllInfoToRankProfitsHistoryMapper
+    private val getFinanceAllInfoToRankProfitsHistoryMapper: GetFinanceAllInfoToRankProfitsHistoryMapper,
+    private val getCurrencyRatesMapper: GetCurrencyRatesMapper
 ) : BaseNetRepository(), FinancesRepository {
     override suspend fun getTopupsAndWithdrawalsData(): ResultWithStatus<TopupsAndWithdrawalsData> {
         return suspendCoroutine { continuation ->
@@ -217,5 +220,56 @@ class FinancesRepositoryImpl(
                     }
                 })
         }
+    }
+
+    override suspend fun getCurrencyRates(): ResultWithStatus<CurrencyRatesInfo> {
+        return enqueueCallResultWithStatusSuspended(
+            financesApi.getCurrencyRates(tokenRepository.getToken().bearerToken),
+            getCurrencyRatesMapper
+        )
+    }
+
+    override suspend fun topup(amount: Double, currency: Currency): ResultStatus {
+        return enqueueCallOnlyStatusSuspended(
+            financesApi.topup(
+                tokenRepository.getToken().bearerToken,
+                TopupRequest(amount, currency.name.toLowerCase(Locale.US))
+            )
+        )
+    }
+
+    override suspend fun withdraw(
+        amount: Double,
+        currency: Currency,
+        wallet: String
+    ): ResultStatus {
+        return enqueueCallOnlyStatusSuspended(
+            financesApi.withdraw(
+                tokenRepository.getToken().bearerToken,
+                WithdrawRequest(amount, currency.name.toLowerCase(Locale.US), wallet)
+            )
+        )
+    }
+
+    override suspend fun transferToUser(
+        amount: Double,
+        login: String,
+        balanceType: BalanceType
+    ): ResultStatus {
+        return enqueueCallOnlyStatusSuspended(
+            financesApi.transferToUser(
+                tokenRepository.getToken().bearerToken,
+                TransferToUserRequest(amount, login, balanceType.name.toLowerCase(Locale.US))
+            )
+        )
+    }
+
+    override suspend fun transferToExchange(amount: Double, wallet: String): ResultStatus {
+        return enqueueCallOnlyStatusSuspended(
+            financesApi.transferToExchange(
+                tokenRepository.getToken().bearerToken,
+                TransferToExchangeRequest(amount, wallet)
+            )
+        )
     }
 }

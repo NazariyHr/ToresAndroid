@@ -33,7 +33,11 @@ open class BaseNetRepository {
                         ResultStatus.failure(e)
                     }
                 } else {
-                    ResultStatus.failure(it.error.orEmpty())
+                    if (!it.error.isNullOrEmpty()) {
+                        ResultStatus.failure(it.error.orEmpty())
+                    } else {
+                        ResultStatus.failure("Request error, response code: ${response.code()}")
+                    }
                 }
             }
         } else {
@@ -74,7 +78,11 @@ open class BaseNetRepository {
                 return if (it.success) {
                     ResultStatus.success()
                 } else {
-                    ResultStatus.failure(it.error.orEmpty())
+                    if (!it.error.isNullOrEmpty()) {
+                        ResultStatus.failure(it.error.orEmpty())
+                    } else {
+                        ResultStatus.failure("Request error, response code: ${response.code()}")
+                    }
                 }
             }
         } else {

@@ -1,4 +1,4 @@
-package com.devcraft.tores.presentation.ui.main.mining.addToMining.balanceAdapter
+package com.devcraft.tores.presentation.common.adapter.balanceAdapter
 
 import com.devcraft.tores.R
 import com.devcraft.tores.app.App

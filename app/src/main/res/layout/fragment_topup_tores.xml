@@ -38,9 +38,8 @@
                         android:visibility="gone"
                         tools:visibility="visible" />
 
-                    <!-- Add to mining -->
                     <LinearLayout
-                        android:id="@+id/llAddToMining"
+                        android:id="@+id/llContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/offset_x4"
@@ -52,27 +51,20 @@
                             style="@style/Widget.Tores.TextView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x2"
-                            android:text="@string/available_balance_for_mining" />
-
-                        <TextView
-                            android:id="@+id/tvAvailableBalanceForMining"
-                            style="@style/Widget.Tores.TextView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x"
-                            android:textStyle="bold"
-                            tools:text="0.00 TORES" />
+                            android:layout_marginTop="@dimen/offset_x4"
+                            android:text="@string/do_topup_description_title"
+                            android:textColor="@color/colorRed" />
 
                         <TextView
                             style="@style/Widget.Tores.TextView.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/offset_x2"
-                            android:text="@string/add_in_mining_description" />
+                            android:text="@string/do_topup_description_subtitle" />
 
+                        <!-- currency -->
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilBalance"
+                            android:id="@+id/tilCurrency"
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -80,90 +72,60 @@
                             app:boxBackgroundColor="@color/white">
 
                             <AutoCompleteTextView
-                                android:id="@+id/actvBalance"
+                                android:id="@+id/actvCurrency"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="none" />
 
                         </com.google.android.material.textfield.TextInputLayout>
 
+                        <!-- topup sum -->
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilToresToAdd"
+                            android:id="@+id/tilTopupSum"
                             style="@style/Widget.Tores.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/offset_x">
+                            android:layout_marginTop="@dimen/offset_x3">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/tietToresToAdd"
+                                android:id="@+id/tietTopupSum"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:hint="@string/tores"
+                                android:hint="@string/enter_the_sum_in_tores"
                                 android:inputType="numberDecimal" />
+
                         </com.google.android.material.textfield.TextInputLayout>
 
-                        <LinearLayout
-                            android:id="@+id/llToresIn"
-                            android:layout_width="match_parent"
+                        <!-- sum in currency -->
+                        <TextView
+                            android:id="@+id/tvSumToPayTitle"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/offset_x2"
-                            android:orientation="horizontal"
+                            android:text="@string/sum_to_pay_in_currency"
                             android:visibility="gone"
-                            tools:visibility="visible">
+                            tools:visibility="visible" />
 
-                            <!-- Tores in day -->
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Widget.Tores.TextView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/tores_in_day_after_add" />
-
-                                <TextView
-                                    android:id="@+id/tvToresInDayAfterAdd"
-                                    style="@style/Widget.Tores.TextView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/offset_x"
-                                    tools:text="0.00 TORES" />
-                            </LinearLayout>
-
-                            <!-- Tores in year -->
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Widget.Tores.TextView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/tores_in_year_after_add" />
-
-                                <TextView
-                                    android:id="@+id/tvToresInYearAfterAdd"
-                                    style="@style/Widget.Tores.TextView"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="@dimen/offset_x"
-                                    tools:text="0.00 TORES" />
-                            </LinearLayout>
-                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvSumToPay"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/offset_x"
+                            android:textStyle="bold"
+                            android:visibility="gone"
+                            tools:text="43 TRX"
+                            tools:visibility="visible" />
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnAddToMining"
+                            android:id="@+id/btnTopup"
                             style="@style/Widget.Tores.Button.Wide.Small"
                             android:layout_marginTop="@dimen/offset_x3"
                             android:enabled="false"
-                            android:text="@string/add"
-                            tools:enabled="true"
-                            android:textAllCaps="false" />
+                            android:text="@string/do_topup"
+                            android:textAllCaps="false"
+                            tools:enabled="true" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>

@@ -2,6 +2,8 @@ package com.devcraft.tores.presentation.ui.main.mining.withdrawFromMining
 
 import android.annotation.SuppressLint
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import com.devcraft.tores.R
 import com.devcraft.tores.presentation.base.BaseFragment
@@ -11,10 +13,12 @@ import com.devcraft.tores.utils.inputFilters.InputFilterMinMaxDec
 import kotlinx.android.synthetic.main.fragment_withdraw_from_mining.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class WithdrawFromMiningFragment : BaseFragment(R.layout.fragment_withdraw_from_mining) {
 
-    override val vm: WithdrawFromMiningViewModel by sharedViewModel()
+    override val vm: WithdrawFromMiningViewModel by viewModel()
     private val vmMining: MiningViewModel by sharedViewModel()
 
     override fun initViews() {
@@ -65,7 +69,28 @@ class WithdrawFromMiningFragment : BaseFragment(R.layout.fragment_withdraw_from_
             }
         }
         btnWithdrawFromMining.setSafeOnClickListener {
-            vm.withdrawFromMining(tietToresToWithdraw.doubleValue())
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setMessage(
+                getString(
+                    R.string.are_you_sure_to_withdraw_tores,
+                    tietToresToWithdraw.doubleValue()
+                )
+            )
+                .setCancelable(true)
+                .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                    vm.withdrawFromMining(tietToresToWithdraw.doubleValue())
+                }
+                .setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                    dialog.dismiss()
+                }
+            val d = builder.create()
+            d.setOnShowListener {
+                d.getButton(AlertDialog.BUTTON_POSITIVE)
+                    .setTextColor(ContextCompat.getColor(requireContext(), R.color.colorGreen))
+                d.getButton(AlertDialog.BUTTON_NEGATIVE)
+                    .setTextColor(ContextCompat.getColor(requireContext(), R.color.colorRed))
+            }
+            d.show()
         }
     }
 

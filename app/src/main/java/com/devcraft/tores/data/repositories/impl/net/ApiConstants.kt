@@ -18,7 +18,8 @@ object ApiConstants {
     const val API_ENDPOINT_GET_AFFILIATE = "api/affiliate"
     const val API_ENDPOINT_GET_RANK_INFO = "api/ranks"
     const val API_ENDPOINT_GET_AFFILIATE_TREE_FIRST_LINE = "api/affiliate/getTree"
-    const val API_ENDPOINT_GET_AFFILIATE_TREE_SPECIFIC_LINE = "api/affiliate/getUserTree/{userId}/{line}"
+    const val API_ENDPOINT_GET_AFFILIATE_TREE_SPECIFIC_LINE =
+        "api/affiliate/getUserTree/{userId}/{line}"
     const val API_ENDPOINT_CHANGE_PASSWORD = "api/settings/change/password"
     const val API_ENDPOINT_SET_FINANCE_PASSWORD = "api/settings/change/pp"
     const val API_ENDPOINT_REMOVE_FINANCE_PASSWORD = "api/settings/reset/pp"
@@ -26,4 +27,10 @@ object ApiConstants {
     const val API_ENDPOINT_GET_MINING_INFO = "api/mining"
     const val API_ENDPOINT_ADD_TO_MINING = "api/finance/reinvest"
     const val API_ENDPOINT_WITHDRAW_FROM_MINING = "api/finance/withdrawFromDeposit"
+
+    const val API_ENDPOINT_GET_CURRENCY_RATES = "api/getRates"
+    const val API_ENDPOINT_TOPUP = "api/finance/topup"
+    const val API_ENDPOINT_WITHDRAW = "api/finance/withdrawal"
+    const val API_ENDPOINT_TRANSFER_TO_USER = "api/finance/transferToUser"
+    const val API_ENDPOINT_TRANSFER_TO_EXCHANGE = "api/finance/transferToExchange"
 }

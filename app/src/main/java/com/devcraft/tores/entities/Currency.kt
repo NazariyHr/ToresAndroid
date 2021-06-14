@@ -23,12 +23,18 @@ enum class Currency {
                 "ETH" -> ETHEREUM
                 "TRX" -> TRON
                 "usdt" -> TETHER
-                "Payeer" -> PAYEER
-                "Perfectmoney" -> PERFECTMONEY
+                "Payeer", "PYR" -> PAYEER
+                "Perfectmoney", "PM" -> PERFECTMONEY
                 "-" -> NOT_SPECIFIED
                 else -> throw Exception("Error parsing currency, passed currency: $currencyString")
             }
         }
+
+        fun getCurrenciesForTopup(): MutableList<Currency> =
+            mutableListOf(BITCOIN, PERFECTMONEY, ETHEREUM, TRON, LITECOIN)
+
+        fun getCurrenciesForWithdraw(): MutableList<Currency> =
+            mutableListOf(BITCOIN, ETHEREUM, PAYEER, PERFECTMONEY, TETHER, TRON, LITECOIN)
     }
 
     fun getCurrencyDrawable(context: Context): Drawable? {
@@ -41,6 +47,32 @@ enum class Currency {
             PERFECTMONEY -> ContextCompat.getDrawable(context, R.drawable.ic_perfect_money)
             PAYEER -> ContextCompat.getDrawable(context, R.drawable.ic_payeer)
             NOT_SPECIFIED -> null
+        }
+    }
+
+    fun getTitle(): String {
+        return when (this) {
+            BITCOIN -> "Bitcoin"
+            LITECOIN -> "Litecoin"
+            ETHEREUM -> "Ethereum"
+            TRON -> "Tron"
+            TETHER -> "Tether"
+            PERFECTMONEY -> "Perfectmoney"
+            PAYEER -> "Payeer"
+            NOT_SPECIFIED -> ""
+        }
+    }
+
+    fun getShortTitle(): String {
+        return when (this) {
+            BITCOIN -> "BTC"
+            LITECOIN -> "LTC"
+            ETHEREUM -> "ETH"
+            TRON -> "TRX"
+            TETHER -> "USDT"
+            PERFECTMONEY -> "PM"
+            PAYEER -> "PYR"
+            NOT_SPECIFIED -> ""
         }
     }
 }

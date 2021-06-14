@@ -15,6 +15,9 @@ import com.devcraft.tores.presentation.ui.main.MainViewModel
 import com.devcraft.tores.presentation.ui.main.more.affiliate.AffiliateViewModel
 import com.devcraft.tores.presentation.ui.main.more.affiliate.history.AffiliateHistoryViewModel
 import com.devcraft.tores.presentation.ui.main.dashboard.DashBoardViewModel
+import com.devcraft.tores.presentation.ui.main.dashboard.topupTores.TopupToresViewModel
+import com.devcraft.tores.presentation.ui.main.dashboard.transferTo.TransferToViewModel
+import com.devcraft.tores.presentation.ui.main.dashboard.withdrawTores.WithdrawToresViewModel
 import com.devcraft.tores.presentation.ui.main.finances.FinancesViewModel
 import com.devcraft.tores.presentation.ui.main.finances.rankProfits.RankProfitsViewModel
 import com.devcraft.tores.presentation.ui.main.finances.mining.MiningViewModel
@@ -59,6 +62,9 @@ val viewModelModule = module {
     viewModel { com.devcraft.tores.presentation.ui.main.mining.MiningViewModel(get(), get()) }
     viewModel { AddToMiningViewModel(get(), get()) }
     viewModel { WithdrawFromMiningViewModel(get(), get()) }
+    viewModel { TopupToresViewModel(get(), get(), get()) }
+    viewModel { TransferToViewModel(get(), get(), get()) }
+    viewModel { WithdrawToresViewModel(get(), get(), get()) }
 }
 
 val netModule = module {
@@ -165,7 +171,8 @@ val repositoryModule = module {
         getMiningHistoryMapper: GetMiningHistoryMapper,
         getTransfersHistoryMapper: GetTransfersHistoryMapper,
         getReferralProfitsHistoryMapper: GetReferralProfitsHistoryMapper,
-        getFinanceAllInfoToRankProfitsHistoryMapper: GetFinanceAllInfoToRankProfitsHistoryMapper
+        getFinanceAllInfoToRankProfitsHistoryMapper: GetFinanceAllInfoToRankProfitsHistoryMapper,
+        getCurrencyRatesMapper: GetCurrencyRatesMapper
     ): FinancesRepository {
         return FinancesRepositoryImpl(
             financesApi,
@@ -174,7 +181,8 @@ val repositoryModule = module {
             getMiningHistoryMapper,
             getTransfersHistoryMapper,
             getReferralProfitsHistoryMapper,
-            getFinanceAllInfoToRankProfitsHistoryMapper
+            getFinanceAllInfoToRankProfitsHistoryMapper,
+            getCurrencyRatesMapper
         )
     }
 
@@ -216,7 +224,7 @@ val repositoryModule = module {
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get(), get()) }
-    single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
+    single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get(), get()) }
     single { provideAffiliateRepository(get(), get(), get(), get(), get()) }
     single { provideRankRepository(get(), get(), get()) }
     single { provideMiningRepository(get(), get(), get()) }
@@ -279,6 +287,10 @@ val repositoryMappersModule = module {
         return GetMiningInfoMapper()
     }
 
+    fun provideGetCurrencyRatesMapper(): GetCurrencyRatesMapper {
+        return GetCurrencyRatesMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
@@ -293,6 +305,7 @@ val repositoryMappersModule = module {
     factory { provideGetAffiliateTreeSpecificLineMapper() }
     factory { provideChangePasswordResponseMapper() }
     factory { provideGetMiningInfoMapper() }
+    factory { provideGetCurrencyRatesMapper() }
 }
 
 val utilsModules = module {

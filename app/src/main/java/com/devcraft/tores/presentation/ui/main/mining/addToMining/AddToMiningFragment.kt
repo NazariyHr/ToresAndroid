@@ -7,17 +7,18 @@ import com.devcraft.tores.R
 import com.devcraft.tores.entities.BalanceType
 import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.presentation.ui.main.mining.MiningViewModel
-import com.devcraft.tores.presentation.ui.main.mining.addToMining.balanceAdapter.BalanceListAdapter
-import com.devcraft.tores.presentation.ui.main.mining.addToMining.balanceAdapter.DH
+import com.devcraft.tores.presentation.common.adapter.balanceAdapter.BalanceListAdapter
+import com.devcraft.tores.presentation.common.adapter.balanceAdapter.DH
 import com.devcraft.tores.utils.extensions.*
 import com.devcraft.tores.utils.inputFilters.InputFilterMinMaxDec
 import kotlinx.android.synthetic.main.fragment_add_to_mining.*
 import kotlinx.android.synthetic.main.include_progressbar_overlay.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddToMiningFragment : BaseFragment(R.layout.fragment_add_to_mining) {
 
-    override val vm: AddToMiningViewModel by sharedViewModel()
+    override val vm: AddToMiningViewModel by viewModel()
     private val vmMining: MiningViewModel by sharedViewModel()
 
     private lateinit var adapter: BalanceListAdapter
@@ -155,6 +156,10 @@ class AddToMiningFragment : BaseFragment(R.layout.fragment_add_to_mining) {
     private fun onBalanceTypeSelected(dh: DH) {
         tietToresToAdd.filters =
             arrayOf(InputFilterMinMaxDec(0.0, dh.balance.toDouble()))
+
+        if (tietToresToAdd.doubleValue() > dh.balance.toDouble()) {
+            tietToresToAdd.setText(dh.balance)
+        }
         vm.selectedBalanceType = dh.balanceType
     }
 }
