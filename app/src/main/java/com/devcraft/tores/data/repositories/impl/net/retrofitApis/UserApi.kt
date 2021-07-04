@@ -4,44 +4,25 @@ import com.devcraft.tores.data.repositories.impl.net.ApiConstants
 import com.devcraft.tores.data.repositories.impl.net.dto.*
 import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface UserApi {
     @POST(ApiConstants.API_ENDPOINT_LOGIN)
-    @Headers(
-        "Content-Type: application/json"
-    )
     fun login(@Body request: LogInRequest): Call<LogInResponse>
 
     @GET(ApiConstants.API_ENDPOINT_USER)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun getUser(@Header("Authorization") token: String): Call<GetUserResponse>
+    fun getUser(): Call<GetUserResponse>
 
     @POST(ApiConstants.API_ENDPOINT_CHANGE_PASSWORD)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun changePassword(
-        @Header("Authorization") token: String,
-        @Body request: ChangePasswordRequest
-    ): Call<ChangePasswordResponse>
+    fun changePassword(@Body request: ChangePasswordRequest):
+            Call<ChangePasswordResponse>
 
     @POST(ApiConstants.API_ENDPOINT_SET_FINANCE_PASSWORD)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun setFinancePassword(
-        @Header("Authorization") token: String,
-        @Body request: SetFinancePasswordRequest
-    ): Call<NetworkBaseResponse>
+    fun setFinancePassword(@Body request: SetFinancePasswordRequest):
+            Call<NetworkBaseResponse>
 
     @POST(ApiConstants.API_ENDPOINT_REMOVE_FINANCE_PASSWORD)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun removeFinancePassword(
-        @Header("Authorization") token: String
-    ): Call<NetworkBaseResponse>
+    fun removeFinancePassword(): Call<NetworkBaseResponse>
 }

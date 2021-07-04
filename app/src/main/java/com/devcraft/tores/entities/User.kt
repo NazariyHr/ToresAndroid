@@ -9,7 +9,7 @@ data class User(
     val partnerProfit: Double,
     val rankProfit: Double,
     val paymentConfirmationWay: PaymentConfirmationWay,
-    val rankLevel: RankLevel,
+    val rankLevel: RankLevel?,
     val currentRank: Rank,
     val nextRank: Rank?,
     val referralCode: String,

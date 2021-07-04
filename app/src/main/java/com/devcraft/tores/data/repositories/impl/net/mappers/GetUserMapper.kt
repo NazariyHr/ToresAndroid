@@ -19,7 +19,7 @@ class GetUserMapper : BaseRepositoryMapper<GetUserResponse, User>() {
                 partnerProfit = data.me.partnerProfit,
                 rankProfit = data.me.rankProfit,
                 paymentConfirmationWay = PaymentConfirmationWay.parse(data.me.paymentConfirmationWay),
-                rankLevel = RankLevel(data.me.level.level, data.me.level.gotAt),
+                rankLevel = null, //RankLevel(data.me.level.level, data.me.level.gotAt),
                 currentRank = Rank.parseRank(data.me.currentRank),
                 nextRank = if (data.me.nextRank != null) Rank.parseRank(data.me.nextRank) else null,
                 referralCode = data.me.refCode,

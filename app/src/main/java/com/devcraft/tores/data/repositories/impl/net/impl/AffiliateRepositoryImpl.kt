@@ -1,10 +1,8 @@
 package com.devcraft.tores.data.repositories.impl.net.impl
 
 import com.devcraft.tores.data.repositories.contract.AffiliateRepository
-import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
-import com.devcraft.tores.data.repositories.impl.net.dto.GetAffiliateResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.GetAffiliateTreeFirstLineResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.GetAffiliateTreeSpecificLineResponse
 import com.devcraft.tores.data.repositories.impl.net.impl.base.BaseNetRepository
@@ -15,38 +13,21 @@ import com.devcraft.tores.data.repositories.impl.net.retrofitApis.AffiliateApi
 import com.devcraft.tores.entities.AffiliateInfo
 import com.devcraft.tores.entities.AffiliateTreeUser
 import kotlinx.coroutines.delay
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
 class AffiliateRepositoryImpl(
     private val affiliateApi: AffiliateApi,
-    private val tokenRepository: TokenRepository,
     private val getAffiliateMapper: GetAffiliateMapper,
     private val getAffiliateTreeFirstLineMapper: GetAffiliateTreeFirstLineMapper,
     private val getAffiliateTreeSpecificLineMapper: GetAffiliateTreeSpecificLineMapper
 ) : BaseNetRepository(), AffiliateRepository {
 
     override suspend fun getAffiliateInfo(): ResultWithStatus<AffiliateInfo> {
-        return suspendCoroutine { continuation ->
-            affiliateApi
-                .getAffiliate(tokenRepository.getToken().bearerToken)
-                .enqueue(object : Callback<GetAffiliateResponse> {
-                    override fun onResponse(
-                        call: Call<GetAffiliateResponse>,
-                        response: Response<GetAffiliateResponse>
-                    ) {
-                        val result = parseResult(response, getAffiliateMapper)
-                        continuation.resume(result)
-                    }
-
-                    override fun onFailure(call: Call<GetAffiliateResponse>, t: Throwable) {
-                        continuation.resume(ResultWithStatus(null, ResultStatus.failure(t)))
-                    }
-                })
-        }
+        return enqueueCallResultWithStatusSuspended(
+            affiliateApi.getAffiliate(),
+            getAffiliateMapper
+        )
     }
 
     override suspend fun getAffiliateTreeFirstLine(): ResultWithStatus<MutableList<AffiliateTreeUser>> {

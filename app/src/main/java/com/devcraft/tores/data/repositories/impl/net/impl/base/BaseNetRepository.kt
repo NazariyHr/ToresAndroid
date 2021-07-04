@@ -94,7 +94,9 @@ open class BaseNetRepository {
     fun <ResponseType : NetworkBaseResponse, EntityType : Any?> enqueueCallResultWithStatus(
         call: Call<ResponseType>,
         mapper: BaseRepositoryMapper<ResponseType, EntityType>,
-        continuation: Continuation<ResultWithStatus<EntityType>>
+        continuation: Continuation<ResultWithStatus<EntityType>>,
+        throwErrorIfDataIsNull: Boolean = false,
+        errorMsgIfDataIsNull: String? = null
     ) {
         call.enqueue(object : Callback<ResponseType> {
             override fun onResponse(
@@ -102,7 +104,20 @@ open class BaseNetRepository {
                 response: Response<ResponseType>
             ) {
                 val result = parseResult(response, mapper)
-                continuation.resume(result)
+                if (throwErrorIfDataIsNull) {
+                    if (result.data == null) {
+                        continuation.resume(
+                            ResultWithStatus(
+                                null,
+                                ResultStatus.failure(errorMsgIfDataIsNull ?: "Data is null")
+                            )
+                        )
+                    } else {
+                        continuation.resume(result)
+                    }
+                } else {
+                    continuation.resume(result)
+                }
             }
 
             override fun onFailure(
@@ -139,10 +154,12 @@ open class BaseNetRepository {
     suspend fun <ResponseType : NetworkBaseResponse, EntityType : Any?>
             enqueueCallResultWithStatusSuspended(
         call: Call<ResponseType>,
-        mapper: BaseRepositoryMapper<ResponseType, EntityType>
+        mapper: BaseRepositoryMapper<ResponseType, EntityType>,
+        throwErrorIfDataIsNull: Boolean = false,
+        errorMsgIfDataIsNull: String? = null
     ): ResultWithStatus<EntityType> {
         return suspendCoroutine { continuation ->
-            enqueueCallResultWithStatus(call, mapper, continuation)
+            enqueueCallResultWithStatus(call, mapper, continuation, throwErrorIfDataIsNull, errorMsgIfDataIsNull)
         }
     }
 

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/offset_x2"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/llTelegramToresCoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="@dimen/offset_x2">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_m"
+                android:layout_height="@dimen/icon_size_m"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_telegram" />
+
+            <TextView
+                android:id="@+id/tvTelegramMain"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="@dimen/offset_x2"
+                android:text="@string/telegram_tores_coin"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llTelegramToresCoinSupport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="@dimen/offset_x2">
+
+            <ImageView
+                android:layout_width="@dimen/icon_size_m"
+                android:layout_height="@dimen/icon_size_m"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_telegram" />
+
+            <TextView
+                android:id="@+id/tvTelegramSupport"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="@dimen/offset_x2"
+                android:text="@string/telegram_tores_coin_support"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingVertical="@dimen/offset_x2">
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="@dimen/offset_x2"
+                android:text="@string/tores_email"
+                android:textColor="@color/colorBlue" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

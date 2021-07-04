@@ -6,6 +6,8 @@ import android.content.SharedPreferences
 import com.devcraft.tores.data.repositories.contract.*
 import com.devcraft.tores.data.repositories.impl.net.ApiConstants
 import com.devcraft.tores.data.repositories.impl.net.impl.*
+import com.devcraft.tores.data.repositories.impl.net.interceptors.ContentTypeInterceptor
+import com.devcraft.tores.data.repositories.impl.net.interceptors.TokenInterceptor
 import com.devcraft.tores.data.repositories.impl.net.mappers.*
 import com.devcraft.tores.data.repositories.impl.net.retrofitApis.*
 import com.devcraft.tores.data.repositories.impl.prefs.impl.TokenRepositoryPrefsImpl
@@ -68,8 +70,14 @@ val viewModelModule = module {
 }
 
 val netModule = module {
-    fun provideOkHttpClient(): OkHttpClient {
-        return OkHttpClient()
+    fun provideOkHttpClient(
+        tokenInterceptor: TokenInterceptor,
+        contentTypeInterceptor: ContentTypeInterceptor
+    ): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(tokenInterceptor)
+            .addInterceptor(contentTypeInterceptor)
+            .build()
     }
 
     fun provideGsonConverterFactory(): Converter.Factory {
@@ -88,9 +96,19 @@ val netModule = module {
             .build()
     }
 
-    single { provideOkHttpClient() }
+    fun provideTokenInterceptor(tokenRepository: TokenRepository): TokenInterceptor {
+        return TokenInterceptor(tokenRepository)
+    }
+
+    fun provideContentTypeInterceptor(): ContentTypeInterceptor {
+        return ContentTypeInterceptor()
+    }
+
+    single { provideOkHttpClient(get(), get()) }
     single { provideGsonConverterFactory() }
     single { provideRetrofit(get(), get()) }
+    single { provideTokenInterceptor(get()) }
+    single { provideContentTypeInterceptor() }
 }
 
 val preferencesModule = module {
@@ -157,16 +175,14 @@ val repositoryModule = module {
 
     fun provideDashboardRepository(
         dashBoardApi: DashBoardApi,
-        tokenRepository: TokenRepository,
         getDashboardMapper: GetDashboardMapper
 
     ): DashboardRepository {
-        return DashboardRepositoryImpl(dashBoardApi, tokenRepository, getDashboardMapper)
+        return DashboardRepositoryImpl(dashBoardApi, getDashboardMapper)
     }
 
     fun provideFinancesRepository(
         financesApi: FinancesApi,
-        tokenRepository: TokenRepository,
         getTopupsAndWithdrawalsMapper: GetTopupsAndWithdrawalsMapper,
         getMiningHistoryMapper: GetMiningHistoryMapper,
         getTransfersHistoryMapper: GetTransfersHistoryMapper,
@@ -176,7 +192,6 @@ val repositoryModule = module {
     ): FinancesRepository {
         return FinancesRepositoryImpl(
             financesApi,
-            tokenRepository,
             getTopupsAndWithdrawalsMapper,
             getMiningHistoryMapper,
             getTransfersHistoryMapper,
@@ -188,7 +203,6 @@ val repositoryModule = module {
 
     fun provideAffiliateRepository(
         affiliateApi: AffiliateApi,
-        tokenRepository: TokenRepository,
         getAffiliateMapper: GetAffiliateMapper,
         getAffiliateTreeFirstLineMapper: GetAffiliateTreeFirstLineMapper,
         getAffiliateTreeSpecificLineMapper: GetAffiliateTreeSpecificLineMapper
@@ -196,7 +210,6 @@ val repositoryModule = module {
     ): AffiliateRepository {
         return AffiliateRepositoryImpl(
             affiliateApi,
-            tokenRepository,
             getAffiliateMapper,
             getAffiliateTreeFirstLineMapper,
             getAffiliateTreeSpecificLineMapper
@@ -205,29 +218,27 @@ val repositoryModule = module {
 
     fun provideRankRepository(
         ranksApi: RanksApi,
-        tokenRepository: TokenRepository,
         getRankInfoMapper: GetRankInfoMapper
 
     ): RankRepository {
-        return RankRepositoryImpl(ranksApi, tokenRepository, getRankInfoMapper)
+        return RankRepositoryImpl(ranksApi, getRankInfoMapper)
     }
 
     fun provideMiningRepository(
         miningApi: MiningApi,
-        tokenRepository: TokenRepository,
         getMiningInfoMapper: GetMiningInfoMapper
 
     ): MiningRepository {
-        return MiningRepositoryImpl(miningApi, tokenRepository, getMiningInfoMapper)
+        return MiningRepositoryImpl(miningApi, getMiningInfoMapper)
     }
 
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get(), get()) }
-    single { provideDashboardRepository(get(), get(), get()) }
-    single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get(), get()) }
-    single { provideAffiliateRepository(get(), get(), get(), get(), get()) }
-    single { provideRankRepository(get(), get(), get()) }
-    single { provideMiningRepository(get(), get(), get()) }
+    single { provideDashboardRepository(get(), get()) }
+    single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
+    single { provideAffiliateRepository(get(), get(), get(), get()) }
+    single { provideRankRepository(get(), get()) }
+    single { provideMiningRepository(get(), get()) }
 }
 
 val repositoryMappersModule = module {

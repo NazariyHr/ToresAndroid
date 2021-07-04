@@ -3,6 +3,7 @@ package com.devcraft.tores.presentation.base
 import android.app.Activity
 import android.content.Intent
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
@@ -11,6 +12,7 @@ import androidx.annotation.CallSuper
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.devcraft.tores.presentation.common.DatePickerDialogWrapper
+import com.devcraft.tores.utils.PackageManager
 
 abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
@@ -62,11 +64,11 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         getBaseActivity()?.hideBackButton()
     }
 
-    protected fun attachKeyboardListener(){
+    protected fun attachKeyboardListener() {
         getBaseActivity()?.attachKeyboardListener()
     }
 
-    protected fun detachKeyboardListener(){
+    protected fun detachKeyboardListener() {
         getBaseActivity()?.detachKeyboardListener()
     }
 
@@ -102,6 +104,13 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         }
     }
 
+    fun openActivity(i: Intent, finishCurrent: Boolean = true) {
+        requireContext().startActivity(i)
+        if (finishCurrent) {
+            requireActivity().finish()
+        }
+    }
+
     fun openFragment(container: Int, fragment: Fragment, addToBackStack: Boolean = true) {
         if (getBaseActivity()?.handleOpenFragment(container, fragment, addToBackStack) == false) {
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
@@ -119,6 +128,24 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
             requireActivity().supportFragmentManager,
             fragment.javaClass.name
         )
+    }
+
+    fun openEmail(text: String) {
+        val emailIntent = Intent(Intent.ACTION_SEND)
+        emailIntent.type = "plain/text"
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, arrayOf(text))
+        openActivity(Intent.createChooser(emailIntent, "Send mail..."), false)
+    }
+
+    fun openTelegram(channelName: String) {
+        val appName = "org.telegram.messenger"
+        if (PackageManager.isAppAvailable(appName)) {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("tg://resolve?domain=$channelName"))
+            startActivity(intent)
+        } else {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/$channelName"))
+            startActivity(browserIntent)
+        }
     }
 
     fun onBackPressed() {

@@ -84,7 +84,7 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         keyboardListenersAttached = true
     }
 
-    fun detachKeyboardListener(){
+    fun detachKeyboardListener() {
         if (keyboardListenersAttached) {
             rootLayout!!.viewTreeObserver.removeGlobalOnLayoutListener(keyboardLayoutListener)
         }
@@ -126,6 +126,13 @@ abstract class BaseActivity(private val layoutId: Int) : AppCompatActivity() {
         startActivity(i)
         if (finishCurrent) {
             this.finish()
+        }
+    }
+
+    fun openActivity(i: Intent, finishCurrent: Boolean = true) {
+        startActivity(i)
+        if (finishCurrent) {
+            finish()
         }
     }
 

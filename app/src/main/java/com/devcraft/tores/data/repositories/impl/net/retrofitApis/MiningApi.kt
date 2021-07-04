@@ -6,30 +6,18 @@ import com.devcraft.tores.data.repositories.impl.net.dto.GetMiningInfoResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.WithdrawFromMiningRequest
 import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
 import retrofit2.Call
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.POST
 
 interface MiningApi {
     @GET(ApiConstants.API_ENDPOINT_GET_MINING_INFO)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun getMiningInfo(@Header("Authorization") token: String): Call<GetMiningInfoResponse>
+    fun getMiningInfo(): Call<GetMiningInfoResponse>
 
     @POST(ApiConstants.API_ENDPOINT_ADD_TO_MINING)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun addToMining(
-        @Header("Authorization") token: String,
-        @Body request: AddToMiningRequest
-    ): Call<NetworkBaseResponse>
+    fun addToMining(@Body request: AddToMiningRequest): Call<NetworkBaseResponse>
 
     @POST(ApiConstants.API_ENDPOINT_WITHDRAW_FROM_MINING)
-    @Headers(
-        "Content-Type: application/json"
-    )
-    fun withdrawFromMining(
-        @Header("Authorization") token: String,
-        @Body request: WithdrawFromMiningRequest
-    ): Call<NetworkBaseResponse>
+    fun withdrawFromMining(@Body request: WithdrawFromMiningRequest):
+            Call<NetworkBaseResponse>
 }

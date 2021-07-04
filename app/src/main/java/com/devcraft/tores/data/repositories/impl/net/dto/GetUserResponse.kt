@@ -23,7 +23,7 @@ class GetUserResponse(
             val rankProfit: Double,
             val totalProfit: Double,
             val invitedBy: String,
-            val level: Level,
+            //val level: Level,
             @SerializedName("ref_code") val refCode: String,
             val currentRank: String,
             val nextRank: String?,

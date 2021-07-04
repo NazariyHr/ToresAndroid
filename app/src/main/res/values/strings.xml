@@ -237,4 +237,7 @@
     <string name="amount_in_currency">%1$.6f %2$s</string>
     <string name="successfully_topup">Заявка на пополнение успешно создана</string>
     <string name="successfully_transfer">Заявка на перевод средств успешно создана</string>
+    <string name="telegram_tores_coin">ToresCoin</string>
+    <string name="telegram_tores_coin_support">torescoin_support</string>
+    <string name="tores_email">toresbusiness.help@gmail.com</string>
 </resources>
