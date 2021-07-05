@@ -7,12 +7,15 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.CallSuper
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import com.devcraft.tores.presentation.common.DatePickerDialogWrapper
+import com.devcraft.tores.presentation.common.SingleLiveEvent
 import com.devcraft.tores.utils.PackageManager
+import com.devcraft.tores.utils.extensions.setVisible
 
 abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
 
@@ -148,6 +151,12 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
         }
     }
 
+    fun openBrowser(url: String) {
+        val i = Intent(Intent.ACTION_VIEW)
+        i.data = Uri.parse(url)
+        startActivity(i)
+    }
+
     fun onBackPressed() {
         requireActivity().onBackPressed()
     }
@@ -162,5 +171,23 @@ abstract class BaseFragment(layoutId: Int) : Fragment(layoutId) {
             view = View(activity)
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    fun observeProcessAliveWithOverlay(progressOverlay: FrameLayout) {
+        vm.someProcessAlive.observe(viewLifecycleOwner, {
+            progressOverlay.setVisible(it)
+        })
+    }
+
+    fun observeFailure(errorEvent: SingleLiveEvent<Error>) {
+        errorEvent.observe(viewLifecycleOwner, {
+            showToast(it)
+        })
+    }
+
+    fun observeSuccess(successEvent: SingleLiveEvent<Boolean>, onSuccess: () -> Unit) {
+        successEvent.observe(viewLifecycleOwner, {
+            onSuccess.invoke()
+        })
     }
 }

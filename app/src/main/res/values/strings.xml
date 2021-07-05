@@ -240,4 +240,23 @@
     <string name="telegram_tores_coin">ToresCoin</string>
     <string name="telegram_tores_coin_support">torescoin_support</string>
     <string name="tores_email">toresbusiness.help@gmail.com</string>
+    <string name="partner_status_moderation">На модерации</string>
+    <string name="partner_status_accepted">Одобрена</string>
+    <string name="partner_status_declined">Отклонена</string>
+    <string name="error_already_have_unaccepted_partner_request">У вас уже есть неодобренная заявка. Пожалуйста, дождитесь ее рассмотрения</string>
+    <string name="our_partners">Наши партнеры</string>
+    <string name="your_requests">Ваши заявки</string>
+    <string name="become_partner">Стать партнёром</string>
+    <string name="become_partner_title">Мы открыты к сотрудничеству и готовы предложить партнёрство</string>
+    <string name="f_become_partner_company_name">Название компании*</string>
+    <string name="f_become_partner_link">Ссылка*</string>
+    <string name="f_become_partner_contacts">Контакты*</string>
+    <string name="f_become_partner_percent">Сколько % готовы принимать в TORES</string>
+    <string name="f_become_partner_type">Сфера деятельности</string>
+    <string name="f_become_partner_additional_info">Дополнительная информация</string>
+    <string name="send_request">Отправить заявку</string>
+    <string name="dont_forget_set_our_button">\tНе забудьте установить нашу кнопку на вашем сайте\nДля этого просто скопируйте следующий HTML-код:</string>
+    <string name="dont_forget_set_our_button_short">\tHTML-код нашей кнопки для вашего сайта:</string>
+    <string name="our_button_html_code"><![CDATA[<a href=\"https://toresbusiness.com\" target=\"_blank\"><img src=\"https://app.toresbusiness.com/button.png\" /></a>]]></string>
+    <string name="our_button_for_your_site">Кнопка для вашего сайта</string>
 </resources>

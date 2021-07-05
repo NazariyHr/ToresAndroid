@@ -33,4 +33,7 @@ object ApiConstants {
     const val API_ENDPOINT_WITHDRAW = "api/finance/withdrawal"
     const val API_ENDPOINT_TRANSFER_TO_USER = "api/finance/transferToUser"
     const val API_ENDPOINT_TRANSFER_TO_EXCHANGE = "api/finance/transferToExchange"
+
+    const val API_ENDPOINT_GET_PARTNERS_AND_USER_REQUESTS = "api/partners/index"
+    const val API_ENDPOINT_BECOME_PARTNER = "api/partners/submit"
 }

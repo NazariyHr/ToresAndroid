@@ -3,10 +3,38 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/bg_dialog_round.xml" value="0.15208333333333332" />
+        <entry key="app/src/main/res/drawable/bg_tab_title.xml" value="0.10347222222222222" />
         <entry key="app/src/main/res/drawable/ic_telegram.xml" value="0.13541666666666666" />
+        <entry key="app/src/main/res/layout/dialog_copy_button_url.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/dialog_with_button.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add_to_mining.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_affiliate.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_become_partner.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_contacts.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_finances.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_mining.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_more.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_our_partners.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_partners.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tab_become_partner_requests.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tab_my_become_partner_requests.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/fragment_tab_our_partners.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tab_rank_profits.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_tab_topups_and_withdrawals.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_transfer_details.xml" value="0.11" />
+        <entry key="app/src/main/res/layout/fragment_transfer_to.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_withdraw_from_mining.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/include_progressbar_overlay.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_become_partner_request.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_our_partner.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/item_rank_profit_history.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_tab_title.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_topup_or_withdrawal.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/line_divider.xml" value="0.1" />
         <entry key="app/src/main/res/layout/popup_menu_contancs.xml" value="0.1" />
         <entry key="app/src/main/res/layout/toolbar.xml" value="0.1" />
         <entry key="app/src/main/res/menu/popup_contacts.xml" value="0.25" />

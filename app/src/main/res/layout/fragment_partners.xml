@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/llTabOurPartners"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:layout_marginVertical="@dimen/offset_x2"
+                        android:layout_marginEnd="@dimen/offset_x"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tab_title"
+                        android:backgroundTint="@color/bg_tab_title_state_list"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/offset_x2">
+
+                        <TextView
+                            android:id="@+id/tvTitleOurPartners"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/offset_x2"
+                            android:layout_marginEnd="@dimen/offset_x2"
+                            android:gravity="center"
+                            android:text="@string/our_partners"
+                            android:textColor="@color/dark_primary_color" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llTabMyRequests"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/offset_x2"
+                        android:layout_marginVertical="@dimen/offset_x2"
+                        android:layout_marginEnd="@dimen/offset_x"
+                        android:layout_weight="1"
+                        android:background="@drawable/bg_tab_title"
+                        android:backgroundTint="@color/bg_tab_title_state_list"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/offset_x2">
+
+                        <TextView
+                            android:id="@+id/tvTitleMyRequests"
+                            style="@style/Widget.Tores.TextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/offset_x2"
+                            android:layout_marginEnd="@dimen/offset_x2"
+                            android:gravity="center"
+                            android:text="@string/your_requests"
+                            android:textColor="@color/dark_primary_color" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vpTabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

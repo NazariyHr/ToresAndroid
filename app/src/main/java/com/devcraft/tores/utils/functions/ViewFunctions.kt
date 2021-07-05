@@ -14,6 +14,23 @@ fun setClearErrorAfterTextChanged(mapOfViews: Map<EditText, TextInputLayout>) {
     }
 }
 
+fun watchAllEditTextFilled(
+    editTexts: MutableList<EditText>,
+    onAllFilled: (isFilled: Boolean) -> Unit
+) {
+    for (editText in editTexts) {
+        editText.doAfterTextChanged {
+            var allIsFilled = true
+            editTexts.forEach {
+                if (it.text.toString().isEmpty()) {
+                    allIsFilled = false
+                }
+            }
+            onAllFilled.invoke(allIsFilled)
+        }
+    }
+}
+
 fun setClearErrorAfterChecked(checkBox: MaterialCheckBox) {
     checkBox.setOnCheckedChangeListener { v, isChecked ->
         if (isChecked) {

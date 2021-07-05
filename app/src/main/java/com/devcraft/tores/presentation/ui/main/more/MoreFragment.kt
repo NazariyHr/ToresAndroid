@@ -5,6 +5,7 @@ import com.devcraft.tores.presentation.base.BaseFragment
 import com.devcraft.tores.presentation.ui.main.MainViewModel
 import com.devcraft.tores.presentation.ui.main.more.affiliate.AffiliateFragment
 import com.devcraft.tores.presentation.ui.main.more.contacts.ContactsFragment
+import com.devcraft.tores.presentation.ui.main.more.partners.PartnersFragment
 import com.devcraft.tores.utils.extensions.setSafeOnClickListener
 import kotlinx.android.synthetic.main.fragment_more.*
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
@@ -27,6 +28,9 @@ class MoreFragment : BaseFragment(R.layout.fragment_more) {
         }
         llContacts.setSafeOnClickListener {
             openFragment(R.id.container, ContactsFragment())
+        }
+        llPartners.setSafeOnClickListener {
+            openFragment(R.id.container, PartnersFragment())
         }
     }
 }

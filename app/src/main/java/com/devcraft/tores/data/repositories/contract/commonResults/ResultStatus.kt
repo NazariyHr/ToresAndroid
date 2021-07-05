@@ -6,6 +6,17 @@ class ResultStatus(val status: StateList, val error: Error? = null) {
         FAILURE
     }
 
+    fun changeStatusToErrorIf(
+        errorString: String,
+        checkStatement: (ResultStatus) -> Boolean
+    ): ResultStatus {
+        return if (checkStatement.invoke(this)) {
+            ResultStatus.failure(errorString)
+        } else {
+            this
+        }
+    }
+
     companion object {
         fun success(): ResultStatus {
             return ResultStatus(StateList.SUCCESS)

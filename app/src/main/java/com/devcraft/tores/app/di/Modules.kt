@@ -30,6 +30,8 @@ import com.devcraft.tores.presentation.ui.main.finances.transfers.TransfersViewM
 import com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails.TransferDetailsViewModel
 import com.devcraft.tores.presentation.ui.main.mining.addToMining.AddToMiningViewModel
 import com.devcraft.tores.presentation.ui.main.mining.withdrawFromMining.WithdrawFromMiningViewModel
+import com.devcraft.tores.presentation.ui.main.more.partners.PartnersViewModel
+import com.devcraft.tores.presentation.ui.main.more.partners.becomePartner.BecomePartnerViewModel
 import com.devcraft.tores.presentation.ui.main.profile.ProfileViewModel
 import com.devcraft.tores.presentation.ui.main.profile.changePassword.ChangePasswordViewModel
 import com.devcraft.tores.presentation.ui.main.profile.financePassword.FinancePasswordViewModel
@@ -67,6 +69,8 @@ val viewModelModule = module {
     viewModel { TopupToresViewModel(get(), get(), get()) }
     viewModel { TransferToViewModel(get(), get(), get()) }
     viewModel { WithdrawToresViewModel(get(), get(), get()) }
+    viewModel { PartnersViewModel(get(), get()) }
+    viewModel { BecomePartnerViewModel(get(), get()) }
 }
 
 val netModule = module {
@@ -144,12 +148,17 @@ val netApiModule = module {
         return retrofit.create(MiningApi::class.java)
     }
 
+    fun providePartnersApi(retrofit: Retrofit): PartnersApi {
+        return retrofit.create(PartnersApi::class.java)
+    }
+
     single { provideUserApi(get()) }
     single { provideDashBoardApi(get()) }
     single { provideFinancesApi(get()) }
     single { provideAffiliateApi(get()) }
     single { provideRanksApi(get()) }
     single { provideMiningApi(get()) }
+    single { providePartnersApi(get()) }
 }
 
 val repositoryModule = module {
@@ -232,6 +241,14 @@ val repositoryModule = module {
         return MiningRepositoryImpl(miningApi, getMiningInfoMapper)
     }
 
+    fun providePartnersRepository(
+        partnersApi: PartnersApi,
+        getPartnersAndUserRequestsMapper: GetPartnersAndUserRequestsMapper
+
+    ): PartnersRepository {
+        return PartnersRepositoryImpl(partnersApi, getPartnersAndUserRequestsMapper)
+    }
+
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get()) }
@@ -239,6 +256,7 @@ val repositoryModule = module {
     single { provideAffiliateRepository(get(), get(), get(), get()) }
     single { provideRankRepository(get(), get()) }
     single { provideMiningRepository(get(), get()) }
+    single { providePartnersRepository(get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -302,6 +320,10 @@ val repositoryMappersModule = module {
         return GetCurrencyRatesMapper()
     }
 
+    fun provideGetPartnersAndUserRequestsMapper(): GetPartnersAndUserRequestsMapper {
+        return GetPartnersAndUserRequestsMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
@@ -317,6 +339,7 @@ val repositoryMappersModule = module {
     factory { provideChangePasswordResponseMapper() }
     factory { provideGetMiningInfoMapper() }
     factory { provideGetCurrencyRatesMapper() }
+    factory { provideGetPartnersAndUserRequestsMapper() }
 }
 
 val utilsModules = module {
