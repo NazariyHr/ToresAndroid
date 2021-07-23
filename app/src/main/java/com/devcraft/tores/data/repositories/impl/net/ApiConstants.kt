@@ -17,6 +17,7 @@ object ApiConstants {
     const val API_ENDPOINT_SUBMIT_TAC = "api/finance/submitTAC"
     const val API_ENDPOINT_GET_AFFILIATE = "api/affiliate"
     const val API_ENDPOINT_GET_RANK_INFO = "api/ranks"
+    const val API_ENDPOINT_GET_USER_RANK_SYSTEM_INFO = "api/ranksMyInfo"
     const val API_ENDPOINT_GET_AFFILIATE_TREE_FIRST_LINE = "api/affiliate/getTree"
     const val API_ENDPOINT_GET_AFFILIATE_TREE_SPECIFIC_LINE =
         "api/affiliate/getUserTree/{userId}/{line}"
@@ -36,4 +37,9 @@ object ApiConstants {
 
     const val API_ENDPOINT_GET_PARTNERS_AND_USER_REQUESTS = "api/partners/index"
     const val API_ENDPOINT_BECOME_PARTNER = "api/partners/submit"
+
+    const val API_ENDPOINT_GET_SHARES_TOTAL_INFO = "api/shares/index"
+    const val API_ENDPOINT_GET_SHARES_HISTORY = "api/shares/history"
+    const val API_ENDPOINT_BUY_SHARES = "api/shares/buy"
+    const val API_ENDPOINT_TRANSFER_SHARES = "api/shares/transfer"
 }

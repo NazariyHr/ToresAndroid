@@ -15,6 +15,7 @@ import com.devcraft.tores.presentation.ui.main.finances.FinancesFragment
 import com.devcraft.tores.presentation.ui.main.mining.MiningFragment
 import com.devcraft.tores.presentation.ui.main.more.MoreFragment
 import com.devcraft.tores.presentation.ui.main.profile.ProfileFragment
+import com.devcraft.tores.presentation.ui.main.shares.SharesFragment
 import com.devcraft.tores.utils.PackageManager
 import com.devcraft.tores.utils.extensions.setGone
 import com.devcraft.tores.utils.extensions.setSafeOnClickListener
@@ -74,7 +75,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         fragment: Fragment,
         addToBackStack: Boolean
     ): Boolean {
-        return if (fragment is FinancesFragment) {
+        return if (fragment is DashBoardFragment) {
+            openFragment(container, fragment, addToBackStack)
+            val item: MenuItem = bottom_navigation.menu.findItem(R.id.dashboard)
+            item.isChecked = true
+            true
+        } else if (fragment is FinancesFragment) {
             openFragment(container, fragment, addToBackStack)
             val item: MenuItem = bottom_navigation.menu.findItem(R.id.finances)
             item.isChecked = true
@@ -82,6 +88,16 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
         } else if (fragment is MiningFragment) {
             openFragment(container, fragment, addToBackStack)
             val item: MenuItem = bottom_navigation.menu.findItem(R.id.mining)
+            item.isChecked = true
+            true
+        } else if (fragment is SharesFragment) {
+            openFragment(container, fragment, addToBackStack)
+            val item: MenuItem = bottom_navigation.menu.findItem(R.id.shares)
+            item.isChecked = true
+            true
+        } else if (fragment is MoreFragment) {
+            openFragment(container, fragment, addToBackStack)
+            val item: MenuItem = bottom_navigation.menu.findItem(R.id.more)
             item.isChecked = true
             true
         } else {
@@ -122,6 +138,12 @@ class MainActivity : BaseActivity(R.layout.activity_main) {
                 R.id.mining -> {
                     if (!item.isChecked) {
                         openFragment(R.id.container, MiningFragment())
+                    }
+                    true
+                }
+                R.id.shares -> {
+                    if (!item.isChecked) {
+                        openFragment(R.id.container, SharesFragment())
                     }
                     true
                 }

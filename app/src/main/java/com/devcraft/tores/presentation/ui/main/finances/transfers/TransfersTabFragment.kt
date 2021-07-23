@@ -57,6 +57,8 @@ class TransfersTabFragment : BaseFragment(R.layout.fragment_tab_transfers),
             tvLoadingDataError.setGone()
             rvTransfersHistory.setVisible()
 
+            tvDataEmpty.setVisible(it.transactions.isEmpty())
+
             adapter.items = it.transactions.toMutableList()
         })
 

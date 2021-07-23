@@ -4,7 +4,6 @@ import com.devcraft.tores.data.repositories.impl.BaseRepositoryMapper
 import com.devcraft.tores.data.repositories.impl.net.dto.GetUserResponse
 import com.devcraft.tores.entities.PaymentConfirmationWay
 import com.devcraft.tores.entities.Rank
-import com.devcraft.tores.entities.RankLevel
 import com.devcraft.tores.entities.User
 
 class GetUserMapper : BaseRepositoryMapper<GetUserResponse, User>() {
@@ -20,6 +19,7 @@ class GetUserMapper : BaseRepositoryMapper<GetUserResponse, User>() {
                 rankProfit = data.me.rankProfit,
                 paymentConfirmationWay = PaymentConfirmationWay.parse(data.me.paymentConfirmationWay),
                 rankLevel = null, //RankLevel(data.me.level.level, data.me.level.gotAt),
+                rankLevelGotAt = null,
                 currentRank = Rank.parseRank(data.me.currentRank),
                 nextRank = if (data.me.nextRank != null) Rank.parseRank(data.me.nextRank) else null,
                 referralCode = data.me.refCode,

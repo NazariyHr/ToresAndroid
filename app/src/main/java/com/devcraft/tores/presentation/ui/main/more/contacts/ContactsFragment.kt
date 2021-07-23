@@ -11,6 +11,12 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
 
     override val vm: MainViewModel by viewModel()
 
+    override fun initViews() {
+        super.initViews()
+        setBaseActivityToolbarTitle(getString(R.string.contacts))
+        showBaseActivityBackButton()
+    }
+
     override fun initListeners() {
         llTelegramToresCoin.setSafeOnClickListener {
             openTelegram(tvTelegramMain.text.toString())

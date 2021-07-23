@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvLoadingDataError"
+                        style="@style/Widget.Tores.TextView.Error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/error_loading_data"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+
+                    <!-- Balance -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvContent"
+                        style="@style/Widget.Tores.CardView.Large"
+                        android:visibility="gone"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="@dimen/offset_x4"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Widget.Tores.TextView.Large"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="@dimen/offset_x"
+                                android:text="@string/your_progress" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/your_current_rank" />
+
+                                <ImageView
+                                    android:id="@+id/ivRankBadge"
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    tools:src="@drawable/ic_rank_vip_manager" />
+
+                                <TextView
+                                    android:id="@+id/tvRankTitle"
+                                    style="@style/Widget.Tores.TextView.Bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/ranks_vip_manager" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llNextRank"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/next_rank" />
+
+                                <ImageView
+                                    android:id="@+id/ivNextRankBadge"
+                                    android:layout_width="@dimen/icon_size_m"
+                                    android:layout_height="@dimen/icon_size_m"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    tools:src="@drawable/ic_rank_director" />
+
+                                <TextView
+                                    android:id="@+id/tvNextRankTitle"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    tools:text="@string/ranks_director" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/llDeposit"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/personal_deposit" />
+
+                                <TextView
+                                    android:id="@+id/tvBalance"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    tools:text="0.00 TORES" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/tvYourReferralLevel"
+                                style="@style/Widget.Tores.TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                tools:text="@string/your_referral_level" />
+
+                            <LinearLayout
+                                android:id="@+id/llMarketingBase"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/offset_x"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="@dimen/offset_x"
+                                    android:text="@string/marketing_base" />
+
+                                <TextView
+                                    android:id="@+id/tvMarketingBaseTores"
+                                    style="@style/Widget.Tores.TextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textStyle="bold"
+                                    tools:text="@string/marketing_base_tores" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAboutRanks"
+                        style="@style/Widget.Tores.Button.Wide.Small"
+                        android:layout_marginHorizontal="@dimen/offset_x3"
+                        android:layout_marginTop="@dimen/offset_x2"
+                        android:gravity="start"
+                        android:text="@string/about_ranks"
+                        android:textAllCaps="false"
+                        app:icon="@drawable/ic_long_arrow_right"
+                        app:iconSize="@dimen/icon_size_s" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnRankSystem"
+                        style="@style/Widget.Tores.Button.Wide.Small"
+                        android:layout_marginHorizontal="@dimen/offset_x3"
+                        android:layout_marginTop="@dimen/offset_x"
+                        android:gravity="start"
+                        android:text="@string/rank_system"
+                        android:textAllCaps="false"
+                        app:icon="@drawable/ic_long_arrow_right"
+                        app:iconSize="@dimen/icon_size_s" />
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/include_progressbar_overlay" />
+</FrameLayout>

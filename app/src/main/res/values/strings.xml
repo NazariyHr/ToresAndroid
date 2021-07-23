@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tores</string>
 
-    <string name="finances">Финансы</string>
+    <string name="finances">Finances</string>
     <string name="dashboard">Панель управления</string>
     <string name="mining">Майнинг</string>
     <string name="authorization">Авторизация</string>
@@ -21,6 +21,7 @@
     <string name="sell_tokens">Продать токены</string>
     <string name="send_tokens">Отправка токенов</string>
     <string name="bonus_balance">Бонусный баланс</string>
+    <string name="bonus_balance_dots">Бонусный баланс:</string>
     <string name="current_rank_balance">Текущий ранговый баланс</string>
     <string name="details">Детали</string>
     <string name="detailed">Подробнее</string>
@@ -159,6 +160,7 @@
     <string name="watch_profit_from_tree_title">Доход от участников</string>
     <string name="affiliate_users_no_found">Участников не найдено</string>
     <string name="next_rank_dots">Следующий ранг:</string>
+    <string name="next_rank">Следующий ранг</string>
     <string name="referral_link">Реферальная ссылка</string>
     <string name="registered_at_dots">Зарегистрирован:</string>
     <string name="last_entrance_dots">Последний вход:</string>
@@ -259,4 +261,48 @@
     <string name="dont_forget_set_our_button_short">\tHTML-код нашей кнопки для вашего сайта:</string>
     <string name="our_button_html_code"><![CDATA[<a href=\"https://toresbusiness.com\" target=\"_blank\"><img src=\"https://app.toresbusiness.com/button.png\" /></a>]]></string>
     <string name="our_button_for_your_site">Кнопка для вашего сайта</string>
+    <string name="rank_system">Ранговая система</string>
+    <string name="about_ranks">О рангах</string>
+    <string name="your_progress">Ваш прогресс</string>
+    <string name="your_current_rank">Текущий ранг</string>
+    <string name="personal_deposit">Личный депозит</string>
+    <string name="your_referral_level">У вас %1$d уровень рефералов</string>
+    <string name="marketing_base">Маркетинг база</string>
+    <string name="marketing_base_tores">%1$s/%2$s TORES</string>
+    <string name="tores_volume">%1$d TORES обьем</string>
+    <string name="rank_profit_tores">Премия %1$d TORES</string>
+    <string name="rank_condition_or_more_branch">%1$d или более ветки</string>
+    <string name="rank_condition_in_branches_level_director">В %1$d разных ветках дир. %2$d зв.</string>
+    <string name="rank_level">%1$d уровень</string>
+    <string name="system_status">Статус в системе</string>
+    <string name="referral_level">Уровень рефералов</string>
+    <string name="payments">Выплаты</string>
+    <string name="about_ranks_part_1">\tБонусная программа ToresCoin - это мощный дополнительный стимулятор и в тоже время катализатор ваших доходов.</string>
+    <string name="about_ranks_part_2">\tМаксимально гибкая система позволит смелым и активным за весьма короткий срок получит заслуженные привилегии и ощутимые финансовые вознаграждения.</string>
+    <string name="about_ranks_part_3">\tПо всем вопросам работы бонусной программы вы можете обратиться в наш общий телеграм чат @ToresCoin или на наш эмейл toresbusiness.help@gmail.com</string>
+    <string name="conditions">Условия</string>
+    <string name="shares_transaction_type_buy_shares">Покупка долей</string>
+    <string name="shares_transaction_type_transfer_shares">Перевод долей</string>
+    <string name="your_balance">Ваш баланс</string>
+    <string name="shares_available">Доступно долей</string>
+    <string name="shares_available_from_to">%1$s из %2$s</string>
+    <string name="buy_shares">Купить доли</string>
+    <string name="shares_amount_str">%1$s Долей</string>
+    <string name="shares_history">История операций с долями</string>
+    <string name="has_no_data">Данные отсутствуют</string>
+    <string name="amount">Количество</string>
+    <string name="buy">Купить</string>
+    <string name="available_to_buy_title">Доступно к покупке:</string>
+    <string name="shares_successfully_bought">Покупка долей прошла успешно</string>
+    <string name="shares_to_transfer_title">Количество долей</string>
+    <string name="transfer_shares_to_user">Перевести участнику</string>
+    <string name="do_buy_shares_title">Покупка долей</string>
+    <string name="do_transfer_shares_to_user_title">Перевод долей участнику</string>
+    <string name="successfully_submitted">Successfully submitted</string>
+    <string name="successfully_canceled">Successfully canceled</string>
+    <string name="request_error_code">Request error, response code: %1$d</string>
+    <string name="request_error_forbidden">Request error, Forbidden</string>
+    <string name="request_error_data_is_null">Data is null</string>
+    <string name="error_token_is_empty">Token is empty</string>
+    <string name="error_user_is_null">User is null</string>
 </resources>

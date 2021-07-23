@@ -58,6 +58,8 @@ class TopupsAndWithdrawalsTabFragment : BaseFragment(R.layout.fragment_tab_topup
             rvTopupsAndWithdrawals.setVisible()
             cvTotalTopups.setVisible()
 
+            tvDataEmpty.setVisible(it.transactions.isEmpty())
+
             adapter.items = it.transactions.toMutableList()
             rvTopupsAndWithdrawals.setHasFixedSize(true)
 

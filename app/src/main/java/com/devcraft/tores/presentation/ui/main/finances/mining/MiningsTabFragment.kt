@@ -54,6 +54,8 @@ class MiningsTabFragment : BaseFragment(R.layout.fragment_tab_minings),
             rvMiningHistory.setVisible()
             cvTotalInMining.setVisible()
 
+            tvDataEmpty.setVisible(it.transactions.isEmpty())
+
             adapter.items = it.transactions.toMutableList()
 
             tvTotalInMining.text =

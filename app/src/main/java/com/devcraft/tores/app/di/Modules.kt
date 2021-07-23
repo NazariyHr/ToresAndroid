@@ -35,6 +35,12 @@ import com.devcraft.tores.presentation.ui.main.more.partners.becomePartner.Becom
 import com.devcraft.tores.presentation.ui.main.profile.ProfileViewModel
 import com.devcraft.tores.presentation.ui.main.profile.changePassword.ChangePasswordViewModel
 import com.devcraft.tores.presentation.ui.main.profile.financePassword.FinancePasswordViewModel
+import com.devcraft.tores.presentation.ui.main.more.ranks.RanksViewModel
+import com.devcraft.tores.presentation.ui.main.more.ranks.rankSystem.RanksSystemViewModel
+import com.devcraft.tores.presentation.ui.main.shares.SharesViewModel
+import com.devcraft.tores.presentation.ui.main.shares.buyShares.BuySharesViewModel
+import com.devcraft.tores.presentation.ui.main.shares.sharesHistory.SharesHistoryViewModel
+import com.devcraft.tores.presentation.ui.main.shares.transferShares.TransferSharesViewModel
 import com.devcraft.tores.presentation.ui.splash.SplashViewModel
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -71,6 +77,12 @@ val viewModelModule = module {
     viewModel { WithdrawToresViewModel(get(), get(), get()) }
     viewModel { PartnersViewModel(get(), get()) }
     viewModel { BecomePartnerViewModel(get(), get()) }
+    viewModel { RanksViewModel(get(), get()) }
+    viewModel { RanksSystemViewModel(get()) }
+    viewModel { SharesViewModel(get(), get()) }
+    viewModel { SharesHistoryViewModel(get(), get()) }
+    viewModel { BuySharesViewModel(get(), get()) }
+    viewModel { TransferSharesViewModel(get(), get()) }
 }
 
 val netModule = module {
@@ -152,6 +164,10 @@ val netApiModule = module {
         return retrofit.create(PartnersApi::class.java)
     }
 
+    fun provideSharesApi(retrofit: Retrofit): SharesApi {
+        return retrofit.create(SharesApi::class.java)
+    }
+
     single { provideUserApi(get()) }
     single { provideDashBoardApi(get()) }
     single { provideFinancesApi(get()) }
@@ -159,6 +175,7 @@ val netApiModule = module {
     single { provideRanksApi(get()) }
     single { provideMiningApi(get()) }
     single { providePartnersApi(get()) }
+    single { provideSharesApi(get()) }
 }
 
 val repositoryModule = module {
@@ -227,10 +244,11 @@ val repositoryModule = module {
 
     fun provideRankRepository(
         ranksApi: RanksApi,
-        getRankInfoMapper: GetRankInfoMapper
+        getRankInfoMapper: GetRankInfoMapper,
+        getUserRankSystemInfoResponseMapper: GetUserRankSystemInfoResponseMapper
 
     ): RankRepository {
-        return RankRepositoryImpl(ranksApi, getRankInfoMapper)
+        return RankRepositoryImpl(ranksApi, getRankInfoMapper, getUserRankSystemInfoResponseMapper)
     }
 
     fun provideMiningRepository(
@@ -249,14 +267,24 @@ val repositoryModule = module {
         return PartnersRepositoryImpl(partnersApi, getPartnersAndUserRequestsMapper)
     }
 
+    fun provideSharesRepository(
+        sharesApi: SharesApi,
+        getSharesTotalInfoMapper: GetSharesTotalInfoMapper,
+        getSharesHistoryMapper: GetSharesHistoryMapper
+
+    ): SharesRepository {
+        return SharesRepositoryImpl(sharesApi, getSharesTotalInfoMapper, getSharesHistoryMapper)
+    }
+
     single { provideTokenRepository(get(named("tokens"))) }
     single { provideUserRepository(get(), get(), get(), get(), get()) }
     single { provideDashboardRepository(get(), get()) }
     single { provideFinancesRepository(get(), get(), get(), get(), get(), get(), get()) }
     single { provideAffiliateRepository(get(), get(), get(), get()) }
-    single { provideRankRepository(get(), get()) }
+    single { provideRankRepository(get(), get(), get()) }
     single { provideMiningRepository(get(), get()) }
     single { providePartnersRepository(get(), get()) }
+    single { provideSharesRepository(get(), get(), get()) }
 }
 
 val repositoryMappersModule = module {
@@ -324,6 +352,18 @@ val repositoryMappersModule = module {
         return GetPartnersAndUserRequestsMapper()
     }
 
+    fun provideGetUserRankSystemInfoResponseMapper(): GetUserRankSystemInfoResponseMapper {
+        return GetUserRankSystemInfoResponseMapper()
+    }
+
+    fun provideGetSharesTotalInfoMapper(): GetSharesTotalInfoMapper {
+        return GetSharesTotalInfoMapper()
+    }
+
+    fun provideGetSharesHistoryMapper(): GetSharesHistoryMapper {
+        return GetSharesHistoryMapper()
+    }
+
     factory { provideLogInTokenMapper() }
     factory { provideGetUserNetMapper() }
     factory { provideGetDashboardNetMapper() }
@@ -340,6 +380,9 @@ val repositoryMappersModule = module {
     factory { provideGetMiningInfoMapper() }
     factory { provideGetCurrencyRatesMapper() }
     factory { provideGetPartnersAndUserRequestsMapper() }
+    factory { provideGetUserRankSystemInfoResponseMapper() }
+    factory { provideGetSharesTotalInfoMapper() }
+    factory { provideGetSharesHistoryMapper() }
 }
 
 val utilsModules = module {

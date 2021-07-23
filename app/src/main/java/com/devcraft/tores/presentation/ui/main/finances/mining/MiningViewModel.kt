@@ -1,6 +1,8 @@
 package com.devcraft.tores.presentation.ui.main.finances.mining
 
 import androidx.lifecycle.MutableLiveData
+import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.data.repositories.contract.FinancesRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.entities.MiningHistoryData
@@ -42,7 +44,7 @@ class MiningViewModel(
             val result = financesRepository.cancelWithdraw(transactionId)
             when (result.status) {
                 ResultStatus.StateList.SUCCESS -> {
-                    onCancelWithdrawSuccess.postValue("Successfully canceled")
+                    onCancelWithdrawSuccess.postValue(App.instance.getString(R.string.successfully_canceled))
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onCancelWithdrawFailure.postValue(result.error)

@@ -121,7 +121,7 @@ class TransferDetailsFragment : BaseFragment(R.layout.fragment_transfer_details)
                     val allDataIsNotEntered = checkAllIsNotEmptyAndSetError(
                         mapOf(
                             tietPassword to tilPassword
-                        ), "Заполните поле"
+                        ), getString(R.string.fill_the_field)
                     )
                     if (allDataIsNotEntered) {
                         return@setSafeOnClickListener

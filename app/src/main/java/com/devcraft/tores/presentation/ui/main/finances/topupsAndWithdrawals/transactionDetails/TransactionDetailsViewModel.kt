@@ -1,6 +1,8 @@
 package com.devcraft.tores.presentation.ui.main.finances.topupsAndWithdrawals.transactionDetails
 
 import androidx.lifecycle.MutableLiveData
+import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.data.repositories.contract.FinancesRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
@@ -50,7 +52,7 @@ class TransactionDetailsViewModel(
             val result = financesRepository.cancelTopup(transactionId)
             when (result.status) {
                 ResultStatus.StateList.SUCCESS -> {
-                    onCancelTopupSuccess.postValue("Successfully canceled")
+                    onCancelTopupSuccess.postValue(App.instance.getString(R.string.successfully_canceled))
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onCancelTopupFailure.postValue(result.error)
@@ -78,7 +80,7 @@ class TransactionDetailsViewModel(
             val result = financesRepository.submitTac(transactionId, "withdrawal", tac)
             when (result.status) {
                 ResultStatus.StateList.SUCCESS -> {
-                    onTacSubmittedSuccess.postValue("Successfully submitted")
+                    onTacSubmittedSuccess.postValue(App.instance.getString(R.string.successfully_submitted))
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onFailure.postValue(result.error)

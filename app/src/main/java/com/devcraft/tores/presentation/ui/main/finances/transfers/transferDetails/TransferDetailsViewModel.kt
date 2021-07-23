@@ -1,6 +1,8 @@
 package com.devcraft.tores.presentation.ui.main.finances.transfers.transferDetails
 
 import androidx.lifecycle.MutableLiveData
+import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.data.repositories.contract.FinancesRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
@@ -66,7 +68,7 @@ class TransferDetailsViewModel(
             val result = financesRepository.submitTac(transactionId, strType, tac)
             when (result.status) {
                 ResultStatus.StateList.SUCCESS -> {
-                    onTacSubmittedSuccess.postValue("Successfully submitted")
+                    onTacSubmittedSuccess.postValue(App.instance.getString(R.string.successfully_submitted))
                 }
                 ResultStatus.StateList.FAILURE -> {
                     onFailure.postValue(result.error)

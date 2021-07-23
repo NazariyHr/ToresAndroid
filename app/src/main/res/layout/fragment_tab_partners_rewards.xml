@@ -79,6 +79,18 @@
                         android:text="@string/error_loading_data"
                         android:visibility="gone"
                         tools:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/tvDataEmpty"
+                        style="@style/Widget.Tores.TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginVertical="@dimen/offset_x6"
+                        android:text="@string/has_no_data"
+                        android:textColor="@color/secondary_text_color"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
                 </LinearLayout>
             </androidx.core.widget.NestedScrollView>
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

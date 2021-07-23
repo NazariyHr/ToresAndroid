@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvItem"
+    style="@style/Widget.Tores.CardView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/offset_x4"
+        android:orientation="vertical">
+
+        <!-- Rank status -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/system_status"
+            android:textColor="@color/secondary_text_color" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/ivRankBadge"
+                android:layout_width="@dimen/icon_size_m"
+                android:layout_height="@dimen/icon_size_m"
+                android:layout_marginEnd="@dimen/offset_x"
+                tools:src="@drawable/ic_rank_vip_manager" />
+
+            <TextView
+                android:id="@+id/tvRankTitle"
+                style="@style/Widget.Tores.TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="@string/ranks_vip_manager" />
+        </LinearLayout>
+
+        <!-- Deposit -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_x2"
+            android:text="@string/personal_deposit"
+            android:textColor="@color/secondary_text_color" />
+
+        <TextView
+            android:id="@+id/tvDeposit"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="0.00 TORES" />
+
+        <!-- Referral level -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_x2"
+            android:text="@string/referral_level"
+            android:textColor="@color/secondary_text_color" />
+
+        <TextView
+            android:id="@+id/tvYourReferralLevel"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1" />
+
+        <!-- Marketing base -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_x2"
+            android:text="@string/marketing_base"
+            android:textColor="@color/secondary_text_color" />
+
+        <TextView
+            android:id="@+id/tvMarketingBaseTores"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/marketing_base_tores" />
+
+        <!-- Payments -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_x2"
+            android:text="@string/payments"
+            android:textColor="@color/secondary_text_color" />
+
+        <TextView
+            android:id="@+id/tvPayments"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/rank_profit_tores" />
+
+        <!-- Conditions -->
+        <TextView
+            style="@style/Widget.Tores.TextView.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/offset_x2"
+            android:text="@string/conditions"
+            android:textColor="@color/secondary_text_color" />
+
+        <TextView
+            android:id="@+id/tvConditions"
+            style="@style/Widget.Tores.TextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/rank_condition_or_more_branch" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

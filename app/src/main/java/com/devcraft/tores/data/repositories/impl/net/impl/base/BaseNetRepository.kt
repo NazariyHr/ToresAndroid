@@ -1,12 +1,11 @@
 package com.devcraft.tores.data.repositories.impl.net.impl.base
 
+import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultWithStatus
 import com.devcraft.tores.data.repositories.impl.BaseRepositoryMapper
-import com.devcraft.tores.data.repositories.impl.net.dto.AddToMiningRequest
-import com.devcraft.tores.data.repositories.impl.net.dto.GetMiningInfoResponse
 import com.devcraft.tores.data.repositories.impl.net.dto.base.NetworkBaseResponse
-import org.json.JSONException
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +35,9 @@ open class BaseNetRepository {
                     if (!it.error.isNullOrEmpty()) {
                         ResultStatus.failure(it.error.orEmpty())
                     } else {
-                        ResultStatus.failure("Request error, response code: ${response.code()}")
+                        ResultStatus.failure(
+                            App.instance.getString(R.string.request_error_code, response.code())
+                        )
                     }
                 }
             }
@@ -57,18 +58,26 @@ open class BaseNetRepository {
                 if (!error.isNullOrEmpty()) {
                     ResultStatus.failure(error)
                 } else {
-                    ResultStatus.failure("Request error, response code: ${response.code()}")
+                    ResultStatus.failure(
+                        App.instance.getString(R.string.request_error_code, response.code())
+                    )
                 }
             } catch (e: Exception) {
                 if (response.code() == 403) {
-                    ResultStatus.failure("Request error, Forbidden")
+                    ResultStatus.failure(
+                        App.instance.getString(R.string.request_error_forbidden)
+                    )
                 } else {
-                    ResultStatus.failure("Request error, response code: ${response.code()}")
+                    ResultStatus.failure(
+                        App.instance.getString(R.string.request_error_code, response.code())
+                    )
                 }
             }
 
         } else {
-            ResultStatus.failure("Request error, response code: ${response.code()}")
+            ResultStatus.failure(
+                App.instance.getString(R.string.request_error_code, response.code())
+            )
         }
     }
 
@@ -81,7 +90,9 @@ open class BaseNetRepository {
                     if (!it.error.isNullOrEmpty()) {
                         ResultStatus.failure(it.error.orEmpty())
                     } else {
-                        ResultStatus.failure("Request error, response code: ${response.code()}")
+                        ResultStatus.failure(
+                            App.instance.getString(R.string.request_error_code, response.code())
+                        )
                     }
                 }
             }
@@ -109,7 +120,10 @@ open class BaseNetRepository {
                         continuation.resume(
                             ResultWithStatus(
                                 null,
-                                ResultStatus.failure(errorMsgIfDataIsNull ?: "Data is null")
+                                ResultStatus.failure(
+                                    errorMsgIfDataIsNull
+                                        ?: App.instance.getString(R.string.request_error_data_is_null)
+                                )
                             )
                         )
                     } else {
@@ -159,7 +173,13 @@ open class BaseNetRepository {
         errorMsgIfDataIsNull: String? = null
     ): ResultWithStatus<EntityType> {
         return suspendCoroutine { continuation ->
-            enqueueCallResultWithStatus(call, mapper, continuation, throwErrorIfDataIsNull, errorMsgIfDataIsNull)
+            enqueueCallResultWithStatus(
+                call,
+                mapper,
+                continuation,
+                throwErrorIfDataIsNull,
+                errorMsgIfDataIsNull
+            )
         }
     }
 

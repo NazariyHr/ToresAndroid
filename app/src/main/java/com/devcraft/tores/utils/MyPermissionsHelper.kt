@@ -8,7 +8,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 
-
 class MyPermissionsHelper {
     companion object {
         private fun shouldAskPermission(): Boolean {

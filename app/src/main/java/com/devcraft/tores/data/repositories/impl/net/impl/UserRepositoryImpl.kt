@@ -1,5 +1,7 @@
 package com.devcraft.tores.data.repositories.impl.net.impl
 
+import com.devcraft.tores.R
+import com.devcraft.tores.app.App
 import com.devcraft.tores.data.repositories.contract.TokenRepository
 import com.devcraft.tores.data.repositories.contract.UserRepository
 import com.devcraft.tores.data.repositories.contract.commonResults.ResultStatus
@@ -31,8 +33,8 @@ class UserRepositoryImpl(
             userApi.login(LogInRequest(email, password, token)),
             logInTokenMapper,
             true,
-            "Token is empty"
-        ).changeStatusToErrorIf("Token is empty") {
+            App.instance.getString(R.string.error_token_is_empty)
+        ).changeStatusToErrorIf(App.instance.getString(R.string.error_token_is_empty)) {
             it == null || it.token.isEmpty()
         }
             .apply {
@@ -48,7 +50,7 @@ class UserRepositoryImpl(
             userApi.getUser(),
             getUserMapper,
             true,
-            "User is null"
+            App.instance.getString(R.string.error_user_is_null)
         )
     }
 

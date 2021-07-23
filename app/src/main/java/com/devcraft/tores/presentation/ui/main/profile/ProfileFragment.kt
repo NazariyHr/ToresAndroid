@@ -67,7 +67,6 @@ class ProfileFragment : BaseFragment(R.layout.fragment_profile) {
                 swipeRefresh.isRefreshing = it
             }
             progress_overlay.setVisible(it)
-            btnLogOut.setVisible(!it)
         })
         vm.onGetUserFailure.observe(viewLifecycleOwner, {
             cvMainInfo.setGone()

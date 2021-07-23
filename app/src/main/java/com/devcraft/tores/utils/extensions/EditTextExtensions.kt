@@ -5,3 +5,7 @@ import android.widget.EditText
 fun EditText.doubleValue(): Double {
     return if (this.text.isEmpty()) 0.0 else this.text.toString().toDouble()
 }
+
+fun EditText.intValue(): Int {
+    return if (this.text.isEmpty()) 0 else this.text.toString().toInt()
+}

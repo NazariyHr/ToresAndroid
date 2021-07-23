@@ -178,7 +178,7 @@ class TransactionDetailsFragment : BaseFragment(R.layout.fragment_transaction_de
                     val allDataIsNotEntered = checkAllIsNotEmptyAndSetError(
                         mapOf(
                             tietPassword to tilPassword
-                        ), "Заполните поле"
+                        ), getString(R.string.fill_the_field)
                     )
                     if (allDataIsNotEntered) {
                         return@setSafeOnClickListener

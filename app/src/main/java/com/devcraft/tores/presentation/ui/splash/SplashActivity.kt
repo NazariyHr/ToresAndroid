@@ -20,7 +20,9 @@ class SplashActivity : BaseActivity(R.layout.activity_splash) {
     override fun initViews() {
         super.initViews()
 
-        tvVersion.text = "version ${BuildConfig.VERSION_NAME}"
+        if(BuildConfig.DEBUG){
+            tvVersion.text = "version ${BuildConfig.VERSION_NAME}"
+        }
 
         Handler(Looper.getMainLooper())
             .postDelayed(
